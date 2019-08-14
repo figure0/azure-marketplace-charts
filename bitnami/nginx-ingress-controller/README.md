@@ -12,6 +12,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io
 ## TL;DR;
 
 ```bash
+$ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install bitnami-azure/nginx-ingress-controller
 ```
 
@@ -32,10 +33,11 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
+$ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install --name my-release bitnami-azure/nginx-ingress-controller
 ```
 
-The command deploys nginx-ingress-controller on the Kubernetes cluster in the default configuration.
+These commands deploy nginx-ingress-controller on the Kubernetes cluster in the default configuration.
 
 > **Tip**: List all releases using `helm list`
 

@@ -12,6 +12,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io
 ## TL;DR;
 
 ```console
+$ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install bitnami-azure/tensorflow-resnet
 ```
 
@@ -41,10 +42,11 @@ $ git clone https://github.com/bitnami/charts.git
 To install the chart with the release name `my-release`:
 
 ```console
+$ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install --name my-release bitnami-azure/tensorflow-resnet
 ```
 
-The command deploys Tensorflow Serving ResNet model on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+These commands deploy Tensorflow Serving ResNet model on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 

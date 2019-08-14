@@ -12,6 +12,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io
 ## TL;DR;
 
 ```bash
+$ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install bitnami-azure/nginx
 ```
 
@@ -28,10 +29,11 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
+$ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install --name my-release bitnami-azure/nginx
 ```
 
-The command deploys NGINX Open Source on the Kubernetes cluster in the default configuration.
+These commands deploy NGINX Open Source on the Kubernetes cluster in the default configuration.
 
 > **Tip**: List all releases using `helm list`
 

@@ -12,6 +12,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io
 ## TL;DR
 
 ```bash
+$ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install bitnami-azure/mariadb-galera
 ```
 
