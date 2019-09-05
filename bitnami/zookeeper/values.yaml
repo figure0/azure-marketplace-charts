@@ -14,7 +14,7 @@ global:
 image:
   registry: docker.io
   repository: bitnami/zookeeper
-  tag: 3.5.5-debian-9-r93
+  tag: 3.5.5-debian-9-r96
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -100,6 +100,10 @@ syncLimit: 5
 ## Limits the number of concurrent connections that a single client may make to a single member of the ZooKeeper ensemble
 ##
 maxClientCnxns: 60
+
+## A list of comma separated Four Letter Words commands to use
+##
+fourlwCommandsWhitelist: srvr, mntr
 
 ## Allow to accept connections from unauthenticated users
 ##
