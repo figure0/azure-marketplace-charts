@@ -15,7 +15,6 @@ image:
   registry: docker.io
   repository: bitnami/kibana
   tag: 7.3.2-debian-9-r9
-  pullPolicy: IfNotPresent
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -310,7 +309,11 @@ metrics:
 ## Properties for Elasticsearch
 ##
 elasticsearch:
+  ## Enable bundled Elasticsearch
   enabled: false
+  ## Enable sysctl image for the bundled Elasticsearch
+  sysctlImage:
+    enabled: false
   ## Properties when enabled is false
   external:
     hosts:
