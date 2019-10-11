@@ -2,17 +2,10 @@
 
 [MongoDB](https://www.mongodb.com/) is a cross-platform document-oriented database. Classified as a NoSQL database, MongoDB eschews the traditional table-based relational database structure in favor of JSON-like documents with dynamic schemas, making the integration of data in certain types of applications easier and faster.
 
-## Azure-ready Charts with Containers from marketplace.azurecr.io
-
-This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
-The following command allows you to download and install all the charts from this repository.
-```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
-```
 ## TL;DR;
 
 ```bash
-$ helm install bitnami-azure/mongodb
+$ helm install stable/mongodb
 ```
 
 ## Introduction
@@ -31,7 +24,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release bitnami-azure/mongodb
+$ helm install --name my-release stable/mongodb
 ```
 
 The command deploys MongoDB on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -185,7 +178,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install --name my-release \
   --set mongodbRootPassword=secretpassword,mongodbUsername=my-user,mongodbPassword=my-password,mongodbDatabase=my-database \
-    bitnami-azure/mongodb
+    stable/mongodb
 ```
 
 The above command sets the MongoDB `root` account password to `secretpassword`. Additionally, it creates a standard database user named `my-user`, with the password `my-password`, who has access to a database named `my-database`.
@@ -193,7 +186,7 @@ The above command sets the MongoDB `root` account password to `secretpassword`. 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml bitnami-azure/mongodb
+$ helm install --name my-release -f values.yaml stable/mongodb
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -203,7 +196,7 @@ $ helm install --name my-release -f values.yaml bitnami-azure/mongodb
 This chart includes a `values-production.yaml` file where you can find some parameters oriented to production configuration in comparison to the regular `values.yaml`.
 
 ```console
-$ helm install --name my-release -f ./values-production.yaml bitnami-azure/mongodb
+$ helm install --name my-release -f ./values-production.yaml stable/mongodb
 ```
 
 - Switch to enable/disable replica set configuration:
@@ -247,7 +240,7 @@ Bitnami will release a new chart updating its containers if a new version of the
 You can start the MongoDB chart in replica set mode with the following command:
 
 ```bash
-$ helm install --name my-release bitnami-azure/mongodb --set replicaSet.enabled=true
+$ helm install --name my-release stable/mongodb --set replicaSet.enabled=true
 ```
 
 Some characteristics of this chart are:
