@@ -1,9 +1,9 @@
 dependencies:
-- name: mariadb
-  version: 6.x.x
-  repository: https://marketplace.azurecr.io/helm/v1/repo/
-  condition: mariadb.enabled
-- name: elasticsearch
-  version: 6.x.x
-  repository: https://marketplace.azurecr.io/helm/v1/repo
-  condition: elasticsearch.enabled
+  - name: mariadb
+    version: 6.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo/
+    condition: mariadb.enabled
+  - name: elasticsearch
+    version: 6.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    condition: elasticsearch.enabled
