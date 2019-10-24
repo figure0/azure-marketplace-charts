@@ -52,7 +52,7 @@ $ helm delete my-release
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
-## Configuration
+## Parameters
 
 The following table lists the configurable parameters of the MinIO chart and their default values.
 
@@ -136,13 +136,17 @@ $ helm install --name my-release -f values.yaml bitnami-azure/pytorch
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
 
+## Configuration and installation details
+
+### [Rolling VS Immutable tags](https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/)
+
+It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.
+
+Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.
+
 ### Production configuration
 
-This chart includes a `values-production.yaml` file where you can find some parameters oriented to production configuration in comparison to the regular `values.yaml`.
-
-```console
-$ helm install --name my-release -f ./values-production.yaml bitnami-azure/pytorch
-```
+This chart includes a `values-production.yaml` file where you can find some parameters oriented to production configuration in comparison to the regular `values.yaml`. You can use this file instead of the default one.
 
 - Run PyTorch in distributed mode:
 ```diff
@@ -156,13 +160,7 @@ $ helm install --name my-release -f ./values-production.yaml bitnami-azure/pytor
 + worldSize: 4
 ```
 
-### [Rolling VS Immutable tags](https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/)
-
-It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.
-
-Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.
-
-## Loading your files
+### Loading your files
 
 The PyTorch chart supports three different ways to load your files. In order of priority, they are:
 
@@ -172,29 +170,16 @@ The PyTorch chart supports three different ways to load your files. In order of 
 
 This means that if you specify a config map with your files, it won't look for the `files/` directory nor the git repository.
 
-In order to use use an existing config map:
+In order to use use an existing config map, set the `configMap=my-config-map` parameter.
+
+To load your files from the `files/` directory you don't have to set any option. Just copy your files inside and don't specify a `ConfigMap`.
+
+Finally, if you want to clone a git repository you can use those parameters:
 
 ```console
-$ helm install --name my-release \
-  --set configMap=my-config-map \
-  bitnami-azure/pytorch
-```
-
-To load your files from the `files/` directory you don't have to set any option. Just copy your files inside and don't specify a `ConfigMap`:
-
-```console
-$ helm install --name my-release \
-  bitnami-azure/pytorch
-```
-
-Finally, if you want to clone a git repository:
-
-```console
-$ helm install --name my-release \
-  --set cloneFilesFromGit.enabled=true \
-  --set cloneFilesFromGit.repository=https://github.com/my-user/my-repo \
-  --set cloneFilesFromGit.revision=master \
-  bitnami-azure/pytorch
+cloneFilesFromGit.enabled=true
+cloneFilesFromGit.repository=https://github.com/my-user/my-repo
+cloneFilesFromGit.revision=master
 ```
 
 ## Persistence
