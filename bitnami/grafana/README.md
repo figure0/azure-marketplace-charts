@@ -38,7 +38,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install --name my-release bitnami-azure/grafana
 ```
 
-These commands deploy grafana on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+These commands deploy grafana on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 
@@ -272,4 +272,4 @@ More information about Grafana HA [here](https://grafana.com/docs/tutorials/ha_s
 The [Bitnami Grafana](https://github.com/bitnami/bitnami-docker-grafana) image stores the Grafana data and configurations at the `/opt/bitnami/grafana/data` path of the container.
 
 Persistent Volume Claims are used to keep the data across deployments. This is known to work in GCE, AWS, and minikube.
-See the [Configuration](#configuration) section to configure the PVC or to disable persistence.
+See the [Parameters](#parameters) section to configure the PVC or to disable persistence.

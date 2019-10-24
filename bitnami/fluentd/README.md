@@ -37,7 +37,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install bitnami-azure/fluentd --name my-release
 ```
 
-These commands deploy Fluentd on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+These commands deploy Fluentd on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 

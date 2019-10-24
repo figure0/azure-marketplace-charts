@@ -35,7 +35,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io
 $ helm install --name my-release bitnami-azure/airflow
 ```
 
-These commands deploy Airflow on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+These commands deploy Airflow on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 
