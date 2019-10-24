@@ -9,7 +9,7 @@ The following command allows you to download and install all the charts from thi
 ```bash
 $ helm repo add bitnami-azure https://marketplace.azurecr.io
 ```
-## TL;DR
+## TL;DR;
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io
