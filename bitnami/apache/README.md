@@ -9,12 +9,12 @@ The Apache HTTP Server ("httpd") was launched in 1995 and it has been the most p
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
 The following command allows you to download and install all the charts from this repository.
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ```
 ## TL;DR;
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install bitnami-azure/apache
 ```
 
@@ -36,7 +36,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install --name my-release bitnami-azure/apache
 ```
 

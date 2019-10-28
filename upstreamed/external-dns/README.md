@@ -7,7 +7,7 @@
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
 The following command allows you to download and install all the charts from this repository.
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ```
 ## TL;DR;
 
@@ -155,7 +155,7 @@ The following table lists the configurable parameters of the external-dns chart 
 | `service.loadBalancerIP`            | IP address to assign to load balancer (if supported)                                                     | `""`                                                        |
 | `service.loadBalancerSourceRanges`  | List of IP CIDRs allowed access to load balancer (if supported)                                          | `[]`                                                        |
 | `service.annotations`               | Annotations to add to service                                                                            | `{}`                                                        |
-| `rbac.create`                       | Weather to create & use RBAC resources or not                                                            | `false`                                                     |
+| `rbac.create`                       | Weather to create & use RBAC resources or not                                                            | `true`                                                      |
 | `rbac.serviceAccountName`           | ServiceAccount (ignored if rbac.create == true)                                                          | `default`                                                   |
 | `rbac.serviceAccountAnnotations`    | Additional Service Account annotations                                                                   | `{}`                                                        |
 | `rbac.apiVersion`                   | Version of the RBAC API                                                                                  | `v1beta1`                                                   |

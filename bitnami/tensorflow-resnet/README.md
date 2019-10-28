@@ -7,12 +7,12 @@ TensorFlow Serving is an open-source software library for serving machine learni
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
 The following command allows you to download and install all the charts from this repository.
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ```
 ## TL;DR;
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install bitnami-azure/tensorflow-resnet
 ```
 
@@ -42,7 +42,7 @@ $ git clone https://github.com/bitnami/charts.git
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install --name my-release bitnami-azure/tensorflow-resnet
 ```
 

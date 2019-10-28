@@ -17,12 +17,12 @@ For example, the following changes have been introduced:
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
 The following command allows you to download and install all the charts from this repository.
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ```
 ## TL;DR:
 
 ```
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install bitnami-azure/harbor
 ```
 
@@ -42,7 +42,7 @@ This [Helm](https://github.com/kubernetes/helm) chart installs [Harbor](https://
 Install the Harbor helm chart with a release name `my-release`:
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install --name my-release bitnami-azure/harbor
 ```
 
