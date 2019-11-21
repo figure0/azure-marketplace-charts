@@ -1,4 +1,4 @@
 dependencies:
-- name: mongodb
-  version: ">= 0"
-  repository: https://marketplace.azurecr.io/helm/v1/repo
+  - name: mongodb
+    version: ">= 0"
+    repository: https://marketplace.azurecr.io/helm/v1/repo
