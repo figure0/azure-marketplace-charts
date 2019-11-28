@@ -1,0 +1,5 @@
+dependencies:
+  - name: node-exporter
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    version: 0.1.*
+    condition: exporters.enabled,exporters.node-exporter.enabled
