@@ -8,7 +8,7 @@ global:
 #    existingSecret: ""
 #    accessKey: ""
 #    secretKey: ""
-#  imageRegistry: myRegistryName
+  imageRegistry: marketplace.azurecr.io
 #  imagePullSecrets:
 #    - myRegistryKeySecretName
 #   storageClass: myStorageClass
