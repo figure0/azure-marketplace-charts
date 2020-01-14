@@ -83,7 +83,7 @@ Useful Helm Client Commands:
 
 # Contributions and Support
 
-Bitnami provide technical support in our the [Bitnami charts GitHub repository](https://github.com/bitnami/charts). Our team is actively monitoring it and will be glad to help you there.
+Bitnami provide technical support in our the [Bitnami charts GitHub repository](https://github.com/bitnami/charts/issues). Our team is actively monitoring it and will be glad to help you there.
 
 If you want to contribute with Bitnami charts through a Pull Request or creating an Issue, please do it in the above repository.
 
