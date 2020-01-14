@@ -81,9 +81,15 @@ Useful Helm Client Commands:
 * Install a chart: `helm install stable/<package-name>`
 * Upgrade your application: `helm upgrade`
 
+# Contributions and Support
+
+Bitnami provide technical support in our the [Bitnami charts GitHub repository](https://github.com/bitnami/charts). Our team is actively monitoring it and will be glad to help you there.
+
+If you want to contribute with Bitnami charts through a Pull Request or creating an Issue, please do it in the above repository.
+
 # License
 
-Copyright (c) 2019 Bitnami
+Copyright (c) 2020 Bitnami
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
