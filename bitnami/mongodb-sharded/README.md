@@ -14,6 +14,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR;
 
 ```bash
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install bitnami-azure/mongodb-sharded
 ```
 
@@ -281,7 +282,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install --name my-release \
   --set mongodbRootPassword=secretpassword,mongodbUsername=my-user,mongodbPassword=my-password,mongodbDatabase=my-database \
-    bitnami-azure/mongodb
+    bitnami-azure/mongodb-sharded
 ```
 
 The above command sets the MongoDB `root` account password to `secretpassword`. Additionally, it creates a standard database user named `my-user`, with the password `my-password`, who has access to a database named `my-database`.
@@ -289,7 +290,7 @@ The above command sets the MongoDB `root` account password to `secretpassword`. 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml bitnami-azure/mongodb
+$ helm install --name my-release -f values.yaml bitnami-azure/mongodb-sharded
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
