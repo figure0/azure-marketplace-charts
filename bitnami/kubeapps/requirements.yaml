@@ -2,3 +2,8 @@ dependencies:
   - name: mongodb
     version: ">= 0"
     repository: https://marketplace.azurecr.io/helm/v1/repo
+    condition: mongodb.enabled
+  - name: postgresql
+    version: ">= 0"
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    condition: postgresql.enabled
