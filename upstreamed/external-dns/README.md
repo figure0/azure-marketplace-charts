@@ -12,7 +12,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR;
 
 ```console
-$ helm install bitnami-azure/external-dns
+$ helm install my-release bitnami-azure/external-dns
 ```
 
 ## Introduction
@@ -31,7 +31,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release bitnami-azure/external-dns
+$ helm install my-release bitnami-azure/external-dns
 ```
 
 The command deploys ExternalDNS on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -183,14 +183,14 @@ The following table lists the configurable parameters of the external-dns chart 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install --name my-release \
+$ helm install my-release \
   --set provider=aws bitnami-azure/external-dns
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml bitnami-azure/external-dns
+$ helm install my-release -f values.yaml bitnami-azure/external-dns
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -234,7 +234,7 @@ For instance, to install ExternalDNS on AWS, you need to:
 > Note: replace the placeholder HOSTED_ZONE_IDENTIFIER and HOSTED_ZONE_NAME, with your hosted zoned identifier and name, respectively.
 
 ```bash
-$ helm install --name my-release \
+$ helm install my-release \
   --set provider=aws \
   --set aws.zoneType=public \
   --set txtOwnerId=HOSTED_ZONE_IDENTIFIER \

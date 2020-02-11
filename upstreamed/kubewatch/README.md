@@ -13,7 +13,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR;
 
 ```console
-$ helm install bitnami-azure/kubewatch
+$ helm install my-release bitnami-azure/kubewatch
 ```
 
 ## Introduction
@@ -30,7 +30,7 @@ This chart bootstraps a kubewatch deployment on a [Kubernetes](http://kubernetes
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm install bitnami-azure/kubewatch --name my-release
+$ helm install my-release bitnami-azure/kubewatch
 ```
 
 The command deploys kubewatch on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -98,14 +98,14 @@ The following table lists the configurable parameters of the kubewatch chart and
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install bitnami-azure/kubewatch --name my-release \
+$ helm install my-release bitnami-azure/kubewatch \
   --set=slack.channel="#bots",slack.token="XXXX-XXXX-XXXX"
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install bitnami-azure/kubewatch --name my-release -f values.yaml
+$ helm install my-release -f values.yaml bitnami-azure/kubewatch
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

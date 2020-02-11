@@ -12,7 +12,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR;
 
 ```bash
-$ helm install bitnami-azure/rabbitmq
+$ helm install my-release bitnami-azure/rabbitmq
 ```
 
 ## Introduction
@@ -32,7 +32,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release bitnami-azure/rabbitmq
+$ helm install my-release bitnami-azure/rabbitmq
 ```
 
 The command deploys RabbitMQ on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -196,7 +196,7 @@ The above parameters map to the env variables defined in [bitnami/rabbitmq](http
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```bash
-$ helm install --name my-release \
+$ helm install my-release \
   --set rabbitmq.username=admin,rabbitmq.password=secretpassword,rabbitmq.erlangCookie=secretcookie \
     bitnami-azure/rabbitmq
 ```
@@ -206,7 +206,7 @@ The above command sets the RabbitMQ admin username and password to `admin` and `
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml bitnami-azure/rabbitmq
+$ helm install my-release -f values.yaml bitnami-azure/rabbitmq
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -392,7 +392,7 @@ The chart mounts a [Persistent Volume](http://kubernetes.io/docs/user-guide/pers
 1. Install the chart
 
 ```bash
-$ helm install --set persistence.existingClaim=PVC_NAME rabbitmq
+$ helm install my-release --set persistence.existingClaim=PVC_NAME bitnami-azure/rabbitmq
 ```
 
 ### Adjust permissions of the persistence volume mountpoint
