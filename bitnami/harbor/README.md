@@ -23,7 +23,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 
 ```
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install bitnami-azure/harbor
+$ helm install my-release bitnami-azure/harbor
 ```
 
 ## Introduction
@@ -43,7 +43,7 @@ Install the Harbor helm chart with a release name `my-release`:
 
 ```bash
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install --name my-release bitnami-azure/harbor
+$ helm install my-release bitnami-azure/harbor
 ```
 
 ## Uninstalling the Chart
@@ -299,7 +299,7 @@ The following table lists the configurable parameters of the Harbor chart and th
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install --name my-release \
+$ helm install my-release \
   --set harborAdminPassword=password \
     bitnami-azure/harbor
 ```
@@ -309,7 +309,7 @@ The above command sets the Harbor administrator account password to `password`.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install --name my-release -f values.yaml bitnami-azure/harbor
+$ helm install my-release -f values.yaml bitnami-azure/harbor
 ```
 
 ## Configuration and installation details

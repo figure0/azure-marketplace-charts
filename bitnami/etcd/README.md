@@ -13,7 +13,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install bitnami-azure/etcd
+$ helm install my-release bitnami-azure/etcd
 ```
 
 ## Introduction
@@ -34,7 +34,7 @@ To install the chart with the release name `my-release`:
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install --name my-release bitnami-azure/etcd
+$ helm install my-release bitnami-azure/etcd
 ```
 
 These commands deploy etcd on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -147,7 +147,7 @@ The following tables lists the configurable parameters of the etcd chart and the
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install --name my-release \
+$ helm install my-release \
   --set auth.rbac.rootPassword=secretpassword bitnami-azure/etcd
 ```
 
@@ -156,7 +156,7 @@ The above command sets the etcd `root` account password to `secretpassword`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install --name my-release -f values.yaml bitnami-azure/etcd
+$ helm install my-release -f values.yaml bitnami-azure/etcd
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -312,7 +312,7 @@ To upgrade from previous charts versions, create a snapshot of the keyspace and 
 You can use the command below to upgrade your chart by starting a new cluster using an existing snapshot, available in an existing PVC, to initialize the members:
 
 ```console
-$ helm install --name new-release bitnami-azure/etcd \
+$ helm install new-release bitnami-azure/etcd \
   --set statefulset.replicaCount=3 \
   --set persistence.enable=true \
   --set persistence.size=8Gi \

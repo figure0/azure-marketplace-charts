@@ -16,7 +16,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 
 ```
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install bitnami-azure/postgresql-ha
+$ helm install my-release bitnami-azure/postgresql-ha
 ```
 
 ## Introduction
@@ -34,7 +34,7 @@ Install the PostgreSQL HA helm chart with a release name `my-release`:
 
 ```bash
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install --name my-release bitnami-azure/postgresql-ha
+$ helm install my-release bitnami-azure/postgresql-ha
 ```
 
 ## Uninstalling the Chart
@@ -209,7 +209,7 @@ The following table lists the configurable parameters of the PostgreSQL HA chart
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install --name my-release \
+$ helm install my-release \
     --set postgresql.password=password \
     bitnami-azure/postgresql-ha
 ```
@@ -219,7 +219,7 @@ The above command sets the password for user `postgres` to `password`.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install --name my-release -f values.yaml bitnami-azure/postgresql-ha
+$ helm install my-release -f values.yaml bitnami-azure/postgresql-ha
 ```
 
 ## Configuration and installation details

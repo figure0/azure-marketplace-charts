@@ -13,7 +13,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install bitnami-azure/kibana --set elasticsearch.hosts[0]=<Hostname of your ES instance> --set elasticsearch.port=<port of your ES instance>
+$ helm install my-release bitnami-azure/kibana --set elasticsearch.hosts[0]=<Hostname of your ES instance> --set elasticsearch.port=<port of your ES instance>
 ```
 
 ## Introduction
@@ -37,9 +37,10 @@ This chart requires a Elasticsearch instance to work. You can use an already exi
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install bitnami-azure/kibana --name my-release \
+$ helm install my-release \
   --set elasticsearch.hosts[0]=<Hostname of your ES instance> \
-  --set elasticsearch.port=<port of your ES instance>
+  --set elasticsearch.port=<port of your ES instance> \
+  bitnami-azure/kibana
 ```
 
 These commands deploy kibana on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -147,7 +148,7 @@ The following tables lists the configurable parameters of the kibana chart and t
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install --name my-release \
+$ helm install my-release \
   --set admin.user=admin-user bitnami-azure/kibana
 ```
 
@@ -156,7 +157,7 @@ The above command sets the Kibana admin user to `admin-user`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install --name my-release -f values.yaml bitnami-azure/kibana
+$ helm install my-release -f values.yaml bitnami-azure/kibana
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
