@@ -12,7 +12,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR;
 
 ```bash
-$ helm install bitnami-azure/redmine
+$ helm install my-release bitnami-azure/redmine
 ```
 
 ## Introduction
@@ -35,7 +35,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release bitnami-azure/redmine
+$ helm install my-release bitnami-azure/redmine
 ```
 
 The command deploys Redmine on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -57,7 +57,7 @@ The command removes all the Kubernetes components associated with the chart and 
 This chart includes the option to use a PostgreSQL database for Redmine instead of MariaDB. To use this, set the `databaseType` parameter to `postgresql`:
 
 ```
-helm install --name my-release bitnami-azure/redmine --set databaseType=postgresql
+helm install my-release bitnami-azure/redmine --set databaseType=postgresql
 ```
 
 ## Parameters
@@ -181,7 +181,7 @@ The above parameters map to the env variables defined in [bitnami/redmine](http:
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```bash
-$ helm install --name my-release \
+$ helm install my-release \
   --set redmineUsername=admin,redminePassword=password,mariadb.mariadbRootPassword=secretpassword \
     bitnami-azure/redmine
 ```
@@ -191,7 +191,7 @@ The above command sets the Redmine administrator account username and password t
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml bitnami-azure/redmine
+$ helm install my-release -f values.yaml bitnami-azure/redmine
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -226,7 +226,7 @@ The following example includes two PVCs, one for Redmine and another for MariaDB
 1. Install the chart
 
 ```bash
-$ helm install --name test --set persistence.existingClaim=PVC_REDMINE,mariadb.persistence.existingClaim=PVC_MARIADB  redmine
+$ helm install test --set persistence.existingClaim=PVC_REDMINE,mariadb.persistence.existingClaim=PVC_MARIADB bitnami-azure/redmine
 ```
 
 ## Upgrading
