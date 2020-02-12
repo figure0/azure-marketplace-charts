@@ -1,0 +1,5 @@
+dependencies:
+  - name: minio
+    version: 3.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    condition: minio.enabled
