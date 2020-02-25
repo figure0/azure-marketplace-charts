@@ -6,7 +6,8 @@ Popular applications, provided by [Bitnami](https://bitnami.com), ready to launc
 
 ```bash
 $ helm repo add azure-marketplace https://marketplace.azurecr.io/helm/v1/repo
-$ helm search azure-marketplace
+$ helm search repo azure-marketplace
+$ helm install my-release azure-marketplace/<chart>
 ```
 
 ## Before you begin
@@ -35,14 +36,6 @@ Helm is a tool for managing Kubernetes charts. Charts are packages of pre-config
 
 To install Helm, refer to the [Helm install guide](https://github.com/helm/helm#install) and ensure that the `helm` binary is in the `PATH` of your shell.
 
-```bash
-$ kubectl create serviceaccount -n kube-system tiller
-$ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-$ helm init --service-account tiller
-```
-
-The above command creates a ServiceAccount and a ClusterRoleBinding for Tiller and initializes Helm in the cluster.
-
 ### Add repository
 
 Helm charts are available via the Azure Marketplace public repository.
@@ -57,7 +50,7 @@ Add the Azure Marketplace repository:
 
 ```bash
 $ helm repo add azure-marketplace https://marketplace.azurecr.io/helm/v1/repo
-$ helm search azure-marketplace
+$ helm search repo azure-marketplace
 ```
 
 ## Deployment
@@ -65,7 +58,7 @@ $ helm search azure-marketplace
 Use the following command to deploy a chart, such as WordPress:
 
 ```bash
-$ helm install azure-marketplace/wordpress --set global.imagePullSecrets={emptysecret}
+$ helm install my-wordpress azure-marketplace/wordpress --set global.imagePullSecrets={emptysecret}
 ```
 
 For a more detailed walkthrough and screenshots, refer to our [starter guide](https://docs.bitnami.com/azure/get-started-charts-marketplace).
@@ -77,8 +70,8 @@ Once you have installed the Helm client and initialized the Tiller server, you c
 Please refer to the [Helm Quick Start guide](https://github.com/helm/helm/blob/master/docs/quickstart.md) if you wish to get running in just a few commands, otherwise the [Using Helm Guide](https://github.com/helm/helm/blob/master/docs/using_helm.md) provides detailed instructions on how to use the Helm client to manage packages on your Kubernetes cluster.
 
 Useful Helm Client Commands:
-* View available charts: `helm search`
-* Install a chart: `helm install stable/<package-name>`
+* View available charts: `helm search repo`
+* Install a chart: `helm install my-release stable/<package-name>`
 * Upgrade your application: `helm upgrade`
 
 # Contributions and Support
