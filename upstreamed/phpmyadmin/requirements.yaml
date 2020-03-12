@@ -1,7 +1,0 @@
-dependencies:
-- name: mariadb
-  version: 6.x.x
-  repository: https://marketplace.azurecr.io/helm/v1/repo/
-  condition: db.bundleTestDB
-  tags:
-    - phpmyadmin-database
