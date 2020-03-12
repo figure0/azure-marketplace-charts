@@ -12,6 +12,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR;
 
 ```bash
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install my-release bitnami-azure/rabbitmq
 ```
 

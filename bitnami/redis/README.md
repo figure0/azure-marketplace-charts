@@ -14,11 +14,13 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 
 ```bash
 # Testing configuration
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install my-release bitnami-azure/redis
 ```
 
 ```bash
 # Production configuration
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install my-release bitnami-azure/redis --values values-production.yaml
 ```
 
