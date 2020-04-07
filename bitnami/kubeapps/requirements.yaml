@@ -1,6 +1,7 @@
 dependencies:
   - name: mongodb
-    version: ">= 0"
+    # Versions above 7.8 (<7.10.2) contains an error 
+    version: "7.8.10"
     repository: https://marketplace.azurecr.io/helm/v1/repo
     condition: mongodb.enabled
   - name: postgresql
