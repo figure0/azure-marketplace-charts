@@ -1,0 +1,9 @@
+dependencies:
+  - name: postgresql
+    condition: postgresql.enabled
+    version: 8.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+  - name: cassandra
+    condition: cassandra.enabled
+    version: 5.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
