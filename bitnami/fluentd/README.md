@@ -221,7 +221,7 @@ data:
     # input plugin that exports metrics
     <source>
       @type prometheus
-      port {{ .Values.metrics.service.port }}
+      port 24231
     </source>
 
     # input plugin that collects metrics from MonitorAgent
@@ -239,7 +239,6 @@ data:
         host ${hostname}
       </labels>
     </source>
-    {{- end }}
 
     # Ignore fluentd own events
     <match fluent.**>
@@ -250,7 +249,7 @@ data:
     <source>
       @type forward
       bind 0.0.0.0
-      port {{ .Values.aggregator.port }}
+      port 24224
     </source>
 
     # HTTP input for the liveness and readiness probes
