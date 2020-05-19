@@ -25,7 +25,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 ## Prerequisites
 
 - Kubernetes 1.12+
-- Helm 2.11+ or Helm 3.0-beta3+
+- Helm 2.12+ or Helm 3.0-beta3+
 - PV provisioner support in the underlying infrastructure
 - ReadWriteMany volumes for deployment scaling
 
@@ -61,7 +61,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 The following tables lists the configurable parameters of the kibana chart and their default values.
 
-|               Parameter                |                                                                        Description                                                                        |                                                 Default                                                 |             |
+| Parameter                              | Description                                                                                                                                               | Default                                                                                                 |             |
 |----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
 | `global.imageRegistry`                 | Global Docker image registry                                                                                                                              | `nil`                                                                                                   |             |
 | `global.imagePullSecrets`              | Global Docker registry secret names as an array                                                                                                           | `[]` (does not add image pull secrets to deployed pods)                                                 |             |
