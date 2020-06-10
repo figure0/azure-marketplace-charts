@@ -7,3 +7,6 @@ dependencies:
     version: 10.x.x
     repository: https://marketplace.azurecr.io/helm/v1/repo
     condition: redis.enabled
+  - name: common
+    version: 0.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
