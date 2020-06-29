@@ -1,0 +1,20 @@
+dependencies:
+  - name: common
+    version: 0.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    tags:
+      - bitnami-common
+  - name: mariadb
+    version: 7.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    condition: mariadb.enabled
+    tags:
+      - dataflow-database
+  - name: rabbitmq
+    version: 7.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    condition: rabbitmq.enabled
+  - name: kafka
+    version: 11.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    condition: kafka.enabled
