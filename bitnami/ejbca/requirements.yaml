@@ -1,0 +1,12 @@
+dependencies:
+  - name: mariadb
+    version: 7.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    condition: mariadb.enabled
+    tags:
+      - ejbca-database
+  - name: common
+    version: 0.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    tags:
+      - bitnami-common
