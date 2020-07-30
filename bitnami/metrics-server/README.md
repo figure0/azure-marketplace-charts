@@ -9,7 +9,7 @@ The following command allows you to download and install all the charts from thi
 ```bash
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ```
-## TL;DR;
+## TL;DR
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
@@ -65,6 +65,7 @@ The following tables lists the configurable parameters of the Metrics Server cha
 | `nameOverride`            | String to partially override metrics-server.fullname template with a string (will prepend the release name)                     | `nil`                                                   |
 | `fullnameOverride`        | String to fully override metrics-server.fullname template with a string                                                         | `nil`                                                   |
 | `securePort`              | Port where metrics-server will be running                                                                                       | `8443`                                                  |
+| `hostNetwork`             | Enable hostNetwork mode                                                                                                         | `false`                                                 |
 | `extraArgs`               | Extra arguments to pass to metrics-server on start up                                                                           | {}                                                      |
 | `rbac.create`             | Enable RBAC authentication                                                                                                      | `true`                                                  |
 | `serviceAccount.create`   | Specifies whether a ServiceAccount should be created                                                                            | `true`                                                  |
