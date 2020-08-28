@@ -1,0 +1,14 @@
+dependencies:
+  - name: common
+    version: 0.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    tags:
+      - bitnami-common
+  - name: node-exporter
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    version: 1.x.x
+    condition: exporters.enabled,exporters.node-exporter.enabled
+  - name: kube-state-metrics
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    version: 0.x.x
+    condition: exporters.enabled,exporters.kube-state-metrics.enabled
