@@ -1,4 +1,9 @@
 dependencies:
+  - name: common
+    version: 0.x.x
+    repository: https://marketplace.azurecr.io/helm/v1/repo
+    tags:
+      - bitnami-common
   - name: postgresql
     repository: https://marketplace.azurecr.io/helm/v1/repo
     version: 8.X.X
