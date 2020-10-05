@@ -1,6 +1,6 @@
 dependencies:
   - name: common
-    version: 0.x.x
+    version: 0.7.x
     repository: https://marketplace.azurecr.io/helm/v1/repo
     tags:
       - bitnami-common
