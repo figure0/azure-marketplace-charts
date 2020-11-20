@@ -1,4 +1,0 @@
-dependencies:
-  - name: postgresql
-    version: ">= 9.7.0"
-    repository: https://marketplace.azurecr.io/helm/v1/repo
