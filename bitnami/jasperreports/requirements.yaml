@@ -1,5 +1,0 @@
-dependencies:
-- name: mariadb
-  version: 7.x.x
-  repository: https://marketplace.azurecr.io/helm/v1/repo
-  condition: mariadb.enabled
