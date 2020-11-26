@@ -1,5 +1,0 @@
-dependencies:
-  - name: mongodb
-    repository: https://marketplace.azurecr.io/helm/v1/repo
-    version: 9.x.x
-    condition: mongodb.install
