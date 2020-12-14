@@ -212,7 +212,7 @@ $ helm upgrade my-release bitnami-azure/tomcat
 If you use a previous container image (previous to **8.5.35-r26**) disable the `securityContext` by running the command below:
 
 ```
-$ helm upgrade my-release bitnami-azure/tomcat --set securityContext.enabled=fase,image.tag=XXX
+$ helm upgrade my-release bitnami-azure/tomcat --set securityContext.enabled=false,image.tag=XXX
 ```
 
 ### To 1.0.0
