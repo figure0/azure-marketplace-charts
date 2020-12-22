@@ -304,7 +304,7 @@ This chart includes a `values-production.yaml` file where you can find some para
 + ## To use the /admin portal and to ensure you can scale wordpress you need to provide a
 + ## ReadWriteMany PVC, if you dont have a provisioner for this type of storage
 + ## We recommend that you install the nfs provisioner and map it to a RWO volume
-+ ## helm install nfs-server bitnami-azure/nfs-server-provisioner --set persistence.enabled=true,persistence.size=10Gi
++ ## helm install nfs-server stable/nfs-server-provisioner --set persistence.enabled=true,persistence.size=10Gi
 + ##
 + persistence.accessMode: ReadWriteMany
 ```
