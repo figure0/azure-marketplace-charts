@@ -16,7 +16,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
   helm install my-release bitnami-azure/kiam
 ```
 
-> NOTE: This chart only works in Kubernetes clusters in AWS
+> NOTE: KIAM has been designed to work on a Kubernetes cluster deployed on top of AWS, although it is possible to deploy it in other environments.
 
 ## Introduction
 
