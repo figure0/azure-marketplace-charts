@@ -420,7 +420,7 @@ You can either specify `metrics.extraArgs.skip-tls-verification=true` to skip TL
 tls-client-key-file
 tls-client-cert-file
 tls-ca-cert-file
-...
+```
 
 ### Host Kernel Settings
 

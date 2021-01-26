@@ -120,6 +120,7 @@ The following tables lists the configurable parameters of the Airflow chart and 
 | `web.extraEnvVars`                       | Array containing extra env vars                                                                      | `nil`                                                   |
 | `web.extraEnvVarsCM`                     | ConfigMap containing extra env vars                                                                  | `nil`                                                   |
 | `web.extraEnvVarsSecret`                 | Secret containing extra env vars (in case of sensitive data)                                         | `nil`                                                   |
+| `web.hostAliases`                        | Add deployment host aliases                                                                          | `[]`                                                    |
 | `web.extraVolumeMounts`                  | Array of extra volume mounts to be added (evaluated as template). Normally used with `extraVolumes`. | `nil`                                                   |
 | `web.extraVolumes`                       | Array of extra volumes to be added (evaluated as template).                                          | `nil`                                                   |
 | `web.image.debug`                        | Specify if debug values should be set                                                                | `false`                                                 |
@@ -135,6 +136,7 @@ The following tables lists the configurable parameters of the Airflow chart and 
 | `web.livenessProbe.periodSeconds`        | How often to perform the probe                                                                       | 20                                                      |
 | `web.livenessProbe.successThreshold`     | Minimum consecutive successes for the probe to be considered successful after having failed          | 1                                                       |
 | `web.livenessProbe.timeoutSeconds`       | When the probe times out                                                                             | 5                                                       |
+| `web.nodeSelector`                       | Node labels for pod assignment                                                                       | `{}` (evaluated as a template)                          |
 | `web.podAnnotations`                     | Annotations to add to the web's pods                                                                 | `nil`                                                   |
 | `web.podDisruptionBudget.enabled`        | Switch to enable Pod Disruption Budget for Airflow web component                                     | `false`                                                 |
 | `web.podDisruptionBudget.minAvailable`   | Set the minimum amount of pods available                                                             | `1`                                                     |
@@ -168,6 +170,7 @@ The following tables lists the configurable parameters of the Airflow chart and 
 | `scheduler.extraEnvVarsCM`                   | ConfigMap containing extra env vars                                                                  | `nil`                                                   |
 | `scheduler.extraEnvVarsSecret`               | Secret containing extra env vars (in case of sensitive data)                                         | `nil`                                                   |
 | `scheduler.extraVolumeMounts`                | Array of extra volume mounts to be added (evaluated as template). Normally used with `extraVolumes`. | `nil`                                                   |
+| `scheduler.hostAliases`                      | Add deployment host aliases                                                                          | `[]`                                                    |
 | `scheduler.extraVolumes`                     | Array of extra volumes to be added (evaluated as template).                                          | `nil`                                                   |
 | `scheduler.image.debug`                      | Specify if debug values should be set                                                                | `false`                                                 |
 | `scheduler.image.pullPolicy`                 | Airflow Scheduler image pull policy                                                                  | `IfNotPresent`                                          |
@@ -176,6 +179,7 @@ The following tables lists the configurable parameters of the Airflow chart and 
 | `scheduler.image.repository`                 | Airflow Scheduler image name                                                                         | `bitnami/airflow-scheduler`                             |
 | `scheduler.image.tag`                        | Airflow Scheduler image tag                                                                          | `{TAG_NAME}`                                            |
 | `scheduler.initContainers`                   | List of init containers to be added to the scheduler's pods                                          | `nil`                                                   |
+| `scheduler.nodeSelector`                     | Node labels for pod assignment                                                                       | `{}` (evaluated as a template)                          |
 | `scheduler.podAnnotations`                   | Annotations to add to the scheduler's pods                                                           | `nil`                                                   |
 | `scheduler.podDisruptionBudget.enabled`      | Switch to enable Pod Disruption Budget for Airflow scheduler component                               | `false`                                                 |
 | `scheduler.podDisruptionBudget.minAvailable` | Set the minimum amount of pods available                                                             | `1`                                                     |
@@ -197,6 +201,7 @@ The following tables lists the configurable parameters of the Airflow chart and 
 | `worker.autoscaling.targets.cpu`            | Target cpu that will trigger an scaling action (unit: %)                                                                                                               | `80`                                                    |
 | `worker.autoscaling.targets.memory`         | Target memory that will trigger an scaling action (unit: %)                                                                                                            | `80`                                                    |
 | `worker.command`                            | Override default container command (useful when using custom images)                                                                                                   | `nil`                                                   |
+| `worker.hostAliases`                        | Add deployment host aliases                                                                                                                                            | `[]`                                                    |
 | `worker.customLivenessProbe`                | Custom liveness probe for the Airflow worker component                                                                                                                 | `{}`                                                    |
 | `worker.customReadinessProbe`               | Custom rediness probe for the Airflow worker component                                                                                                                 | `{}`                                                    |
 | `worker.extraEnvVars`                       | Array containing extra env vars                                                                                                                                        | `nil`                                                   |
@@ -217,6 +222,7 @@ The following tables lists the configurable parameters of the Airflow chart and 
 | `worker.livenessProbe.periodSeconds`        | How often to perform the probe                                                                                                                                         | 20                                                      |
 | `worker.livenessProbe.successThreshold`     | Minimum consecutive successes for the probe to be considered successful after having failed                                                                            | 1                                                       |
 | `worker.livenessProbe.timeoutSeconds`       | When the probe times out                                                                                                                                               | 5                                                       |
+| `worker.nodeSelector`                       | Node labels for pod assignment                                                                                                                                         | `{}` (evaluated as a template)                          |
 | `worker.podAnnotations`                     | Annotations to add to the worker's pods                                                                                                                                | `nil`                                                   |
 | `worker.podDisruptionBudget.enabled`        | Switch to enable Pod Disruption Budget for Airflow worker component                                                                                                    | `false`                                                 |
 | `worker.podDisruptionBudget.minAvailable`   | Set the minimum amount of pods available                                                                                                                               | `1`                                                     |
@@ -289,7 +295,9 @@ The following tables lists the configurable parameters of the Airflow chart and 
 | `metrics.image.registry`    | Airflow exporter image registry                  | `docker.io`                                             |
 | `metrics.image.repository`  | Airflow exporter image name                      | `bitnami/airflow-exporter`                              |
 | `metrics.image.tag`         | Airflow exporter image tag                       | `{TAG_NAME}`                                            |
+| `metrics.nodeSelector`      | Node labels for pod assignment                   | `{}` (evaluated as a template)                          |
 | `metrics.podAnnotations`    | Annotations to add to the metrics's pods         | `nil`                                                   |
+| `metrics.hostAliases`       | Add deployment host aliases                      | `[]`                                                    |
 | `metrics.podLabels`         | Labels to add to the worker's pods               | `{}`                                                    |
 | `metrics.resources`         | The resources for the metrics containers         | `{}`                                                    |
 | `metrics.tolerations`       | The tolerations for the metrics pod              | `[]`                                                    |
@@ -369,44 +377,6 @@ $ helm install my-release -f values.yaml bitnami-azure/airflow
 It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.
 
 Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.
-
-### Production configuration
-
-This chart includes a `values-production.yaml` file where you can find some parameters oriented to production configuration in comparison to the regular `values.yaml`. You can use this file instead of the default one.
-
-- URL used to access to airflow web ui:
-
-```diff
-- # airflow.baseUrl:
-+ airflow.baseUrl: http://airflow.local
-```
-
-- Number of Airflow Worker replicas and enable autoscaling:
-
-```diff
-- worker.replicaCount: 1
-+ worker.replicaCount: 3
-- worker.autoscaling.enabled=false
-+ worker.autoscaling.enabled=true
-- worker.autoscaling.replicas.max=3
-+ worker.autoscaling.replicas.max=6
-- worker.autoscaling.replicas.min=1
-+ worker.autoscaling.replicas.min=3
-```
-
-- Force users to specify a password:
-
-```diff
-- airflow.auth.forcePassword: false
-+ airflow.auth.forcePassword: true
-```
-
-- Enable ingress controller resource:
-
-```diff
-- ingress.enabled: false
-+ ingress.enabled: true
-```
 
 ### Generate a Fernet key
 
