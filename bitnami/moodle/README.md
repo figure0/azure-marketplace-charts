@@ -294,7 +294,7 @@ ingress:
   #   kubernetes.io/ingress.class: nginx
   #   kubernetes.io/tls-acme: 'true'
 
-  ## Moodle server Ingress hostnames
+  ## Moodle(TM) server Ingress hostnames
   ## Must be provided if Ingress is enabled
   ##
   hosts:
