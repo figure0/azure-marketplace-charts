@@ -13,7 +13,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/solr --set elasticsearch.hosts[0]=<Hostname of your ES instance> --set elasticsearch.port=<port of your ES instance>
+$ helm install my-release bitnami-azure/solr
 ```
 
 ## Introduction
@@ -31,16 +31,11 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 
 ## Installing the Chart
 
-This chart requires a Elasticsearch instance to work. You can use an already existing Elasticsearch instance.
-
  To install the chart with the release name `my-release`:
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release \
-  --set elasticsearch.hosts[0]=<Hostname of your ES instance> \
-  --set elasticsearch.port=<port of your ES instance> \
-  bitnami-azure/solr
+$ helm install my-release bitnami-azure/solr
 ```
 
 These commands deploy Solr on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -101,8 +96,8 @@ The following tables lists the configurable parameters of the solr chart and the
 | `rollingUpdate`                                           | Rolling Update configuration                                 | `nil`                                                     |
 | `volumePermissions.enabled`                               | Enable init container that changes volume permissions in the registry (for cases where the default k8s `runAsUser` and `fsUser` values do not work) | `false`                                                   |
 | `volumePermissions.image.registry`                        | Init container volume-permissions image registry             | `docker.io`                                               |
-| `volumePermissions.image.repository`                      | Init container volume-permissions image name                 | `bitnami/minideb`                                         |
-| `volumePermissions.image.tag`                             | Init container volume-permissions image tag                  | `buster`                                                  |
+| `volumePermissions.image.repository`                      | Init container volume-permissions image name                 | `bitnami/bitnami-shell`                                   |
+| `volumePermissions.image.tag`                             | Init container volume-permissions image tag                  | `"10"`                                                    |
 | `volumePermissions.image.pullPolicy`                      | Init container volume-permissions image pull policy          | `Always`                                                  |
 | `volumePermissions.resources`                             | Init container volume-permissions CPU/Memory resource requests/limits | {}                                                        |
 | `volumePermissions.image.pullSecrets`                     | Specify docker-registry secret names as an array             | `[]` (does not add image pull secrets to deployed pods)   |
