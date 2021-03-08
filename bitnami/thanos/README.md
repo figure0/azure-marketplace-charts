@@ -138,6 +138,7 @@ The following tables lists the configurable parameters of the Thanos chart and t
 | `query.affinity`                                 | Thanos Query affinity for pod assignment                                                                                                                      | `{}` (evaluated as a template)  |
 | `query.nodeSelector`                             | Thanos Query node labels for pod assignment                                                                                                                   | `{}` (evaluated as a template)  |
 | `query.tolerations`                              | Thanos Query tolerations for pod assignment                                                                                                                   | `[]` (evaluated as a template)  |
+| `query.podLabels`                                | Thanos Query pod labels                                                                                                                                       | `{}` (evaluated as a template)  |
 | `query.priorityClassName`                        | Controller priorityClassName                                                                                                                                  | `nil`                           |
 | `query.securityContext.enabled`                  | Enable security context for Thanos Query pods                                                                                                                 | `true`                          |
 | `query.securityContext.fsGroup`                  | Group ID for the Thanos Query filesystem                                                                                                                      | `1001`                          |
@@ -227,6 +228,7 @@ The following tables lists the configurable parameters of the Thanos chart and t
 | `queryFrontend.affinity`                         | Thanos Query Frontend affinity for pod assignment                                                                             | `{}` (evaluated as a template) |
 | `queryFrontend.nodeSelector`                     | Thanos Query Frontend node labels for pod assignment                                                                          | `{}` (evaluated as a template) |
 | `queryFrontend.tolerations`                      | Thanos Query Frontend tolerations for pod assignment                                                                          | `[]` (evaluated as a template) |
+| `queryFrontend.podLabels`                        | Thanos Query Frontend pod labels                                                                                              | `{}` (evaluated as a template) |
 | `queryFrontend.priorityClassName`                | Controller priorityClassName                                                                                                  | `nil`                          |
 | `queryFrontend.securityContext.enabled`          | Enable security context for Thanos Query Frontend pods                                                                        | `true`                         |
 | `queryFrontend.securityContext.fsGroup`          | Group ID for the Thanos Query Frontend filesystem                                                                             | `1001`                         |
@@ -289,6 +291,7 @@ The following tables lists the configurable parameters of the Thanos chart and t
 | `bucketweb.affinity`                              | Thanos Bucket Web affinity for pod assignment                                                                         | `{}` (evaluated as a template) |
 | `bucketweb.nodeSelector`                          | Thanos Bucket Web node labels for pod assignment                                                                      | `{}` (evaluated as a template) |
 | `bucketweb.tolerations`                           | Thanos Bucket Web tolerations for pod assignment                                                                      | `[]` (evaluated as a template) |
+| `bucketweb.podLabels`                             | Thanos Bucket Web pod labels                                                                                          | `{}` (evaluated as a template) |
 | `bucketweb.priorityClassName`                     | Controller priorityClassName                                                                                          | `nil`                          |
 | `bucketweb.securityContext.enabled`               | Enable security context for Thanos Bucket Web pods                                                                    | `true`                         |
 | `bucketweb.securityContext.fsGroup`               | Group ID for the Thanos Bucket Web filesystem                                                                         | `1001`                         |
@@ -347,6 +350,7 @@ The following tables lists the configurable parameters of the Thanos chart and t
 | `compactor.affinity`                              | Thanos Compactor affinity for pod assignment                                                                         | `{}` (evaluated as a template) |
 | `compactor.nodeSelector`                          | Thanos Compactor node labels for pod assignment                                                                      | `{}` (evaluated as a template) |
 | `compactor.tolerations`                           | Thanos Compactor tolerations for pod assignment                                                                      | `[]` (evaluated as a template) |
+| `compactor.podLabels`                             | Thanos Compactor pod labels                                                                                          | `{}` (evaluated as a template) |
 | `compactor.priorityClassName`                     | Controller priorityClassName                                                                                         | `nil`                          |
 | `compactor.securityContext.enabled`               | Enable security context for Thanos Compactor pods                                                                    | `true`                         |
 | `compactor.securityContext.fsGroup`               | Group ID for the Thanos Compactor filesystem                                                                         | `1001`                         |
@@ -398,6 +402,7 @@ The following tables lists the configurable parameters of the Thanos chart and t
 | `storegateway.affinity`                              | Thanos Store Gateway affinity for pod assignment                                                                            | `{}` (evaluated as a template) |
 | `storegateway.nodeSelector`                          | Thanos Store Gateway node labels for pod assignment                                                                         | `{}` (evaluated as a template) |
 | `storegateway.tolerations`                           | Thanos Store Gateway tolerations for pod assignment                                                                         | `[]` (evaluated as a template) |
+| `storegateway.podLabels`                             | Thanos Store Gateway pod labels                                                                                             | `{}` (evaluated as a template) |
 | `storegateway.priorityClassName`                     | Controller priorityClassName                                                                                                | `nil`                          |
 | `storegateway.securityContext.enabled`               | Enable security context for Thanos Store Gateway pods                                                                       | `true`                         |
 | `storegateway.securityContext.fsGroup`               | Group ID for the Thanos Store Gateway filesystem                                                                            | `1001`                         |
@@ -459,6 +464,7 @@ The following tables lists the configurable parameters of the Thanos chart and t
 | `ruler.affinity`                              | Thanos Ruler affinity for pod assignment                                                                     | `{}` (evaluated as a template) |
 | `ruler.nodeSelector`                          | Thanos Ruler node labels for pod assignment                                                                  | `{}` (evaluated as a template) |
 | `ruler.tolerations`                           | Thanos Ruler tolerations for pod assignment                                                                  | `[]` (evaluated as a template) |
+| `ruler.podLabels`                             | Thanos Ruler pod labels                                                                                      | `{}` (evaluated as a template) |
 | `ruler.priorityClassName`                     | Controller priorityClassName                                                                                 | `nil`                          |
 | `ruler.securityContext.enabled`               | Enable security context for Thanos Ruler pods                                                                | `true`                         |
 | `ruler.securityContext.fsGroup`               | Group ID for the Thanos Ruler filesystem                                                                     | `1001`                         |
@@ -512,6 +518,7 @@ The following tables lists the configurable parameters of the Thanos chart and t
 | `receive.affinity`                              | Thanos Receive affinity for pod assignment                                                                     | `{}` (evaluated as a template)          |
 | `receive.nodeSelector`                          | Thanos Receive node labels for pod assignment                                                                  | `{}` (evaluated as a template)          |
 | `receive.tolerations`                           | Thanos Receive tolerations for pod assignment                                                                  | `[]` (evaluated as a template)          |
+| `receive.podLabels`                             | Thanos Receive pod labels                                                                                      | `{}` (evaluated as a template)          |
 | `receive.priorityClassName`                     | Controller priorityClassName                                                                                   | `nil`                                   |
 | `receive.securityContext.enabled`               | Enable security context for Thanos Receive pods                                                                | `true`                                  |
 | `receive.securityContext.fsGroup`               | Group ID for the Thanos Receive filesystem                                                                     | `1001`                                  |
@@ -775,6 +782,7 @@ querier.strategyType                          -> query.strategyType
 querier.affinity                              -> query.affinity
 querier.nodeSelector                          -> query.nodeSelector
 querier.tolerations                           -> query.tolerations
+querier.podLabels                             -> query.podLabels
 querier.priorityClassName                     -> query.priorityClassName
 querier.securityContext.enabled               -> query.securityContext.enabled
 querier.securityContext.fsGroup               -> query.securityContext.fsGroup
