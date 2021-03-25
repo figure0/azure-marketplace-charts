@@ -557,7 +557,7 @@ extraDeploy:
                   containerPort: 8083
               volumeMounts:
                 - name: configuration
-                  mountPath: /opt/bitnami/kafka/config
+                  mountPath: /bitnami/kafka/config
           volumes:
             - name: configuration
               configMap:
