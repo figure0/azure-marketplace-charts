@@ -10,6 +10,8 @@ $ helm search repo azure-marketplace
 $ helm install my-release azure-marketplace/<chart>
 ```
 
+> Please, note this repo contains the **source code** of the Helm Charts present in the `azure-marketplace` Helm repository,  but there may be a slight difference in the versions published on GitHub and the ones released to the `azure-marketplace` Helm repository. We cannot guarantee that cloning this GitHub repository and installing the charts from source code will work in all cases. The recommended way to use those Helm Charts is by using the `azure-marketplace` Helm repository.
+
 ## Before you begin
 
 ### Provision an Azure Kubernetes Cluster with AKS
@@ -82,7 +84,7 @@ If you want to contribute with Bitnami charts through a Pull Request or creating
 
 # License
 
-Copyright (c) 2020 Bitnami
+Copyright (c) 2021 Bitnami
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
