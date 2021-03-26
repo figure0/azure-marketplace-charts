@@ -10,7 +10,7 @@ $ helm search repo azure-marketplace
 $ helm install my-release azure-marketplace/<chart>
 ```
 
-> Please, note this repo contains the **source code** of the Helm Charts present in the `azure-marketplace` Helm repository,  but there may be a slight difference in the versions published on GitHub and the ones released to the `azure-marketplace` Helm repository. We cannot guarantee that cloning this GitHub repository and installing the charts from source code will work in all cases. The recommended way to use those Helm Charts is by using the `azure-marketplace` Helm repository.
+> Please, note this repo contains the **source code** of the Helm Charts present in the `azure-marketplace` Helm repository,  but there may be a slight difference in the versions published on GitHub and the ones released to the `azure-marketplace` Helm repository. We cannot guarantee that cloning this GitHub repository and installing the charts from source code will work in all cases. The recommended way is to subcribe and use the Helm Charts from [Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/)
 
 ## Before you begin
 
