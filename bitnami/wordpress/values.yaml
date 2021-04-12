@@ -8,15 +8,12 @@
 ## @param global.storageClass Global StorageClass for Persistent Volume(s)
 ##
 global:
-  imageRegistry:
+  imageRegistry: marketplace.azurecr.io
   ## E.g.
   ## imagePullSecrets:
   ##   - myRegistryKeySecretName
   ##
   imagePullSecrets: []
-  ## E.g.
-  ## storageClass: myStorageClass
-  ##
   storageClass:
 
 ## @section Common parameters
