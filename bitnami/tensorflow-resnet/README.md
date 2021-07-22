@@ -71,7 +71,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 | Name                      | Description                                     | Value |
 | ------------------------- | ----------------------------------------------- | ----- |
-| `global.imageRegistry`    | Global Docker image registry                    | `nil` |
+| `global.imageRegistry`    | Global Docker image registry                    | `""`  |
 | `global.imagePullSecrets` | Global Docker registry secret names as an array | `[]`  |
 
 
@@ -79,8 +79,8 @@ The command removes all the Kubernetes components associated with the chart and 
 
 | Name               | Description                                                                                  | Value |
 | ------------------ | -------------------------------------------------------------------------------------------- | ----- |
-| `nameOverride`     | String to partially override common.names.fullname template (will maintain the release name) | `nil` |
-| `fullnameOverride` | String to fully override common.names.fullname template                                      | `nil` |
+| `nameOverride`     | String to partially override common.names.fullname template (will maintain the release name) | `""`  |
+| `fullnameOverride` | String to fully override common.names.fullname template                                      | `""`  |
 
 
 ### TensorFlow parameters
@@ -129,7 +129,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `service.restApiPort`                | TensorFlow Serving Rest API port                                                          | `8501`                       |
 | `service.nodePorts.server`           | Kubernetes server node port                                                               | `""`                         |
 | `service.nodePorts.restApi`          | Kubernetes Rest API node port                                                             | `""`                         |
-| `service.loadBalancerIP`             | Set the LoadBalancer service type to internal only.                                       | `nil`                        |
+| `service.loadBalancerIP`             | Set the LoadBalancer service type to internal only.                                       | `""`                         |
 | `service.annotations`                | Service annotations                                                                       | `{}`                         |
 | `metrics.enabled`                    | Enable Prometheus exporter to expose Tensorflow server metrics                            | `false`                      |
 | `metrics.podAnnotations`             | Prometheus exporter pod annotations                                                       | `{}`                         |
