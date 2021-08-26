@@ -58,7 +58,7 @@ extraDeploy: []
 image:
   registry: docker.io
   repository: bitnami/keycloak
-  tag: 15.0.2-debian-10-r0
+  tag: 15.0.2-debian-10-r4
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -126,7 +126,7 @@ auth:
   ##   tlsTruststorePassword:
   ##     name: keycloak-test2.credentials
   ##
-  existingSecretPerPassword: ""
+  existingSecretPerPassword: {}
   ## TLS encryption parameters
   ## ref: https://github.com/bitnami/bitnami-docker-keycloak#tls-encryption
   ##
@@ -290,7 +290,7 @@ keycloakConfigCli:
   image:
     registry: docker.io
     repository: bitnami/keycloak-config-cli
-    tag: 4.2.0-debian-10-r9
+    tag: 4.2.0-debian-10-r15
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
     ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -870,7 +870,7 @@ postgresql:
   ## Defaults to a random 10-character alphanumeric string if not set
   ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#setting-the-root-password-on-first-run
   ##
-  postgresqlPassword: some-password
+  postgresqlPassword: ""
   ## @param postgresql.postgresqlDatabase Name of the database to create
   ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#creating-a-database-on-first-run
   ##
@@ -878,10 +878,12 @@ postgresql:
   ## @param postgresql.existingSecret Use an existing secret file with the PostgreSQL password
   ##
   existingSecret: ""
-  ## PostgreSQL data Persistent Volume Storage Class
-  ## @param postgresql.persistence.enabled Enable database persistence using PVC
+  ## Enable persistence using Persistent Volume Claims
+  ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes
   ##
   persistence:
+    ## @param postgresql.persistence.enabled Enable PostgreSQL persistence using PVC
+    ##
     enabled: true
 ## External database configuration
 ##

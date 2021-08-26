@@ -1,4 +1,4 @@
-{{- $globalSecretName := include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecret "context" $) }}
+{{- $globalSecretName := printf "%s" (tpl (include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecret "context" $)) $) }}
 apiVersion: {{ include "common.capabilities.statefulset.apiVersion" . }}
 kind: StatefulSet
 metadata:
@@ -128,7 +128,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                 {{- if .Values.auth.existingSecretPerPassword }}
-                  name: {{ include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.tlsKeystorePassword "context" $) }}
+                  name: {{ tpl (include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.tlsKeystorePassword "context" $)) $ }}
                   key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecretPerPassword "key" "tlsKeystorePassword") }}
                 {{- else }}
                   name: {{ $globalSecretName }}
@@ -140,7 +140,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                 {{- if .Values.auth.existingSecretPerPassword }}
-                  name: {{ include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.tlsTruststorePassword "context" $) }}
+                  name: {{ tpl (include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.tlsTruststorePassword "context" $)) $ }}
                   key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecretPerPassword "key" "tlsKeystorePassword") }}
                 {{- else }}
                   name: {{ $globalSecretName }}
@@ -188,7 +188,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                 {{- if .Values.auth.existingSecretPerPassword }}
-                  name: {{ include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.adminPassword "context" $) }}
+                  name: {{ tpl (include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.adminPassword "context" $)) $ }}
                   key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecretPerPassword "key" "adminPassword") }}
                 {{- else }}
                   name: {{ $globalSecretName }}
@@ -198,31 +198,29 @@ spec:
               valueFrom:
                 secretKeyRef:
                 {{- if .Values.auth.existingSecretPerPassword }}
-                  name: {{ include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.managementPassword "context" $) }}
+                  name: {{ tpl (include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.managementPassword "context" $)) $ }}
                   key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecretPerPassword "key" "managementPassword") }}
                 {{- else }}
                   name: {{ $globalSecretName }}
                   key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecret "key" "management-password") }}
                 {{- end }}
-            {{- if (not .Values.externalDatabase.existingSecret) }}
             - name: KEYCLOAK_DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                 {{- if .Values.auth.existingSecretPerPassword }}
-                  name: {{ include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.databasePassword "context" $) }}
+                  name: {{ tpl (include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.databasePassword "context" $)) $ }}
                   key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecretPerPassword "key" "databasePassword") }}
                 {{- else }}
-                  name: {{ $globalSecretName }}
-                  key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecret "key" "database-password") }}
+                  name: {{ include "keycloak.databaseSecretName" . }}
+                  key: "postgresql-password"
                 {{- end }}
-            {{- end }}
             {{- if .Values.auth.tls.enabled }}
             {{- if or .Values.auth.tls.keystorePassword .Values.auth.existingSecretPerPassword }}
             - name: KEYCLOAK_TLS_KEYSTORE_PASSWORD
               valueFrom:
                 secretKeyRef:
                 {{- if .Values.auth.existingSecretPerPassword }}
-                  name: {{ include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.tlsKeystorePassword "context" $) }}
+                  name: {{ tpl (include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.tlsKeystorePassword "context" $) $) }}
                   key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecretPerPassword "key" "tlsKeystorePassword") }}
                 {{- else }}
                   name: {{ $globalSecretName }}
@@ -234,7 +232,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                 {{- if .Values.auth.existingSecretPerPassword }}
-                  name: {{ include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.tlsTruststorePassword "context" $) }}
+                  name: {{ tpl (include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.tlsTruststorePassword "context" $) $) }}
                   key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecretPerPassword "key" "tlsKeystorePassword") }}
                 {{- else }}
                   name: {{ $globalSecretName }}
