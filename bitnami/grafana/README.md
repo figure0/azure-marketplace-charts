@@ -186,8 +186,6 @@ This solution allows to easily deploy multiple Grafana instances compared to the
 | `ldap.configuration`               | Specify content for ldap.toml configuration file                                  | `""`                 |
 | `ldap.configMapName`               | Name of the ConfigMap with the ldap.toml configuration file for Grafana           | `""`                 |
 | `ldap.secretName`                  | Name of the Secret with the ldap.toml configuration file for Grafana              | `""`                 |
-| `extraEnvVars`                     | Array containing extra env vars to configure Grafana                              | `{}`                 |
-| `extraConfigmaps`                  | Array to mount extra ConfigMaps to configure Grafana                              | `{}`                 |
 | `config.useGrafanaIniFile`         | Allows to load a `grafana.ini` file                                               | `false`              |
 | `config.grafanaIniConfigMap`       | Name of the ConfigMap containing the `grafana.ini` file                           | `""`                 |
 | `config.grafanaIniSecret`          | Name of the Secret containing the `grafana.ini` file                              | `""`                 |
@@ -259,6 +257,8 @@ This solution allows to easily deploy multiple Grafana instances compared to the
 | `grafana.extraVolumeMounts`                  | Additional volume mounts for the Grafana container                                                      | `[]`            |
 | `grafana.extraEnvVarsCM`                     | Name of existing ConfigMap containing extra env vars for %%MAIN_CONTAINER_NAME%% nodes                  | `""`            |
 | `grafana.extraEnvVarsSecret`                 | Name of existing Secret containing extra env vars for %%MAIN_CONTAINER_NAME%% nodes                     | `""`            |
+| `grafana.extraEnvVars`                       | Array containing extra env vars to configure Grafana                                                    | `{}`            |
+| `grafana.extraConfigmaps`                    | Array to mount extra ConfigMaps to configure Grafana                                                    | `{}`            |
 | `grafana.command`                            | Override default container command (useful when using custom images)                                    | `[]`            |
 | `grafana.args`                               | Override default container args (useful when using custom images)                                       | `[]`            |
 
@@ -385,8 +385,8 @@ This solution allows to easily deploy multiple Grafana instances compared to the
 | `volumePermissions.enabled`                            | Enable init container that changes the owner/group of the PV mount point to `runAsUser:fsGroup` | `false`                 |
 | `volumePermissions.image.registry`                     | Bitnami Shell image registry                                                                    | `docker.io`             |
 | `volumePermissions.image.repository`                   | Bitnami Shell image repository                                                                  | `bitnami/bitnami-shell` |
-| `volumePermissions.image.tag`                          | Bitnami Shell image tag (immutable tags are recommended)                                        | `10`                    |
-| `volumePermissions.image.pullPolicy`                   | Bitnami Shell image pull policy                                                                 | `Always`                |
+| `volumePermissions.image.tag`                          | Bitnami Shell image tag (immutable tags are recommended)                                        | `10-debian-10-r225`     |
+| `volumePermissions.image.pullPolicy`                   | Bitnami Shell image pull policy                                                                 | `IfNotPresent`          |
 | `volumePermissions.image.pullSecrets`                  | Bitnami Shell image pull secrets                                                                | `[]`                    |
 | `volumePermissions.resources.limits`                   | The resources limits for the init container                                                     | `{}`                    |
 | `volumePermissions.resources.requests`                 | The requested resources for the init container                                                  | `{}`                    |
