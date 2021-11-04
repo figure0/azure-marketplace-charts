@@ -1,22 +1,23 @@
-# Data Platform Blueprint 2 with Kafka-Spark-Elasticsearch
+# Data Platform Blueprint 1 with Kafka-Spark-Solr
 
 Enterprise applications increasingly rely on large amounts of data, that needs be distributed, processed, and stored.
-Open source and commercial supported software stacks are available to implement a data platform, that can offer common data management services, accelerating the development and deployment of data hungry business applications.
+Open source and commercial supported software stacks are available to implement a data platform, that can offer
+common data management services, accelerating the development and deployment of data hungry business applications.
 
 This Helm chart enables the fully automated Kubernetes deployment of such multi-stack data platform, covering the following software components:
 
--   Apache Kafka              – Data distribution bus with buffering capabilities
--   Apache Spark              – In-memory data analytics
--   Elasticsearch with Kibana – Data persistence and search
--   Logstash                  - Data Processing Pipeline
+-   Apache Kafka – Data distribution bus with buffering capabilities
+-   Apache Spark – In-memory data analytics
+-   Solr – Data persistence and search
 -   Data Platform Prometheus Exporter - Prometheus exporter that emits the health metrics of the data platform
 
-These containerized stateful software stacks are deployed in multi-node cluster configurations, which is defined by the Helm Chart blueprint for this data platform deployment, covering:
+These containerized stateful software stacks are deployed in multi-node cluster configurations, which is defined by the
+Helm chart blueprint for this data platform deployment, covering:
 
 -   Pod placement rules – Affinity rules to ensure placement diversity to prevent single point of failures and optimize load distribution
 -   Pod resource sizing rules – Optimized Pod and JVM sizing settings for optimal performance and efficient resource usage
 -   Default settings to ensure Pod access security
--   Optional Tanzu Observability framework configuration
+-   Optional [Tanzu Observability](https://docs.wavefront.com/kubernetes.html) framework configuration
 
 In addition to the Pod resource optimizations, this blueprint is validated and tested to provide Kubernetes node count and sizing recommendations [(see Kubernetes Cluster Requirements)](#kubernetes-cluster-requirements) to facilitate cloud platform capacity planning. The goal is optimize the number of required Kubernetes nodes in order to optimize server resource usage and, at the same time, ensuring runtime and resource diversity.
 
@@ -35,23 +36,21 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/dataplatform-bp2
+$ helm install my-release bitnami-azure/dataplatform-bp1
 ```
 
 ## Introduction
 
-This chart bootstraps Data Platform Blueprint-2 deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps Data Platform Blueprint-1 deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 The "Small" size data platform in default configuration deploys the following:
-
-1. Zookeeper with 3 nodes to be used for both Kafka
+1. Zookeeper with 3 nodes to be used for both Kafka and Solr
 2. Kafka with 3 nodes using the zookeeper deployed above
-3. Elasticsearch with 3 master nodes, 2 data nodes, 2 coordinating nodes and 1 kibana node
-4. Logstash with 2 nodes
-5. Spark with 1 Master and 2 worker nodes
-6. Data Platform Metrics emitter and Prometheus exporter
+3. Solr with 2 nodes using the zookeeper deployed above
+4. Spark with 1 Master and 2 worker nodes
+5. Data Platform Metrics emitter and Prometheus exporter
 
-The data platform can be optionally deployed with the Tanzu observability framework. In that case, the wavefront collectors will be set up as a DaemonSet to collect the Kubernetes cluster metrics to enable runtime feed into the Tanzu Observability service. It will also be pre-configured to scrape the metrics from the Prometheus endpoint that each application (Kafka/Spark/Elasticsearch/Logstash) emits the metrics to.
+The data platform can be optionally deployed with the Tanzu observability framework. In that case, the wavefront collectors will be set up as a DaemonSet to collect the Kubernetes cluster metrics to enable runtime feed into the Tanzu Observability service. It will also be pre-configured to scrape the metrics from the Prometheus endpoint that each application (Kafka/Spark/Solr) emits the metrics to.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters. This Helm chart has been tested on top of [Bitnami Kubernetes Production Runtime](https://kubeprod.io/) (BKPR). Deploy BKPR to get automated TLS certificates, logging and monitoring for your applications.
 
@@ -75,7 +74,7 @@ To install the chart with the release name `my-release`:
 
 ```console
 $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/dataplatform-bp2
+$ helm install my-release bitnami-azure/dataplatform-bp1
 ```
 
 These commands deploy Data Platform on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists recommended configurations of the parameters to bring up an optimal and resilient data platform. Please refer the individual charts for the remaining set of configurable parameters.
@@ -177,7 +176,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `dataplatform.exporter.initContainers`                        | Add init containers to the %%MAIN_CONTAINER_NAME%% pods                                                          | `[]`                            |
 | `dataplatform.exporter.sidecars`                              | Add sidecars to the %%MAIN_CONTAINER_NAME%% pods                                                                 | `[]`                            |
 | `dataplatform.exporter.service.type`                          | Service type for default Data Platform Prometheus exporter service                                               | `ClusterIP`                     |
-| `dataplatform.exporter.service.annotations`                   | Exporter service annotations                                                                                     | `{}`                            |
+| `dataplatform.exporter.service.annotations`                   | Metrics exporter service annotations                                                                             | `{}`                            |
 | `dataplatform.exporter.service.labels`                        | Additional labels for Data Platform exporter service                                                             | `{}`                            |
 | `dataplatform.exporter.service.ports.http`                    | Kubernetes Service port                                                                                          | `9090`                          |
 | `dataplatform.exporter.service.loadBalancerIP`                | Load balancer IP for the Data Platform Exporter Service (optional, cloud specific)                               | `""`                            |
@@ -187,7 +186,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `dataplatform.emitter.enabled`                                | Start Data Platform metrics emitter                                                                              | `true`                          |
 | `dataplatform.emitter.image.registry`                         | Data Platform emitter image registry                                                                             | `docker.io`                     |
 | `dataplatform.emitter.image.repository`                       | Data Platform emitter image repository                                                                           | `bitnami/dataplatform-emitter`  |
-| `dataplatform.emitter.image.tag`                              | Data Platform emitter image tag (immutable tags are recommended)                                                 | `0.0.11-scratch-r0`             |
+| `dataplatform.emitter.image.tag`                              | Data Platform emitter image tag (immutable tags are recommended)                                                 | `0.0.10-scratch-r3`             |
 | `dataplatform.emitter.image.pullPolicy`                       | Data Platform emitter image pull policy                                                                          | `IfNotPresent`                  |
 | `dataplatform.emitter.image.pullSecrets`                      | Specify docker-registry secret names as an array                                                                 | `[]`                            |
 | `dataplatform.emitter.livenessProbe.enabled`                  | Enable livenessProbe                                                                                             | `true`                          |
@@ -251,129 +250,96 @@ The command removes all the Kubernetes components associated with the chart and 
 | `dataplatform.emitter.hostAliases`                            | Deployment pod host aliases                                                                                      | `[]`                            |
 
 
-### Kafka parameters
+### Zookeeper chart parameters
 
-| Name                                            | Description                                                                                                                        | Value                 |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| `kafka.enabled`                                 | Enable Kafka subchart                                                                                                              | `true`                |
-| `kafka.replicaCount`                            | Number of Kafka brokers                                                                                                            | `3`                   |
-| `kafka.heapOpts`                                | Kafka Java Heap size                                                                                                               | `-Xmx4096m -Xms4096m` |
-| `kafka.resources.limits`                        | Resource limits for Kafka                                                                                                          | `{}`                  |
-| `kafka.resources.requests.cpu`                  | CPU capacity request for Kafka nodes                                                                                               | `250m`                |
-| `kafka.resources.requests.memory`               | Memory capacity request for Kafka nodes                                                                                            | `5120Mi`              |
-| `kafka.affinity.podAntiAffinity`                | Kafka anti affinity rules                                                                                                          | `{}`                  |
-| `kafka.affinity.podAffinity`                    | Kafka affinity rules                                                                                                               | `{}`                  |
-| `kafka.metrics.kafka.enabled`                   | Enable prometheus exporter for Kafka                                                                                               | `false`               |
-| `kafka.metrics.kafka.resources.limits`          | Resource limits for kafka prometheus exporter                                                                                      | `{}`                  |
-| `kafka.metrics.kafka.resources.requests.cpu`    | CPU capacity request for Kafka prometheus nodes                                                                                    | `100m`                |
-| `kafka.metrics.kafka.resources.requests.memory` | Memory capacity request for Kafka prometheus nodes                                                                                 | `128Mi`               |
-| `kafka.metrics.kafka.service.port`              | Kafka Exporter Prometheus port to be used in wavefront configuration                                                               | `9308`                |
-| `kafka.metrics.jmx.enabled`                     | Enable JMX exporter for Kafka                                                                                                      | `false`               |
-| `kafka.metrics.jmx.resources.limits`            | Resource limits for kafka prometheus exporter                                                                                      | `{}`                  |
-| `kafka.metrics.jmx.resources.requests.cpu`      | CPU capacity request for Kafka prometheus nodes                                                                                    | `100m`                |
-| `kafka.metrics.jmx.resources.requests.memory`   | Memory capacity request for Kafka prometheus nodes                                                                                 | `128Mi`               |
-| `kafka.metrics.jmx.service.port`                | JMX Prometheus exporter service port                                                                                               | `5556`                |
-| `kafka.zookeeper.enabled`                       | Enable the Kafka subchart's Zookeeper                                                                                              | `true`                |
-| `kafka.zookeeper.replicaCount`                  | Number of Zookeeper nodes                                                                                                          | `3`                   |
-| `kafka.zookeeper.heapSize`                      | Size in MB for the Java Heap options (Xmx and XMs) in Zookeeper. This env var is ignored if Xmx an Xms are configured via JVMFLAGS | `4096`                |
-| `kafka.zookeeper.resources.limits`              | Resource limits for zookeeper                                                                                                      | `{}`                  |
-| `kafka.zookeeper.resources.requests.cpu`        | CPU capacity request for zookeeper                                                                                                 | `250m`                |
-| `kafka.zookeeper.resources.requests.memory`     | Memory capacity request for zookeeper                                                                                              | `5Gi`                 |
-| `kafka.zookeeper.affinity.podAntiAffinity`      | Zookeeper pod anti affinity rules                                                                                                  | `{}`                  |
-| `kafka.externalZookeeper.servers`               | Array of external Zookeeper servers                                                                                                | `[]`                  |
+| Name                                 | Description                                                                               | Value  |
+| ------------------------------------ | ----------------------------------------------------------------------------------------- | ------ |
+| `zookeeper.enabled`                  | Switch to enable or disable the Zookeeper helm chart                                      | `true` |
+| `zookeeper.replicaCount`             | Number of Zookeeper replicas                                                              | `3`    |
+| `zookeeper.heapSize`                 | Size in MB for the Java Heap options (Xmx and XMs).                                       | `4096` |
+| `zookeeper.resources.limits`         | The resources limits for Zookeeper containers                                             | `{}`   |
+| `zookeeper.resources.requests`       | The requested resources for Zookeeper containers                                          | `{}`   |
+| `zookeeper.affinity.podAntiAffinity` | Zookeeper pods Anti Affinity rules for best possible resiliency (evaluated as a template) | `{}`   |
 
 
-### Spark parameters
+### Kafka chart parameters
 
-| Name                                     | Description                            | Value   |
-| ---------------------------------------- | -------------------------------------- | ------- |
-| `spark.enabled`                          | Enable Spark subchart                  | `true`  |
-| `spark.master.webPort`                   | Web port for spark master              | `8080`  |
-| `spark.master.resources.limits`          | Spark master resource limits           | `{}`    |
-| `spark.master.resources.requests.cpu`    | Spark master CPUs                      | `250m`  |
-| `spark.master.resources.requests.memory` | Spark master requested memory          | `5Gi`   |
-| `spark.master.affinity.podAntiAffinity`  | Anti affinity rules set for resiliency | `{}`    |
-| `spark.worker.replicaCount`              | Number of spark workers                | `2`     |
-| `spark.worker.webPort`                   | Web port for spark master              | `8081`  |
-| `spark.worker.resources.limits`          | Spark master resource limits           | `{}`    |
-| `spark.worker.resources.requests.cpu`    | Spark master CPUs                      | `250m`  |
-| `spark.worker.resources.requests.memory` | Spark master requested memory          | `5Gi`   |
-| `spark.worker.affinity.podAntiAffinity`  | Anti affinity rules set for resiliency | `{}`    |
-| `spark.metrics.enabled`                  | Enable Prometheus exporter for Spark   | `false` |
-| `spark.metrics.masterAnnotations`        | Annotations for Spark master exporter  | `{}`    |
-| `spark.metrics.workerAnnotations`        | Annotations for Spark worker exporter  | `{}`    |
-
-
-### Elasticsearch parameters
-
-| Name                                                   | Description                                  | Value   |
-| ------------------------------------------------------ | -------------------------------------------- | ------- |
-| `elasticsearch.enabled`                                | Enable Elasticsearch                         | `true`  |
-| `elasticsearch.global.kibanaEnabled`                   | Enable Kibana                                | `true`  |
-| `elasticsearch.master.replicas`                        | Number of Elasticsearch replicas             | `3`     |
-| `elasticsearch.master.heapSize`                        | Heap Size for Elasticsearch master           | `768m`  |
-| `elasticsearch.master.affinity.podAntiAffinity`        | Elasticsearch pod anti affinity              | `{}`    |
-| `elasticsearch.master.resources.limits`                | Elasticsearch master resource limits         | `{}`    |
-| `elasticsearch.master.resources.requests.cpu`          | Elasticsearch master CPUs                    | `250m`  |
-| `elasticsearch.master.resources.requests.memory`       | Elasticsearch master requested memory        | `1Gi`   |
-| `elasticsearch.master.affinity.podAntiAffinity`        | Anti affinity rules set for resiliency       | `{}`    |
-| `elasticsearch.data.name`                              | Elasticsearch data node name                 | `data`  |
-| `elasticsearch.data.replicas`                          | Number of Elasticsearch replicas             | `2`     |
-| `elasticsearch.data.heapSize`                          | Heap Size for Elasticsearch data node        | `4096m` |
-| `elasticsearch.data.affinity.podAntiAffinity`          | Anti affinity rules set for resiliency       | `{}`    |
-| `elasticsearch.data.resources.limits`                  | Elasticsearch data node resource limits      | `{}`    |
-| `elasticsearch.data.resources.requests.cpu`            | Elasticsearch data node CPUs                 | `250m`  |
-| `elasticsearch.data.resources.requests.memory`         | Elasticsearch data node requested memory     | `5Gi`   |
-| `elasticsearch.coordinating.replicas`                  | Number of Elasticsearch replicas             | `2`     |
-| `elasticsearch.coordinating.heapSize`                  | Heap Size for Elasticsearch coordinating     | `768m`  |
-| `elasticsearch.coordinating.affinity.podAntiAffinity`  | Anti affinity rules set for resiliency       | `{}`    |
-| `elasticsearch.coordinating.resources.limits`          | Elasticsearch coordinating resource limits   | `{}`    |
-| `elasticsearch.coordinating.resources.requests.cpu`    | Elasticsearch coordinating CPUs              | `250m`  |
-| `elasticsearch.coordinating.resources.requests.memory` | Elasticsearch coordinating requested memory  | `1Gi`   |
-| `elasticsearch.metrics.enabled`                        | Enable Prometheus exporter for Elasticsearch | `false` |
-| `elasticsearch.metrics.resources.limits`               | Elasticsearch metrics resource limits        | `{}`    |
-| `elasticsearch.metrics.resources.requests.cpu`         | Elasticsearch metrics CPUs                   | `100m`  |
-| `elasticsearch.metrics.resources.requests.memory`      | Elasticsearch metrics requested memory       | `128Mi` |
-| `elasticsearch.metrics.service.annotations`            | Elasticsearch metrics service annotations    | `{}`    |
+| Name                                     | Description                                                                               | Value                               |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------- |
+| `kafka.enabled`                          | Switch to enable or disable the Kafka helm chart                                          | `true`                              |
+| `kafka.replicaCount`                     | Number of Kafka replicas                                                                  | `3`                                 |
+| `kafka.heapOpts`                         | Kafka's Java Heap size                                                                    | `-Xmx4096m -Xms4096m`               |
+| `kafka.resources.limits`                 | The resources limits for Kafka containers                                                 | `{}`                                |
+| `kafka.resources.requests`               | The requested resources for Kafka containers                                              | `{}`                                |
+| `kafka.affinity.podAntiAffinity`         | Zookeeper pods Anti Affinity rules for best possible resiliency (evaluated as a template) | `{}`                                |
+| `kafka.affinity.podAffinity`             | Zookeeper pods Affinity rules for best possible resiliency (evaluated as a template)      | `{}`                                |
+| `kafka.metrics.kafka.enabled`            | Whether or not to create a standalone Kafka exporter to expose Kafka metrics              | `false`                             |
+| `kafka.metrics.kafka.resources.limits`   | The resources limits for the container                                                    | `{}`                                |
+| `kafka.metrics.kafka.resources.requests` | Kafka Exporter container resource requests                                                | `{}`                                |
+| `kafka.metrics.kafka.service.port`       | Kafka Exporter Prometheus port to be used in Wavefront configuration                      | `9308`                              |
+| `kafka.metrics.jmx.enabled`              | Whether or not to expose JMX metrics to Prometheus                                        | `false`                             |
+| `kafka.metrics.jmx.resources.limits`     | The resources limits for the container                                                    | `{}`                                |
+| `kafka.metrics.jmx.resources.requests`   | JMX Exporter container resource requests                                                  | `{}`                                |
+| `kafka.metrics.jmx.service.port`         | JMX Exporter Prometheus port                                                              | `5556`                              |
+| `kafka.zookeeper.enabled`                | Switch to enable or disable the Zookeeper helm chart                                      | `false`                             |
+| `kafka.externalZookeeper.servers`        | Server or list of external Zookeeper servers to use                                       | `["{{ .Release.Name }}-zookeeper"]` |
 
 
-### Logstash parameters
+### Solr chart parameters
 
-| Name                                         | Description                                           | Value    |
-| -------------------------------------------- | ----------------------------------------------------- | -------- |
-| `logstash.enabled`                           | Enable Logstash                                       | `true`   |
-| `logstash.replicaCount`                      | Number of Logstash replicas                           | `2`      |
-| `logstash.affinity.podAntiAffinity`          | Logstash pod anti affinity                            | `{}`     |
-| `logstash.extraEnvVars`                      | Array containing extra env vars to configure Logstash | `[]`     |
-| `logstash.resources.limits`                  | Elasticsearch metrics resource limits                 | `{}`     |
-| `logstash.resources.requests.cpu`            | Elasticsearch metrics CPUs                            | `250m`   |
-| `logstash.resources.requests.memory`         | Elasticsearch metrics requested memory                | `1500Mi` |
-| `logstash.metrics.enabled`                   | Enable metrics for logstash                           | `false`  |
-| `logstash.metrics.resources.limits`          | Elasticsearch metrics resource limits                 | `{}`     |
-| `logstash.metrics.resources.requests.cpu`    | Elasticsearch metrics CPUs                            | `100m`   |
-| `logstash.metrics.resources.requests.memory` | Elasticsearch metrics requested memory                | `128Mi`  |
-| `logstash.metrics.service.port`              | Logstash Prometheus port                              | `9198`   |
-| `logstash.metrics.service.annotations`       | Annotations for the Prometheus metrics service        | `{}`     |
+| Name                                 | Description                                                                                    | Value                               |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `solr.enabled`                       | Switch to enable or disable the Solr helm chart                                                | `true`                              |
+| `solr.replicaCount`                  | Number of Solr replicas                                                                        | `2`                                 |
+| `solr.authentication.enabled`        | Enable Solr authentication. BUG: Exporter deployment does not work with authentication enabled | `false`                             |
+| `solr.javaMem`                       | Java recommended memory options to pass to the Solr container                                  | `-Xmx4096m -Xms4096m`               |
+| `solr.affinity.podAntiAffinity`      | Zookeeper pods Anti Affinity rules for best possible resiliency (evaluated as a template)      | `{}`                                |
+| `solr.resources.limits`              | The resources limits for Solr containers                                                       | `{}`                                |
+| `solr.resources.requests`            | The requested resources for Solr containers                                                    | `{}`                                |
+| `solr.exporter.enabled`              | Start a prometheus exporter                                                                    | `false`                             |
+| `solr.exporter.port`                 | Solr exporter port                                                                             | `9983`                              |
+| `solr.exporter.affinity.podAffinity` | Zookeeper pods Affinity rules for best possible resiliency (evaluated as a template)           | `{}`                                |
+| `solr.exporter.resources.limits`     | The resources limits for the container                                                         | `{}`                                |
+| `solr.exporter.resources.requests`   | The requested resources for the container                                                      | `{}`                                |
+| `solr.zookeeper.enabled`             | Enable Zookeeper deployment. Needed for Solr cloud.                                            | `false`                             |
+| `solr.externalZookeeper.servers`     | Servers for an already existing Zookeeper.                                                     | `["{{ .Release.Name }}-zookeeper"]` |
 
 
-### Tanzu Observability (Wavefront) parameters
+### Spark chart parameters
 
-| Name                                                 | Description                                    | Value                                |
-| ---------------------------------------------------- | ---------------------------------------------- | ------------------------------------ |
-| `wavefront.enabled`                                  | Enable Tanzu Observability Framework           | `false`                              |
-| `wavefront.clusterName`                              | Cluster name                                   | `KUBERNETES_CLUSTER_NAME`            |
-| `wavefront.wavefront.url`                            | Tanzu Observability cluster URL                | `https://YOUR_CLUSTER.wavefront.com` |
-| `wavefront.wavefront.token`                          | Tanzu Observability access token               | `YOUR_API_TOKEN`                     |
-| `wavefront.wavefront.existingSecret`                 | Tanzu Observability existing secret            | `""`                                 |
-| `wavefront.collector.resources.limits`               | Wavefront collector metrics resource limits    | `{}`                                 |
-| `wavefront.collector.resources.requests.cpu`         | Wavefront collector metrics CPUs               | `200m`                               |
-| `wavefront.collector.resources.requests.memory`      | Wavefront collector metrics requested memory   | `10Mi`                               |
-| `wavefront.collector.discovery.enabled`              | Enable wavefront discovery                     | `true`                               |
-| `wavefront.collector.discovery.enableRuntimeConfigs` | Enable runtime configs for wavefront discovery | `true`                               |
-| `wavefront.collector.discovery.config`               | Wavefront discovery config                     | `[]`                                 |
-| `wavefront.proxy.resources.limits`                   | Wavefront Proxy metrics resource limits        | `{}`                                 |
-| `wavefront.proxy.resources.requests.cpu`             | Wavefront Proxy metrics CPUs                   | `100m`                               |
-| `wavefront.proxy.resources.requests.memory`          | Wavefront Proxy metrics requested memory       | `5Gi`                                |
+| Name                                    | Description                                                                               | Value   |
+| --------------------------------------- | ----------------------------------------------------------------------------------------- | ------- |
+| `spark.enabled`                         | Switch to enable or disable the Spark helm chart                                          | `true`  |
+| `spark.master.webPort`                  | Specify the port where the web interface will listen on the master                        | `8080`  |
+| `spark.master.resources.limits`         | The resources limits for the container                                                    | `{}`    |
+| `spark.master.resources.requests`       | The resources limits for the container                                                    | `{}`    |
+| `spark.master.affinity.podAntiAffinity` | Zookeeper pods Anti Affinity rules for best possible resiliency (evaluated as a template) | `{}`    |
+| `spark.worker.replicaCount`             | Set the number of workers                                                                 | `2`     |
+| `spark.worker.webPort`                  | Specify the port where the web interface will listen on the worker                        | `8081`  |
+| `spark.worker.affinity.podAntiAffinity` | Zookeeper pods Anti Affinity rules for best possible resiliency (evaluated as a template) | `{}`    |
+| `spark.worker.resources.limits`         | The resources limits for the container                                                    | `{}`    |
+| `spark.worker.resources.requests`       | The resources limits for the container                                                    | `{}`    |
+| `spark.metrics.enabled`                 | Start a side-car Prometheus exporter                                                      | `false` |
+| `spark.metrics.masterAnnotations`       | Annotations for enabling prometheus to access the metrics endpoint of the master nodes    | `{}`    |
+| `spark.metrics.workerAnnotations`       | Annotations for enabling prometheus to access the metrics endpoint of the worker nodes    | `{}`    |
+
+
+### Tanzu Observability (Wavefront) chart parameters
+
+| Name                                                 | Description                                          | Value                                |
+| ---------------------------------------------------- | ---------------------------------------------------- | ------------------------------------ |
+| `wavefront.enabled`                                  | Switch to enable or disable the Wavefront helm chart | `false`                              |
+| `wavefront.clusterName`                              | Unique name for the Kubernetes cluster (required)    | `KUBERNETES_CLUSTER_NAME`            |
+| `wavefront.wavefront.url`                            | Wavefront URL for your cluster (required)            | `https://YOUR_CLUSTER.wavefront.com` |
+| `wavefront.wavefront.token`                          | Wavefront API Token (required)                       | `YOUR_API_TOKEN`                     |
+| `wavefront.wavefront.existingSecret`                 | Name of an existing secret containing the token      | `""`                                 |
+| `wavefront.collector.resources.limits`               | The resources limits for the collector container     | `{}`                                 |
+| `wavefront.collector.resources.requests`             | The requested resources for the collector container  | `{}`                                 |
+| `wavefront.collector.discovery.enabled`              | Rules based and Prometheus endpoints auto-discovery  | `true`                               |
+| `wavefront.collector.discovery.enableRuntimeConfigs` | Enable runtime discovery rules                       | `true`                               |
+| `wavefront.collector.discovery.config`               | Configuration for rules based auto-discovery         | `[]`                                 |
+| `wavefront.proxy.resources.limits`                   | The resources limits for the proxy container         | `{}`                                 |
+| `wavefront.proxy.resources.requests`                 | The requested resources for the proxy container      | `{}`                                 |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
@@ -381,15 +347,15 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 $ helm install my-release \
   --set kafka.replicaCount=3 \
-  bitnami-azure/dataplatform-bp2
+  bitnami-azure/dataplatform-bp1
 ```
 
 The above command deploys the data platform with Kafka with 3 nodes (replicas).
 
-Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example
+Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install my-release -f values.yaml bitnami-azure/dataplatform-bp2
+$ helm install my-release -f values.yaml bitnami-azure/dataplatform-bp1
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -398,15 +364,14 @@ $ helm install my-release -f values.yaml bitnami-azure/dataplatform-bp2
 
 In the default deployment, the helm chart deploys the data platform with [Metrics Emitter](https://hub.docker.com/r/bitnami/dataplatform-emitter) and [Prometheus Exporter](https://hub.docker.com/r/bitnami/dataplatform-exporter) which emit the health metrics of the data platform which can be integrated with your observability solution.
 
-In case you need to deploy the data platform with Tanzu Observability Framework for all the applications (Kafka/Spark/Elasticsearch/Logstash) in the data platform, you can specify the 'enabled' parameter using the `--set <component>.metrics.enabled=true` argument to `helm install`. For Example,
+In case you need to deploy the data platform with [Tanzu Observability](https://docs.wavefront.com/kubernetes.html) Framework for all the applications (Kafka/Spark/Solr) in the data platform, you can specify the 'enabled' parameter using the `--set <component>.metrics.enabled=true` argument to `helm install`. For Solr, the parameter is `solr.exporter.enabled=true` For Example,
 
 ```console
-$ helm install my-release bitnami-azure/dataplatform-bp2 \
+$ helm install my-release bitnami-azure/dataplatform-bp1 \
     --set kafka.metrics.kafka.enabled=true \
     --set kafka.metrics.jmx.enabled=true \
     --set spark.metrics.enabled=true \
-    --set elasticsearch.metrics.enabled=true \
-    --set logstash.metrics.enabled=true \
+    --set solr.exporter.enabled=true \
     --set wavefront.enabled=true \
     --set wavefront.clusterName=<K8s-CLUSTER-NAME> \
     --set wavefront.wavefront.url=https://<YOUR_CLUSTER>.wavefront.com \
@@ -447,23 +412,13 @@ Add the below config:
           scheme: http
           prefix: kafkajmx.
 
-        ## auto-discover elasticsearch
-        - name: elasticsearch-discovery
+        ## auto-discover solr
+        - name: solr-discovery
           type: prometheus
           selectors:
             images:
-              - '*bitnami/elasticsearch-exporter*'
-          port: 9114
-          path: /metrics
-          scheme: http
-
-        ## auto-discover logstash
-        - name: logstash-discovery
-          type: prometheus
-          selectors:
-            images:
-              - '*bitnami/logstash-exporter*'
-          port: 9198
+              - '*bitnami/solr*'
+          port: 9983
           path: /metrics
           scheme: http
 
@@ -477,7 +432,7 @@ Add the below config:
           path: /metrics/
           scheme: http
           prefix: spark.
-
+        
         ## auto-discover spark
         - name: spark-master-discovery
           type: prometheus
@@ -510,14 +465,6 @@ Find more information about how to deal with common errors related to Bitnami’
 
 In order to render complete information about the deployment including all the sub-charts, please use --render-subchart-notes flag while installing the chart.
 
-## Notable changes
-
-### 0.3.0
-
-Elasticsearch dependency version was bumped to a new major version changing the license of some of its components to the [Elastic License](https://www.elastic.co/licensing/elastic-license) that is not currently accepted as an Open Source license by the Open Source Initiative (OSI). Check [Elasticsearch Upgrading Notes](https://github.com/bitnami/charts/tree/master/bitnami/elasticsearch#to-1500) for more information.
-
-Regular upgrade is compatible from previous versions.
-
 ## Upgrading
 
 ### To 8.0.0
@@ -526,28 +473,28 @@ This major adds the data platform metrics emitter and Prometheus exporters to th
 
 ### To 7.0.0
 
-This major updates the Elasticsearch subchart to its newest major, 17.0.0, which adds support for X-pack security features such as SSL/TLS encryption and password protection. Check [Elasticsearch Upgrading Notes](https://github.com/bitnami/charts/tree/master/bitnami/elasticsearch#to-1700) for more information.
+This major updates the Kafka subchart and the Solr subchart to their newest major, 14.0.0 and 2.0.0 respectively. [Here](https://github.com/bitnami/charts/pull/7114) you can find more information about the changes introduced in those versions.
 
 ### To 6.0.0
 
-This major version updates resources for elasticsearch and logstash values. Also updates the README file with instructions on how to enable existing Wavefront deployment for the data platform blueprint.
+This major updates the Kafka subchart and the Solr subchart to their newest major, 13.0.0 and 1.0.0 respectively.
 
 ### To 5.0.0
 
-This major updates the Kafka subchart its newest major, 14.0.0. [Here](https://github.com/bitnami/charts/tree/master/bitnami/kafka#to-1400) you can find more information about the changes introduced in this version.
+This major updates the Zookeeper subchart to it newest major, 7.0.0, which renames all TLS-related settings. For more information on this subchart's major, please refer to [zookeeper upgrade notes](https://github.com/bitnami/charts/tree/master/bitnami/zookeeper#to-700).
 
 ### To 4.0.0
 
-This major updates the Kafka subchart to its newest major 13.0.0. For more information on this subchart's major, please refer to [kafka upgrade notes](https://github.com/bitnami/charts/tree/master/bitnami/kafka#to-1300).
+This major version updates the prefixes of individual applications metrics in Wavefront Collectors which are fed to Tanzu observability in order to light up the individual dashboards of Kafka, Spark and Solr on Tanzu Observability platform.
 
 ### To 3.0.0
 
-This major version updates the prefixes of individual applications metrics in Wavefront Collectors which are fed to Tanzu observability in order to light up the individual dashboards of Kafka, Spark ElasticSearch and Logstash on Tanzu Observability platform.
+This major updates the wavefront subchart to it newest major, 3.0.0, which contains a new major for kube-state-metrics. For more information on this subchart's major, please refer to [wavefront upgrade notes](https://github.com/bitnami/charts/tree/master/bitnami/wavefront#to-300).
 
 ### To 2.0.0
 
-This major updates the wavefront subchart to it newest major, 3.0.0, which contains a new major for kube-state-metrics. For more information on this subchart's major, please refer to [wavefront upgrade notes](https://github.com/bitnami/charts/tree/master/bitnami/wavefront#to-300).
+The affinity rules have been updated to allow deploying this chart and the `dataplatform-bp2` chart in the same cluster.
 
 ### To 1.0.0
 
-The affinity rules have been updated to allow deploying this chart and the `dataplatform-bp1` chart in the same cluster.
+This version updates the wavefront dependency to `2.x.x` where wavefront started to use a scratch image instead of debian. This can affect a current deployment if wavefront commands were provided. From now on, the only command that you will be able to execute inside the wavefront pod will be `/wavefront-collector`.
