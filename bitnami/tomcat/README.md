@@ -226,7 +226,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 $ helm install my-release \
-  --set tomcatUser=manager,tomcatPassword=password bitnami-azure/tomcat
+  --set tomcatUsername=manager,tomcatPassword=password bitnami-azure/tomcat
 ```
 
 The above command sets the Tomcat management username and password to `manager` and `password` respectively.
