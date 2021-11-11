@@ -932,6 +932,7 @@ Check the section [Integrate Thanos with Prometheus and Alertmanager](#integrate
 
 | Name                                                                   | Description                                                                                                                 | Value           |
 | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `receiveDistributor.enabled`                                           | Enable/disable Thanos Receive Distributor component                                                                         | `false`         |
 | `receiveDistributor.logLevel`                                          | Thanos Receive Distributor log level                                                                                        | `info`          |
 | `receiveDistributor.logFormat`                                         | Thanos Receive Distributor log format                                                                                       | `logfmt`        |
 | `receiveDistributor.replicaLabel`                                      | Label to treat as a replica indicator along which data is de-duplicated                                                     | `replica`       |
