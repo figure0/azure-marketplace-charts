@@ -18,7 +18,7 @@ helm install my-release bitnami-azure/thanos
 
 ## Introduction
 
-This chart bootstraps a [Thanos](https://github.com/bitnami/bitnami-docker-thanos) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Thanos](https://github.com/bitnami/bitnami-docker-thanos) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters.
 
@@ -1206,10 +1206,9 @@ metrics:
     enabled: true
 minio:
   enabled: true
-  accessKey:
-    password: "minio"
-  secretKey:
-    password: "minio123"
+  auth:
+    rootUser: "admin"
+    rootPassword: "minio123"
   defaultBuckets: "thanos"
 ```
 
