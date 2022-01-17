@@ -1,4 +1,24 @@
+<!--- app-name: Data Platform Blueprint 2 -->
+
 # Data Platform Blueprint 2 with Kafka-Spark-Elasticsearch
+
+This Helm chart enables the fully automated Kubernetes deployment of such multi-stack data platform, covering the following software components: Kafka, Spark, Elasticsearch, Kibana, Logstash and Signature state controller
+
+## Azure-ready Charts with Containers from marketplace.azurecr.io
+
+This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
+The following command allows you to download and install all the charts from this repository.
+```bash
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
+```
+## TL;DR
+
+```console
+$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
+$ helm install my-release bitnami-azure/dataplatform-bp2
+```
+
+## Introduction
 
 Enterprise applications increasingly rely on large amounts of data, that needs be distributed, processed, and stored.
 Open source and commercial supported software stacks are available to implement a data platform, that can offer common data management services, accelerating the development and deployment of data hungry business applications.
@@ -21,22 +41,6 @@ These containerized stateful software stacks are deployed in multi-node cluster 
 In addition to the Pod resource optimizations, this blueprint is validated and tested to provide Kubernetes node count and sizing recommendations [(see Kubernetes Cluster Requirements)](#kubernetes-cluster-requirements) to facilitate cloud platform capacity planning. The goal is optimize the number of required Kubernetes nodes in order to optimize server resource usage and, at the same time, ensuring runtime and resource diversity.
 
 This blueprint, in its default configuration, deploys the data platform on a Kubernetes cluster with three worker nodes. Use cases for this data platform setup include: data and application evaluation, development, and functional testing.
-
-## Azure-ready Charts with Containers from marketplace.azurecr.io
-
-This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
-The following command allows you to download and install all the charts from this repository.
-```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-```
-## TL;DR
-
-```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/dataplatform-bp2
-```
-
-## Introduction
 
 This chart bootstraps Data Platform Blueprint-2 deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
