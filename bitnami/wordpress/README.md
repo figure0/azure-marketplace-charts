@@ -1,9 +1,13 @@
 <!--- app-name: WordPress -->
 
-# WordPress
+# WordPress packaged by Bitnami
 
-[WordPress](https://wordpress.org/) is one of the most versatile open source content management systems on the market. A publishing platform for building blogs and websites.
+WordPress is the world's most popular blogging and content management platform. Powerful yet simple, everyone from students to global corporations use it to build beautiful, functional websites.
 
+[Overview of WordPress](http://www.wordpress.org)
+
+
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
