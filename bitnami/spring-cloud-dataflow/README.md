@@ -1,9 +1,13 @@
 <!--- app-name: Spring Cloud Data Flow -->
 
-# Spring Cloud Data Flow
+# Spring Cloud Data Flow packaged by Bitnami
 
-[Spring Cloud Data Flow](https://dataflow.spring.io/) is a microservices-based Streaming and Batch data processing pipeline in Cloud Foundry and Kubernetes.
+Spring Cloud Data Flow is a microservices-based toolkit for building streaming and batch data processing pipelines in Cloud Foundry and Kubernetes.
 
+[Overview of Spring Cloud Data Flow](https://github.com/spring-cloud/spring-cloud-dataflow)
+
+
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -26,8 +30,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 
 ## Prerequisites
 
-- Kubernetes 1.12+
-- Helm 3.1.0
+- Kubernetes 1.19+
+- Helm 3.2.0+
 - PV provisioner support in the underlying infrastructure
 
 ## Installing the Chart
