@@ -7,7 +7,7 @@ Apache Geode is a data management platform that provides advanced capabilities f
 [Overview of Apache Geode](https://geode.apache.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -61,7 +61,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ### Global parameters
 
 | Name                      | Description                                     | Value |
-| ------------------------- | ----------------------------------------------- | ----- |
+|:--------------------------|:------------------------------------------------|:------|
 | `global.imageRegistry`    | Global Docker image registry                    | `""`  |
 | `global.imagePullSecrets` | Global Docker registry secret names as an array | `[]`  |
 | `global.storageClass`     | Global StorageClass for Persistent Volume(s)    | `""`  |
@@ -70,7 +70,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ### Common parameters
 
 | Name                     | Description                                                                             | Value           |
-| ------------------------ | --------------------------------------------------------------------------------------- | --------------- |
+|:-------------------------|:----------------------------------------------------------------------------------------|:----------------|
 | `kubeVersion`            | Override Kubernetes version                                                             | `""`            |
 | `nameOverride`           | String to partially override common.names.fullname                                      | `""`            |
 | `fullnameOverride`       | String to fully override common.names.fullname                                          | `""`            |
@@ -86,7 +86,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ### Apache Geode Common parameters
 
 | Name                                     | Description                                                                            | Value                                                       |
-| ---------------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+|:-----------------------------------------|:---------------------------------------------------------------------------------------|:------------------------------------------------------------|
 | `image.registry`                         | Apache Geode image registry                                                            | `docker.io`                                                 |
 | `image.repository`                       | Apache Geode image repository                                                          | `bitnami/geode`                                             |
 | `image.tag`                              | Apache Geode image tag (immutable tags are recommended)                                | `1.14.2-debian-10-r23`                                      |
@@ -111,7 +111,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ### Apache Geode Locator parameters
 
 | Name                                            | Description                                                                                                 | Value               |
-| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------- |
+|:------------------------------------------------|:------------------------------------------------------------------------------------------------------------|:--------------------|
 | `locator.logLevel`                              | Log level for Locator nodes                                                                                 | `info`              |
 | `locator.initialHeapSize`                       | Initial size of the heap on Locator nodes                                                                   | `""`                |
 | `locator.maxHeapSize`                           | Maximum size of the heap on Locator nodes                                                                   | `""`                |
@@ -203,7 +203,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ### Apache Geode Cache Server parameters
 
 | Name                                             | Description                                                                                                                                 | Value               |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+|:-------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|
 | `server.logLevel`                                | Log level for Cache Server nodes                                                                                                            | `info`              |
 | `server.initialHeapSize`                         | Initial size of the heap on Cache Server nodes                                                                                              | `""`                |
 | `server.maxHeapSize`                             | Maximum size of the heap on Cache Server nodes                                                                                              | `""`                |
@@ -287,7 +287,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ### Traffic Exposure Parameters
 
 | Name                  | Description                                                                                                                      | Value                    |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+|:----------------------|:---------------------------------------------------------------------------------------------------------------------------------|:-------------------------|
 | `ingress.enabled`     | Enable ingress record generation for Apache Geode                                                                                | `false`                  |
 | `ingress.pathType`    | Ingress path type                                                                                                                | `ImplementationSpecific` |
 | `ingress.apiVersion`  | Force Ingress API version (automatically detected if not set)                                                                    | `""`                     |
@@ -305,7 +305,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ### Init Container Parameters
 
 | Name                                                   | Description                                                                                     | Value                   |
-| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ----------------------- |
+|:-------------------------------------------------------|:------------------------------------------------------------------------------------------------|:------------------------|
 | `volumePermissions.enabled`                            | Enable init container that changes the owner/group of the PV mount point to `runAsUser:fsGroup` | `false`                 |
 | `volumePermissions.image.registry`                     | Bitnami Shell image registry                                                                    | `docker.io`             |
 | `volumePermissions.image.repository`                   | Bitnami Shell image repository                                                                  | `bitnami/bitnami-shell` |
@@ -320,7 +320,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ### Metrics parameters
 
 | Name                                            | Description                                                                      | Value                 |
-| ----------------------------------------------- | -------------------------------------------------------------------------------- | --------------------- |
+|:------------------------------------------------|:---------------------------------------------------------------------------------|:----------------------|
 | `metrics.enabled`                               | Expose Apache Geode metrics                                                      | `false`               |
 | `metrics.image.registry`                        | Bitnami HAProxy image registry                                                   | `docker.io`           |
 | `metrics.image.repository`                      | Bitnami HAProxy image repository                                                 | `bitnami/haproxy`     |
@@ -361,7 +361,7 @@ The command removes all the Kubernetes components associated with the chart and 
 ### Other Parameters
 
 | Name                                          | Description                                                            | Value   |
-| --------------------------------------------- | ---------------------------------------------------------------------- | ------- |
+|:----------------------------------------------|:-----------------------------------------------------------------------|:--------|
 | `serviceAccount.create`                       | Specifies whether a ServiceAccount should be created                   | `true`  |
 | `serviceAccount.name`                         | The name of the ServiceAccount to use.                                 | `""`    |
 | `serviceAccount.automountServiceAccountToken` | Allows auto mount of ServiceAccountToken on the serviceAccount created | `false` |
@@ -397,39 +397,38 @@ helm install my-release -f values.yaml bitnami-azure/geode
 This chart an Apache Geode cluster including a _locator_ statefulset with N _Locator_ nodes, and a _server_ statefulset with M Cache server nodes. The schema below represents the architecture when you used an Ingress controller to expose the Apache Geode Pulse dashboard:
 
 ```
-      ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
-      ���������     Ingress      ���������
-      ���������    Controller    ���������
-      ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
-               ��������� / HTTP monitoring
-               ���������   dashboard
-               ���������
-        ������������������������������������������������������������������������
-        ���������                           ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
-        ��������� (port 7070)               ���������    Geode client    ���������
-        ���������                           ���������        pods        ���������������������������������������������������������������
-  ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������             ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������     ���������
-  ���������     Locator       ���������                 ���������                      ���������
-  ���������       svc         ���������                 ���������                      ���������
-  ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������                 ��������� / server             ��������� / write
-      ���������                                 ���������   discovery          |   read
-      ���������                                 ���������                      ���������
-������������������������������������������������������������������������������������������������������������������������������������������������                        ���������    ������������������������������������������������������������������������������������������������������������������������������������������������  ���������
-���������   Locator    ���������                        ���������    ���������   Locator    ���������  ���������
-���������              ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������              ���������  ���������
-���������     Pod      ���������                             ���������     Pod      ���������  ���������
-������������������������������������������������������������������������������������������������������������������������������������������������                             ������������������������������������������������������������������������������������������������������������������������������������������������  ���������
-      ���������                                             ���������          ���������
-  ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������          ���������
-  ���������                                       ���������                    ���������
-  ��������� / configuration      ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
-  ���������   service            ���������                ���������                    ���������
-  ���������                      ���������                ���������                    ���������
-���������������������������������������������������������������������������������������������������������������������������������������������������������        ���������              ���������������������������������������������������������������������������������������������������������������������������������������������������������      ���������
-��������� Cache server  ���������        ���������              ��������� Cache server  ���������      ���������
-���������               ������������������������������������������������������������������������������������������              ���������               ������������������������������������������������������������������������
-���������     Pod       ���������                       ���������    Pod        ���������
-���������������������������������������������������������������������������������������������������������������������������������������������������������                       ���������������������������������������������������������������������������������������������������������������������������������������������������������
+       ------------------
+      |     Ingress      |
+      |    Controller    |
+       ------------------
+               | / HTTP monitoring
+               |   dashboard
+        |------|
+        |                            --------------------
+        | (port 7070)               |    Geode client    |
+        \/                          |        pods        |-----|
+   -------------------               --------------------      |
+  |     Locator       |                 |                      |
+  |       svc         |                 |                      |
+   -------------------                  | / server             | / write
+      │                                 |   discovery          |   read
+      \/                                |                      |
+ --------------                         |     --------------   |
+|   Locator    |                        |    |   Locator    |  |
+|              |<-----------------------|--->|              |  |
+|     Pod      |                             |     Pod      |  |
+ --------------                               --------------   |
+      ^                                             ^          |
+  |---|---------------------------------------------|          |
+  |                                       |                    |
+  | / configuration      --------------------------------------|
+  |   service            |                |                    |
+  |                      |                |                    |
+ ---------------         |               ---------------       |
+| Cache server  |        |              | Cache server  |      |
+|               |<-------|              |               | <----|
+|     Pod       |                       |     Pod       |
+ ---------------                         ---------------
 ```
 
 > Note: when using several Locator nodes, it is recommended to configure sticky sessions using `--set locator.service.sessionAffinity="ClientIP"` or configuring the IngressController accordingly to access the Pulse monitoring dashboard.
