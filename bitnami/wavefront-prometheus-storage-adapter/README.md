@@ -1,9 +1,13 @@
 <!--- app-name: Wavefront Prometheus Adapter -->
 
-# Wavefront Prometheus Adapter
+# Wavefront Prometheus Adapter packaged by Bitnami
 
-[Wavefront Storage Adapter for Prometheus](https://github.com/wavefrontHQ/prometheus-storage-adapter) is a Prometheus integration to transfer metrics from Prometheus to Wavefront.
+Wavefront Storage Adapter is a Prometheus integration to transfer metrics from Prometheus to Wavefront. It lets you save Prometheus data in Wavefront without changing your existing Prometheus setup.
 
+[Overview of Wavefront Prometheus Adapter](https://github.com/wavefrontHQ/prometheus-storage-adapter)
+
+
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
