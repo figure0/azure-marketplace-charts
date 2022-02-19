@@ -398,8 +398,8 @@ postgresql:
   repmgrDatabase: repmgr
   repmgrLogLevel: NOTICE
   repmgrConnectTimeout: 5
-  repmgrReconnectAttempts: 3
-  repmgrReconnectInterval: 5
+  repmgrReconnectAttempts: 2
+  repmgrReconnectInterval: 3
   ## EXPERMENTAL: Use pg_rewind for standby failover
   ## @param postgresql.usePgRewind Use pg_rewind for standby failover (experimental)
   ##
@@ -1323,6 +1323,10 @@ service:
   ## @param service.port PostgreSQL port
   ##
   port: 5432
+  ## @param service.portName PostgreSQL service port name
+  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#multi-port-services
+  ##
+  portName: postgresql
   ## @param service.nodePort Kubernetes service nodePort
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
