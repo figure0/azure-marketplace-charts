@@ -1,9 +1,13 @@
 <!--- app-name: Contour Operator -->
 
-# Contour Operator
+# Contour Operator packaged by Bitnami
 
-[The Contour Operator](https://github.com/projectcontour/contour-operator/) extends the Kubernetes API to create, configure and manage instances of Contour on behalf of users.
+The Contour Operator extends the Kubernetes API to create, configure and manage instances of Contour on behalf of users.
 
+[Overview of Contour Operator](https://github.com/projectcontour/contour-operator)
+
+Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -102,18 +106,18 @@ The operator will extend the Kubernetes API with the *Contour* object, among oth
   |                    |      |     RBAC      |
   |     Deployment     |      | Privileges    |
   +-------+------------+      +-------+-------+
-    │     ^                           |
-    │     |   +-----------------+     |
-    │     +---+ Service Account +<----+
-    │         +-----------------+
-    │
-    │
-    │
-    │
-    │    ┌───────────────────────────────────────────────────────────────────────┐
-    │    │                                                                       │
+    ���     ^                           |
+    ���     |   +-----------------+     |
+    ���     +---+ Service Account +<----+
+    ���         +-----------------+
+    ���
+    ���
+    ���
+    ���
+    ���    ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+    ���    ���                                                                       ���
     |    |                       +--------------+                +-------------+ |
-    |────►                       |              |                |             | |
+    |���������������                       |              |                |             | |
          |    Service            |   Contour    |                |    Envoy    | |
          |   <-------------------+              +<---------------+             | |
          |                       |  Deployment  |                |  DaemonSet  | |
@@ -121,12 +125,12 @@ The operator will extend the Kubernetes API with the *Contour* object, among oth
          |                       +-----------+--+                +-------------+ |
          |                                   ^                                   |
          |                                   |                +------------+     |
-         │                                   +----------------+ Configmaps |     |
-         │                                                    |  Secrets   |     |
-         │                                                    +------------+     |
-         │                                                                       │
-         │                                                                       │
-         └───────────────────────────────────────────────────────────────────────┘
+         ���                                   +----------------+ Configmaps |     |
+         ���                                                    |  Secrets   |     |
+         ���                                                    +------------+     |
+         ���                                                                       ���
+         ���                                                                       ���
+         ���������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
 
 ```
 
