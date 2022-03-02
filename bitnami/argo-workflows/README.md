@@ -67,7 +67,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `global.imagePullSecrets` | Global Docker registry secret names as an array | `[]`  |
 | `global.storageClass`     | Global StorageClass for Persistent Volume(s)    | `""`  |
 
-
 ### Common parameters
 
 | Name                   | Description                                                                                                                                                                                                           | Value           |
@@ -82,14 +81,13 @@ The command removes all the Kubernetes components associated with the chart and 
 | `rbac.singleNamespace` | Restrict Argo to only deploy into a single namespace by apply Roles and RoleBindings instead of the Cluster equivalents, and start argo-cli with the --namespaced flag. Use it in clusters with strict access policy. | `false`         |
 | `createAggregateRoles` | Create Aggregated cluster roles                                                                                                                                                                                       | `true`          |
 
-
 ### Argo Workflows Server configuration parameters
 
 | Name                                                 | Description                                                                                             | Value                       |
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------- |
 | `server.image.registry`                              | server image registry                                                                                   | `docker.io`                 |
 | `server.image.repository`                            | server image repository                                                                                 | `bitnami/argo-workflow-cli` |
-| `server.image.tag`                                   | server image tag (immutable tags are recommended)                                                       | `3.2.6-scratch-r1`          |
+| `server.image.tag`                                   | server image tag (immutable tags are recommended)                                                       | `3.2.8-scratch-r0`          |
 | `server.image.pullPolicy`                            | server image pull policy                                                                                | `Always`                    |
 | `server.image.pullSecrets`                           | server image pull secrets                                                                               | `[]`                        |
 | `server.enabled`                                     | Enable server deployment                                                                                | `true`                      |
@@ -183,14 +181,13 @@ The command removes all the Kubernetes components associated with the chart and 
 | `server.service.annotations`                         | Additional custom annotations for server service                                                        | `{}`                        |
 | `server.service.extraPorts`                          | Extra port to expose on the server service                                                              | `[]`                        |
 
-
 ### Argo Workflows Controller configuration parameters
 
 | Name                                                     | Description                                                                                                                   | Value                              |
 | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
 | `controller.image.registry`                              | controller image registry                                                                                                     | `docker.io`                        |
 | `controller.image.repository`                            | controller image repository                                                                                                   | `bitnami/argo-workflow-controller` |
-| `controller.image.tag`                                   | controller image tag (immutable tags are recommended)                                                                         | `3.2.6-scratch-r0`                 |
+| `controller.image.tag`                                   | controller image tag (immutable tags are recommended)                                                                         | `3.2.8-scratch-r0`                 |
 | `controller.image.pullPolicy`                            | controller image pull policy                                                                                                  | `IfNotPresent`                     |
 | `controller.image.pullSecrets`                           | controller image pull secrets                                                                                                 | `[]`                               |
 | `controller.replicaCount`                                | Number of controller replicas to deploy                                                                                       | `1`                                |
@@ -287,14 +284,13 @@ The command removes all the Kubernetes components associated with the chart and 
 | `controller.service.annotations`                         | Additional custom annotations for controller service                                                                          | `{}`                               |
 | `controller.service.extraPorts`                          | Extra port to expose on the controller service                                                                                | `[]`                               |
 
-
 ### Executor configuration section
 
 | Name                                        | Description                                                   | Value                        |
 | ------------------------------------------- | ------------------------------------------------------------- | ---------------------------- |
 | `executor.image.registry`                   | executor image registry                                       | `docker.io`                  |
 | `executor.image.repository`                 | executor image repository                                     | `bitnami/argo-workflow-exec` |
-| `executor.image.tag`                        | executor image tag (immutable tags are recommended)           | `3.2.6-debian-10-r24`        |
+| `executor.image.tag`                        | executor image tag (immutable tags are recommended)           | `3.2.7-debian-10-r7`         |
 | `executor.image.pullPolicy`                 | executor image pull policy                                    | `Always`                     |
 | `executor.image.pullSecrets`                | executor image pull secrets                                   | `[]`                         |
 | `executor.resources.limits`                 | The resources limits for the init container                   | `{}`                         |
@@ -302,7 +298,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `executor.extraEnvVars`                     | Array with extra environment variables to add to server nodes | `[]`                         |
 | `executor.containerSecurityContext.enabled` | Enabled executor pods' Security Context                       | `true`                       |
 | `executor.containerSecurityContext.fsGroup` | Set executor pod's Security Context fsGroup                   | `1001`                       |
-
 
 ### Traffic Exposure Parameters
 
@@ -322,7 +317,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `ingress.extraTls`         | TLS configuration for additional hostname(s) to be covered with this ingress record                                              | `[]`                     |
 | `ingress.secrets`          | Custom TLS certificates as secrets                                                                                               | `[]`                     |
 
-
 ### Workflows configuration
 
 | Name                                                    | Description                                                       | Value   |
@@ -332,17 +326,15 @@ The command removes all the Kubernetes components associated with the chart and 
 | `workflows.serviceAccount.automountServiceAccountToken` | Automount service account token for the workflows service account | `true`  |
 | `workflows.rbac.create`                                 | Whether to create RBAC resource to run workflows                  | `true`  |
 
-
 ### PostgreSQL subchart
 
-| Name                            | Description                                                            | Value               |
-| ------------------------------- | ---------------------------------------------------------------------- | ------------------- |
-| `postgresql.enabled`            | Enable PostgreSQL subchart and controller persistence using PostgreSQL | `true`              |
-| `postgresql.service.port`       | PostgreSQL port                                                        | `5432`              |
-| `postgresql.postgresqlUsername` | PostgreSQL username                                                    | `postgres`          |
-| `postgresql.postgresqlDatabase` | PortgreSQL database name                                               | `bn_argo_workflows` |
-| `postgresql.postgresqlPassword` | PortgreSQL database password                                           | `""`                |
-
+| Name                                  | Description                                                            | Value               |
+| ------------------------------------- | ---------------------------------------------------------------------- | ------------------- |
+| `postgresql.enabled`                  | Enable PostgreSQL subchart and controller persistence using PostgreSQL | `true`              |
+| `postgresql.service.ports.postgresql` | PostgreSQL port                                                        | `5432`              |
+| `postgresql.auth.username`            | PostgreSQL username                                                    | `postgres`          |
+| `postgresql.auth.database`            | PortgreSQL database name                                               | `bn_argo_workflows` |
+| `postgresql.auth.password`            | PortgreSQL database password                                           | `""`                |
 
 ### MySQL subchart
 
@@ -353,7 +345,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `mysql.auth.username` | MySQL username                                               | `mysql`             |
 | `mysql.auth.database` | MySQL database name                                          | `bn_argo_workflows` |
 | `mysql.auth.password` | MySQL database password                                      | `""`                |
-
 
 ### External Database configuration
 
@@ -367,7 +358,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `externalDatabase.database`       | External Database database name                                             | `bitnami_wordpress` |
 | `externalDatabase.existingSecret` | The name of an existing secret with database credentials                    | `""`                |
 | `externalDatabase.type`           | Either postgresql or mysql                                                  | `""`                |
-
 
 See https://github.com/bitnami-labs/readme-generator-for-helm to create the table
 
@@ -463,6 +453,14 @@ As an alternative, use one of the preset configurations for pod affinity, pod an
 ## Troubleshooting
 
 Find more information about how to deal with common errors related to Bitnami's Helm charts in [this troubleshooting guide](https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues).
+
+## Upgrading
+
+### To 1.0.0
+
+The `postgresql` sub-chart was upgraded to `11.x.x`. Several values of the sub-chart were changed, so please check the [upgrade notes](https://docs.bitnami.com/kubernetes/infrastructure/postgresql/administration/upgrade/).
+
+It will be necessary to migrate between PostgreSQL versions.
 
 ## License
 
