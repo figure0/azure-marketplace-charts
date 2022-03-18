@@ -7,7 +7,7 @@ InfluxDB(TM) is an open source time-series database. It is a core component of t
 [Overview of InfluxDB&trade;](https://www.influxdata.com/products/influxdb-overview)
 
 InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, and does not endorse, this site.
-
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
