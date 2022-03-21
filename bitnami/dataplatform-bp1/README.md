@@ -7,7 +7,7 @@ This Helm chart can be used for the automated deployment of a data platform blue
 [Overview of Data Platform Blueprint 1](https://github.com/bitnami/dataplatform-exporter)
 
 
-
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
