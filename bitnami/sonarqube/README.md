@@ -405,11 +405,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 
 ## Upgrading
 
-### To 1.0.0.
-
-The `postgresql` sub-chart was upgraded to `11.x.x`. Several values of the sub-chart were changed, so please check the [upgrade notes](https://docs.bitnami.com/kubernetes/infrastructure/postgresql/administration/upgrade/).
-
-It will be necessary to migrate between PostgreSQL versions.
+Refer to the [chart documentation for more information about how to upgrade from previous releases](https://docs.bitnami.com/kubernetes/apps/sonarqube/administration/upgrade/).
 
 ## License
 
