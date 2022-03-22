@@ -7,7 +7,7 @@ Redis(TM) is an open source, advanced key-value store. It is often referred to a
 [Overview of Redis&trade;](http://redis.io)
 
 Disclaimer: Redis is a registered trademark of Redis Labs Ltd. Any rights therein are reserved to Redis Labs Ltd. Any use by Bitnami is for referential purposes only and does not indicate any sponsorship, endorsement, or affiliation between Redis Labs Ltd.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -183,7 +183,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `master.affinity`                           | Affinity for Redis&trade; master pods assignment                                                  | `{}`                     |
 | `master.nodeSelector`                       | Node labels for Redis&trade; master pods assignment                                               | `{}`                     |
 | `master.tolerations`                        | Tolerations for Redis&trade; master pods assignment                                               | `[]`                     |
-| `master.topologySpreadConstraints`          | Spread Constraints for Redis&trade; master pod assignment                                         | `{}`                     |
+| `master.topologySpreadConstraints`          | Spread Constraints for Redis&trade; master pod assignment                                         | `[]`                     |
 | `master.lifecycleHooks`                     | for the Redis&trade; master container(s) to automate configuration before or after startup        | `{}`                     |
 | `master.extraVolumes`                       | Optionally specify extra list of additional volumes for the Redis&trade; master pod(s)            | `[]`                     |
 | `master.extraVolumeMounts`                  | Optionally specify extra list of additional volumeMounts for the Redis&trade; master container(s) | `[]`                     |
@@ -274,7 +274,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `replica.affinity`                           | Affinity for Redis&trade; replicas pods assignment                                                  | `{}`                     |
 | `replica.nodeSelector`                       | Node labels for Redis&trade; replicas pods assignment                                               | `{}`                     |
 | `replica.tolerations`                        | Tolerations for Redis&trade; replicas pods assignment                                               | `[]`                     |
-| `replica.topologySpreadConstraints`          | Spread Constraints for Redis&trade; replicas pod assignment                                         | `{}`                     |
+| `replica.topologySpreadConstraints`          | Spread Constraints for Redis&trade; replicas pod assignment                                         | `[]`                     |
 | `replica.lifecycleHooks`                     | for the Redis&trade; replica container(s) to automate configuration before or after startup         | `{}`                     |
 | `replica.extraVolumes`                       | Optionally specify extra list of additional volumes for the Redis&trade; replicas pod(s)            | `[]`                     |
 | `replica.extraVolumeMounts`                  | Optionally specify extra list of additional volumeMounts for the Redis&trade; replicas container(s) | `[]`                     |
