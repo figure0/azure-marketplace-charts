@@ -7,7 +7,7 @@ Contour is an open source Kubernetes ingress controller that works by deploying 
 [Overview of Contour](https://github.com/projectcontour/contour)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -196,6 +196,7 @@ $ helm uninstall my-release
 | `envoy.resources.requests`                          | Specify resource requests which the container needs to spawn.                                                         | `{}`                   |
 | `envoy.command`                                     | Override default command                                                                                              | `[]`                   |
 | `envoy.args`                                        | Override default args                                                                                                 | `[]`                   |
+| `envoy.shutdownManager.enabled`                     | Contour shutdownManager sidecar                                                                                       | `true`                 |
 | `envoy.shutdownManager.resources.limits`            | Specify resource limits which the container is not allowed to succeed.                                                | `{}`                   |
 | `envoy.shutdownManager.resources.requests`          | Specify resource requests which the container needs to spawn.                                                         | `{}`                   |
 | `envoy.kind`                                        | Install as deployment or daemonset                                                                                    | `daemonset`            |
