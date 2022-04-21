@@ -7,7 +7,7 @@ phpMyAdmin is a free software tool written in PHP, intended to handle the admini
 [Overview of phpMyAdmin](https://www.phpmyadmin.net/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -66,7 +66,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `global.imageRegistry`    | Global Docker image registry                    | `""`  |
 | `global.imagePullSecrets` | Global Docker registry secret names as an array | `[]`  |
 
-
 ### Common parameters
 
 | Name                | Description                                                                                  | Value           |
@@ -78,7 +77,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `commonAnnotations` | Add annotations to all the deployed resources                                                | `{}`            |
 | `clusterDomain`     | Kubernetes Cluster Domain                                                                    | `cluster.local` |
 | `extraDeploy`       | Array of extra objects to deploy with the release                                            | `[]`            |
-
 
 ### phpMyAdmin parameters
 
@@ -96,7 +94,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `extraEnvVars`       | Extra environment variables to be set on PhpMyAdmin container                     | `[]`                   |
 | `extraEnvVarsCM`     | Name of a existing ConfigMap containing extra env vars                            | `""`                   |
 | `extraEnvVarsSecret` | Name of a existing Secret containing extra env vars                               | `""`                   |
-
 
 ### phpMyAdmin deployment parameters
 
@@ -158,7 +155,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `initContainers`                        | Add init containers to the PhpMyAdmin pods                                                | `[]`            |
 | `sidecars`                              | Add sidecar containers to the PhpMyAdmin pods                                             | `[]`            |
 
-
 ### Traffic Exposure parameters
 
 | Name                               | Description                                                                                                                      | Value                    |
@@ -189,7 +185,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `ingress.secrets`                  | If you're providing your own certificates, please use this to add the certificates as secrets                                    | `[]`                     |
 | `ingress.ingressClassName`         | IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)                                                    | `""`                     |
 
-
 ### Database parameters
 
 | Name                       | Description                                                       | Value   |
@@ -206,7 +201,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `db.ssl.ciphers`           | List of allowable ciphers for connections when using SSL          | `[]`    |
 | `db.ssl.verify`            | Enable SSL certificate validation                                 | `true`  |
 | `mariadb`                  | MariaDB chart configuration                                       | `{}`    |
-
 
 ### Metrics parameters
 
@@ -239,7 +233,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.serviceMonitor.honorLabels`       | Specify honorLabels parameter to add the scrape endpoint                          | `false`                   |
 | `metrics.serviceMonitor.selector`          | ServiceMonitor selector labels                                                    | `{}`                      |
 
-
 ### NetworkPolicy parameters
 
 | Name                                                          | Description                                                                                                                    | Value   |
@@ -259,7 +252,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.ingressRules.customRules`                      | Custom network policy ingress rule                                                                                             | `{}`    |
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                                 | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                     | `{}`    |
-
 
 For more information please refer to the [bitnami/phpmyadmin](https://github.com/bitnami/bitnami-docker-Phpmyadmin) image documentation.
 
@@ -389,6 +381,10 @@ As an alternative, you can use of the preset configurations for pod affinity, po
 Find more information about how to deal with common errors related to Bitnami's Helm charts in [this troubleshooting guide](https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues).
 
 ## Upgrading
+
+### To 10.0.0
+
+This major release bumps the MariaDB version to 10.6. Follow the [upstream instructions](https://mariadb.com/kb/en/upgrading-from-mariadb-105-to-mariadb-106/) for upgrading from MariaDB 10.5 to 10.6. No major issues are expected during the upgrade.
 
 ### To 9.0.0
 

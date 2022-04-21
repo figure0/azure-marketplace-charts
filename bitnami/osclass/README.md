@@ -7,7 +7,7 @@ Osclass allows you to easily create a classifieds site without any technical kno
 [Overview of Osclass](https://osclass-classifieds.com)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -69,7 +69,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `global.imagePullSecrets` | Global Docker registry secret names as an array | `[]`  |
 | `global.storageClass`     | Global StorageClass for Persistent Volume(s)    | `""`  |
 
-
 ### Common parameters
 
 | Name                | Description                                        | Value |
@@ -81,7 +80,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `commonLabels`      | Labels to add to all deployed objects              | `{}`  |
 | `extraDeploy`       | Array of extra objects to deploy with the release  | `[]`  |
 
-
 ### Osclass Image parameters
 
 | Name                | Description                                        | Value                |
@@ -92,7 +90,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `image.pullPolicy`  | Osclass image pull policy                          | `IfNotPresent`       |
 | `image.pullSecrets` | Osclass image pull secrets                         | `[]`                 |
 | `image.debug`       | Enable Bitnami debug mode in Osclass image         | `false`              |
-
 
 ### Osclass Configuration parameters
 
@@ -110,7 +107,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `smtpUser`           | SMTP username                                          | `""`               |
 | `smtpPassword`       | SMTP user password                                     | `""`               |
 | `smtpProtocol`       | SMTP protocol                                          | `""`               |
-
 
 ### Osclass deployment parameters
 
@@ -194,7 +190,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `schedulerName`                                      | Name of the k8s scheduler (other than default)                                            | `""`                                     |
 | `topologySpreadConstraints`                          | Topology Spread Constraints for pod assignment                                            | `[]`                                     |
 
-
 ### Traffic Exposure Parameters
 
 | Name                               | Description                                                                                                                      | Value                    |
@@ -224,7 +219,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `ingress.extraTls`                 | TLS configuration for additional hostname(s) to be covered with this ingress record                                              | `[]`                     |
 | `ingress.secrets`                  | Custom TLS certificates as secrets                                                                                               | `[]`                     |
 | `ingress.ingressClassName`         | IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)                                                    | `""`                     |
-
 
 ### Database Parameters
 
@@ -262,7 +256,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.resources.limits`       | The resources limits for the init container                                                     | `{}`                    |
 | `volumePermissions.resources.requests`     | The requested resources for the init container                                                  | `{}`                    |
 
-
 ### Other Parameters
 
 | Name                       | Description                                                    | Value   |
@@ -275,7 +268,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `autoscaling.maxReplicas`  | Maximum number of Osclass replicas                             | `11`    |
 | `autoscaling.targetCPU`    | Target CPU utilization percentage                              | `50`    |
 | `autoscaling.targetMemory` | Target Memory utilization percentage                           | `50`    |
-
 
 ### Metrics Parameters
 
@@ -304,7 +296,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.serviceMonitor.labels`            | Extra labels for the ServiceMonitor                                               | `{}`                      |
 | `metrics.serviceMonitor.jobLabel`          | The name of the label on the target service to use as the job name in prometheus. | `""`                      |
 
-
 ### NetworkPolicy parameters
 
 | Name                                                          | Description                                                                                                                 | Value   |
@@ -324,7 +315,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.ingressRules.customRules`                      | Custom network policy ingress rule                                                                                          | `{}`    |
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                              | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                  | `{}`    |
-
 
 The above parameters map to the env variables defined in [bitnami/osclass](https://github.com/bitnami/bitnami-docker-osclass). For more information please refer to the [bitnami/osclass](https://github.com/bitnami/bitnami-docker-osclass) image documentation.
 
@@ -421,6 +411,10 @@ The chart also facilitates the creation of TLS secrets for use with the Ingress 
 Find more information about how to deal with common errors related to Bitnami's Helm charts in [this troubleshooting guide](https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues).
 
 ## Upgrading
+
+### To 14.0.0
+
+This major release bumps the MariaDB version to 10.6. Follow the [upstream instructions](https://mariadb.com/kb/en/upgrading-from-mariadb-105-to-mariadb-106/) for upgrading from MariaDB 10.5 to 10.6. No major issues are expected during the upgrade.
 
 ### To 13.0.0
 
