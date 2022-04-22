@@ -71,7 +71,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `global.imagePullSecrets` | Global Docker registry secret names as an array | `[]`  |
 | `global.storageClass`     | Global StorageClass for Persistent Volume(s)    | `""`  |
 
-
 ### Common parameters
 
 | Name                | Description                                                                                                  | Value |
@@ -82,7 +81,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `extraDeploy`       | Array with extra yaml to deploy with the chart. Evaluated as a template                                      | `[]`  |
 | `commonAnnotations` | Common annotations to add to all SuiteCRM resources (sub-charts are not considered). Evaluated as a template | `{}`  |
 | `commonLabels`      | Common labels to add to all SuiteCRM resources (sub-charts are not considered). Evaluated as a template      | `{}`  |
-
 
 ### SuiteCRM parameters
 
@@ -168,7 +166,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `podAnnotations`                        | Pod annotations                                                                           | `{}`                   |
 | `podLabels`                             | Pod extra labels                                                                          | `{}`                   |
 
-
 ### Database parameters
 
 | Name                                        | Description                                                                              | Value               |
@@ -192,7 +189,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `externalDatabase.database`                 | Name of the existing database                                                            | `bitnami_suitecrm`  |
 | `externalDatabase.existingSecret`           | Name of an existing secret resource containing the DB password                           | `""`                |
 
-
 ### Persistence parameters
 
 | Name                        | Description                              | Value               |
@@ -204,7 +200,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `persistence.existingClaim` | An Existing PVC name for SuiteCRM volume | `""`                |
 | `persistence.hostPath`      | Host mount path for SuiteCRM volume      | `""`                |
 | `persistence.annotations`   | Persistent Volume Claim annotations      | `{}`                |
-
 
 ### Volume Permissions parameters
 
@@ -218,7 +213,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.image.pullSecrets`  | Specify docker-registry secret names as an array                                                                                                          | `[]`                    |
 | `volumePermissions.resources.limits`   | The resources limits for the container                                                                                                                    | `{}`                    |
 | `volumePermissions.resources.requests` | The requested resources for the container                                                                                                                 | `{}`                    |
-
 
 ### Traffic Exposure Parameters
 
@@ -250,7 +244,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `ingress.secrets`                  | If you're providing your own certificates, please use this to add the certificates as secrets                                    | `[]`                     |
 | `ingress.ingressClassName`         | IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)                                                    | `""`                     |
 
-
 ### Metrics parameters
 
 | Name                                       | Description                                                          | Value                     |
@@ -272,7 +265,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.service.externalTrafficPolicy`    | SuiteCRM service external traffic policy                             | `Cluster`                 |
 | `metrics.service.sessionAffinity`          | Session Affinity for Kubernetes service, can be "None" or "ClientIP" | `None`                    |
 | `metrics.service.sessionAffinityConfig`    | Additional settings for the sessionAffinity                          | `{}`                      |
-
 
 ### Certificate injection parameters
 
@@ -296,7 +288,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `certificates.image.pullPolicy`                      | Container sidecar image pull policy                                       | `IfNotPresent`                           |
 | `certificates.image.pullSecrets`                     | Container sidecar image pull secrets                                      | `[]`                                     |
 
-
 ### NetworkPolicy parameters
 
 | Name                                                          | Description                                                                                                                  | Value   |
@@ -316,7 +307,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.ingressRules.customRules`                      | Custom network policy ingress rule                                                                                           | `{}`    |
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                               | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                   | `{}`    |
-
 
 The above parameters map to the env variables defined in [bitnami/suitecrm](https://github.com/bitnami/bitnami-docker-suitecrm). For more information please refer to the [bitnami/suitecrm](https://github.com/bitnami/bitnami-docker-suitecrm) image documentation.
 
@@ -428,6 +418,10 @@ Find more information about how to deal with common errors related to Bitnami's 
 
 ## Upgrading
 
+### To 11.0.0
+
+This major release bumps the MariaDB version to 10.6. Follow the [upstream instructions](https://mariadb.com/kb/en/upgrading-from-mariadb-105-to-mariadb-106/) for upgrading from MariaDB 10.5 to 10.6. No major issues are expected during the upgrade.
+
 ### To 10.0.0
 
 This major release renames several values in this chart and adds missing features, in order to be inline with the rest of assets in the Bitnami charts repository.
@@ -437,7 +431,6 @@ Affected values:
 - `service.port` was deprecated. We recommend using `service.ports.http` instead.
 - `service.httpsPort` was deprecated. We recommend using `service.ports.https` instead.
 - `ingress.hosts` was renamed as `ingress.extraHosts`.
-
 
 Additionally updates the MariaDB subchart to it newest major, 10.0.0, which contains similar changes. Check [MariaDB Upgrading Notes](https://github.com/bitnami/charts/tree/master/bitnami/mariadb#to-1000) for more information.
 
