@@ -7,7 +7,7 @@ PrestaShop is a powerful open source eCommerce platform used by over 250,000 onl
 [Overview of PrestaShop](http://www.prestashop.com)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -69,7 +69,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `global.imagePullSecrets` | Global Docker registry secret names as an array | `[]`  |
 | `global.storageClass`     | Global StorageClass for Persistent Volume(s)    | `""`  |
 
-
 ### Common parameters
 
 | Name                | Description                                                                                                    | Value |
@@ -80,7 +79,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `commonAnnotations` | Common annotations to add to all PrestaShop resources (sub-charts are not considered). Evaluated as a template | `{}`  |
 | `commonLabels`      | Common labels to add to all PrestaShop resources (sub-charts are not considered). Evaluated as a template      | `{}`  |
 | `extraDeploy`       | Array with extra yaml to deploy with the chart. Evaluated as a template                                        | `[]`  |
-
 
 ### PrestaShop parameters
 
@@ -177,7 +175,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `podAnnotations`                        | Pod annotations                                                                           | `{}`                    |
 | `podLabels`                             | Pod extra labels                                                                          | `{}`                    |
 
-
 ### Traffic Exposure Parameters
 
 | Name                               | Description                                                                                                                      | Value                    |
@@ -208,7 +205,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `ingress.extraTls`                 | The tls configuration for additional hostnames to be covered with this ingress record.                                           | `[]`                     |
 | `ingress.secrets`                  | If you're providing your own certificates, please use this to add the certificates as secrets                                    | `[]`                     |
 
-
 ### Database parameters
 
 | Name                                        | Description                                                                              | Value                |
@@ -232,7 +228,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `externalDatabase.database`                 | Name of the existing database                                                            | `bitnami_prestashop` |
 | `externalDatabase.existingSecret`           | Name of an existing secret resource containing the DB password                           | `""`                 |
 
-
 ### Volume Permissions parameters
 
 | Name                                   | Description                                                                                                                                               | Value                   |
@@ -246,7 +241,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.resources.limits`   | The resources limits for the container                                                                                                                    | `{}`                    |
 | `volumePermissions.resources.requests` | The requested resources for the container                                                                                                                 | `{}`                    |
 
-
 ### Metrics parameters
 
 | Name                        | Description                                                | Value                     |
@@ -259,7 +253,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.image.pullSecrets` | Specify docker-registry secret names as an array           | `[]`                      |
 | `metrics.resources`         | Metrics exporter resource requests and limits              | `{}`                      |
 | `metrics.podAnnotations`    | Metrics exporter pod annotations                           | `{}`                      |
-
 
 ### Certificate injection parameters
 
@@ -283,7 +276,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `certificates.image.pullPolicy`                      | Container sidecar image pull policy                                  | `IfNotPresent`                           |
 | `certificates.image.pullSecrets`                     | Container sidecar image pull secrets                                 | `[]`                                     |
 
-
 ### NetworkPolicy parameters
 
 | Name                                                          | Description                                                                                                                    | Value   |
@@ -303,7 +295,6 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.ingressRules.customRules`                      | Custom network policy ingress rule                                                                                             | `{}`    |
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                                 | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                     | `{}`    |
-
 
 The above parameters map to the env variables defined in [bitnami/prestashop](https://github.com/bitnami/bitnami-docker-prestashop). For more information please refer to the [bitnami/prestashop](https://github.com/bitnami/bitnami-docker-prestashop) image documentation.
 
@@ -430,6 +421,10 @@ To enable SSL on all pages, follow these steps:
 Find more information about how to deal with common errors related to Bitnami's Helm charts in [this troubleshooting guide](https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues).
 
 ## Upgrading
+
+### To 15.0.0
+
+This major release bumps the MariaDB version to 10.6. Follow the [upstream instructions](https://mariadb.com/kb/en/upgrading-from-mariadb-105-to-mariadb-106/) for upgrading from MariaDB 10.5 to 10.6. No major issues are expected during the upgrade.
 
 ### To 14.0.0
 
