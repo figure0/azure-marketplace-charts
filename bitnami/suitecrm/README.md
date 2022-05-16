@@ -71,6 +71,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `global.imagePullSecrets` | Global Docker registry secret names as an array | `[]`  |
 | `global.storageClass`     | Global StorageClass for Persistent Volume(s)    | `""`  |
 
+
 ### Common parameters
 
 | Name                | Description                                                                                                  | Value |
@@ -82,13 +83,14 @@ The command removes all the Kubernetes components associated with the chart and 
 | `commonAnnotations` | Common annotations to add to all SuiteCRM resources (sub-charts are not considered). Evaluated as a template | `{}`  |
 | `commonLabels`      | Common labels to add to all SuiteCRM resources (sub-charts are not considered). Evaluated as a template      | `{}`  |
 
+
 ### SuiteCRM parameters
 
 | Name                                    | Description                                                                               | Value                  |
 | --------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`                        | SuiteCRM image registry                                                                   | `docker.io`            |
 | `image.repository`                      | SuiteCRM image repository                                                                 | `bitnami/suitecrm`     |
-| `image.tag`                             | SuiteCRM image tag (immutable tags are recommended)                                       | `7.12.2-debian-10-r24` |
+| `image.tag`                             | SuiteCRM image tag (immutable tags are recommended)                                       | `7.12.5-debian-10-r72` |
 | `image.pullPolicy`                      | SuiteCRM image pull policy                                                                | `IfNotPresent`         |
 | `image.pullSecrets`                     | Specify docker-registry secret names as an array                                          | `[]`                   |
 | `image.debug`                           | Specify if debug logs should be enabled                                                   | `false`                |
@@ -166,6 +168,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `podAnnotations`                        | Pod annotations                                                                           | `{}`                   |
 | `podLabels`                             | Pod extra labels                                                                          | `{}`                   |
 
+
 ### Database parameters
 
 | Name                                        | Description                                                                              | Value               |
@@ -189,6 +192,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `externalDatabase.database`                 | Name of the existing database                                                            | `bitnami_suitecrm`  |
 | `externalDatabase.existingSecret`           | Name of an existing secret resource containing the DB password                           | `""`                |
 
+
 ### Persistence parameters
 
 | Name                        | Description                              | Value               |
@@ -201,6 +205,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `persistence.hostPath`      | Host mount path for SuiteCRM volume      | `""`                |
 | `persistence.annotations`   | Persistent Volume Claim annotations      | `{}`                |
 
+
 ### Volume Permissions parameters
 
 | Name                                   | Description                                                                                                                                               | Value                   |
@@ -208,11 +213,12 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.enabled`            | Enable init container that changes volume permissions in the data directory (for cases where the default k8s `runAsUser` and `fsUser` values do not work) | `false`                 |
 | `volumePermissions.image.registry`     | Init container volume-permissions image registry                                                                                                          | `docker.io`             |
 | `volumePermissions.image.repository`   | Init container volume-permissions image repository                                                                                                        | `bitnami/bitnami-shell` |
-| `volumePermissions.image.tag`          | Init container volume-permissions image tag                                                                                                               | `10-debian-10-r305`     |
+| `volumePermissions.image.tag`          | Init container volume-permissions image tag                                                                                                               | `10-debian-10-r425`     |
 | `volumePermissions.image.pullPolicy`   | Init container volume-permissions image pull policy                                                                                                       | `IfNotPresent`          |
 | `volumePermissions.image.pullSecrets`  | Specify docker-registry secret names as an array                                                                                                          | `[]`                    |
 | `volumePermissions.resources.limits`   | The resources limits for the container                                                                                                                    | `{}`                    |
 | `volumePermissions.resources.requests` | The requested resources for the container                                                                                                                 | `{}`                    |
+
 
 ### Traffic Exposure Parameters
 
@@ -243,6 +249,8 @@ The command removes all the Kubernetes components associated with the chart and 
 | `ingress.extraTls`                 | TLS configuration for additional hostname(s) to be covered with this ingress record                                              | `[]`                     |
 | `ingress.secrets`                  | If you're providing your own certificates, please use this to add the certificates as secrets                                    | `[]`                     |
 | `ingress.ingressClassName`         | IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)                                                    | `""`                     |
+| `ingress.extraRules`               | Additional rules to be covered with this ingress record                                                                          | `[]`                     |
+
 
 ### Metrics parameters
 
@@ -251,7 +259,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.enabled`                          | Start a side-car prometheus exporter                                 | `false`                   |
 | `metrics.image.registry`                   | Apache exporter image registry                                       | `docker.io`               |
 | `metrics.image.repository`                 | Apache exporter image repository                                     | `bitnami/apache-exporter` |
-| `metrics.image.tag`                        | Apache exporter image tag (immutable tags are recommended)           | `0.11.0-debian-10-r23`    |
+| `metrics.image.tag`                        | Apache exporter image tag (immutable tags are recommended)           | `0.11.0-debian-10-r144`   |
 | `metrics.image.pullPolicy`                 | Image pull policy                                                    | `IfNotPresent`            |
 | `metrics.image.pullSecrets`                | Specify docker-registry secret names as an array                     | `[]`                      |
 | `metrics.resources`                        | Metrics exporter resource requests and limits                        | `{}`                      |
@@ -265,6 +273,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.service.externalTrafficPolicy`    | SuiteCRM service external traffic policy                             | `Cluster`                 |
 | `metrics.service.sessionAffinity`          | Session Affinity for Kubernetes service, can be "None" or "ClientIP" | `None`                    |
 | `metrics.service.sessionAffinityConfig`    | Additional settings for the sessionAffinity                          | `{}`                      |
+
 
 ### Certificate injection parameters
 
@@ -284,9 +293,10 @@ The command removes all the Kubernetes components associated with the chart and 
 | `certificates.extraEnvVarsSecret`                    | Secret containing extra environment variables (in case of sensitive data) | `""`                                     |
 | `certificates.image.registry`                        | Container sidecar registry                                                | `docker.io`                              |
 | `certificates.image.repository`                      | Container sidecar image repository                                        | `bitnami/bitnami-shell`                  |
-| `certificates.image.tag`                             | Container sidecar image tag (immutable tags are recommended)              | `10-debian-10-r305`                      |
+| `certificates.image.tag`                             | Container sidecar image tag (immutable tags are recommended)              | `10-debian-10-r425`                      |
 | `certificates.image.pullPolicy`                      | Container sidecar image pull policy                                       | `IfNotPresent`                           |
 | `certificates.image.pullSecrets`                     | Container sidecar image pull secrets                                      | `[]`                                     |
+
 
 ### NetworkPolicy parameters
 
@@ -307,6 +317,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `networkPolicy.ingressRules.customRules`                      | Custom network policy ingress rule                                                                                           | `{}`    |
 | `networkPolicy.egressRules.denyConnectionsToExternal`         | Enable egress rule that denies outgoing traffic outside the cluster, except for DNS (port 53).                               | `false` |
 | `networkPolicy.egressRules.customRules`                       | Custom network policy rule                                                                                                   | `{}`    |
+
 
 The above parameters map to the env variables defined in [bitnami/suitecrm](https://github.com/bitnami/bitnami-docker-suitecrm). For more information please refer to the [bitnami/suitecrm](https://github.com/bitnami/bitnami-docker-suitecrm) image documentation.
 
