@@ -7,7 +7,7 @@ Spring Cloud Data Flow is a microservices-based toolkit for building streaming a
 [Overview of Spring Cloud Data Flow](https://github.com/spring-cloud/spring-cloud-dataflow)
 
 
-
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
