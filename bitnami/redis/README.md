@@ -102,14 +102,14 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ### Redis&trade; Image parameters
 
-| Name                | Description                                             | Value                |
-| ------------------- | ------------------------------------------------------- | -------------------- |
-| `image.registry`    | Redis&trade; image registry                             | `docker.io`          |
-| `image.repository`  | Redis&trade; image repository                           | `bitnami/redis`      |
-| `image.tag`         | Redis&trade; image tag (immutable tags are recommended) | `6.2.7-debian-10-r0` |
-| `image.pullPolicy`  | Redis&trade; image pull policy                          | `IfNotPresent`       |
-| `image.pullSecrets` | Redis&trade; image pull secrets                         | `[]`                 |
-| `image.debug`       | Enable image debug mode                                 | `false`              |
+| Name                | Description                                             | Value                 |
+| ------------------- | ------------------------------------------------------- | --------------------- |
+| `image.registry`    | Redis&trade; image registry                             | `docker.io`           |
+| `image.repository`  | Redis&trade; image repository                           | `bitnami/redis`       |
+| `image.tag`         | Redis&trade; image tag (immutable tags are recommended) | `6.2.7-debian-10-r23` |
+| `image.pullPolicy`  | Redis&trade; image pull policy                          | `IfNotPresent`        |
+| `image.pullSecrets` | Redis&trade; image pull secrets                         | `[]`                  |
+| `image.debug`       | Enable image debug mode                                 | `false`               |
 
 
 ### Redis&trade; common configuration parameters
@@ -208,12 +208,14 @@ The command removes all the Kubernetes components associated with the chart and 
 | `master.service.ports.redis`                | Redis&trade; master service port                                                                        | `6379`                   |
 | `master.service.nodePorts.redis`            | Node port for Redis&trade; master                                                                       | `""`                     |
 | `master.service.externalTrafficPolicy`      | Redis&trade; master service external traffic policy                                                     | `Cluster`                |
-| `master.service.internalTrafficPolicy`      | Redis&trade; master service internal traffic policy (requires Kubernetes v1.22 or greater to be usable) | `Cluster`                |
 | `master.service.extraPorts`                 | Extra ports to expose (normally used with the `sidecar` value)                                          | `[]`                     |
+| `master.service.internalTrafficPolicy`      | Redis&trade; master service internal traffic policy (requires Kubernetes v1.22 or greater to be usable) | `Cluster`                |
 | `master.service.clusterIP`                  | Redis&trade; master service Cluster IP                                                                  | `""`                     |
 | `master.service.loadBalancerIP`             | Redis&trade; master service Load Balancer IP                                                            | `""`                     |
 | `master.service.loadBalancerSourceRanges`   | Redis&trade; master service Load Balancer sources                                                       | `[]`                     |
 | `master.service.annotations`                | Additional custom annotations for Redis&trade; master service                                           | `{}`                     |
+| `master.service.sessionAffinity`            | Session Affinity for Kubernetes service, can be "None" or "ClientIP"                                    | `None`                   |
+| `master.service.sessionAffinityConfig`      | Additional settings for the sessionAffinity                                                             | `{}`                     |
 | `master.terminationGracePeriodSeconds`      | Integer setting the termination grace period for the redis-master pods                                  | `30`                     |
 
 
@@ -307,6 +309,8 @@ The command removes all the Kubernetes components associated with the chart and 
 | `replica.service.loadBalancerIP`             | Redis&trade; replicas service Load Balancer IP                                                            | `""`                     |
 | `replica.service.loadBalancerSourceRanges`   | Redis&trade; replicas service Load Balancer sources                                                       | `[]`                     |
 | `replica.service.annotations`                | Additional custom annotations for Redis&trade; replicas service                                           | `{}`                     |
+| `replica.service.sessionAffinity`            | Session Affinity for Kubernetes service, can be "None" or "ClientIP"                                      | `None`                   |
+| `replica.service.sessionAffinityConfig`      | Additional settings for the sessionAffinity                                                               | `{}`                     |
 | `replica.terminationGracePeriodSeconds`      | Integer setting the termination grace period for the redis-replicas pods                                  | `30`                     |
 | `replica.autoscaling.enabled`                | Enable replica autoscaling settings                                                                       | `false`                  |
 | `replica.autoscaling.minReplicas`            | Minimum replicas for the pod autoscaling                                                                  | `1`                      |
@@ -322,7 +326,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `sentinel.enabled`                            | Use Redis&trade; Sentinel on Redis&trade; pods.                                                                                             | `false`                  |
 | `sentinel.image.registry`                     | Redis&trade; Sentinel image registry                                                                                                        | `docker.io`              |
 | `sentinel.image.repository`                   | Redis&trade; Sentinel image repository                                                                                                      | `bitnami/redis-sentinel` |
-| `sentinel.image.tag`                          | Redis&trade; Sentinel image tag (immutable tags are recommended)                                                                            | `6.2.7-debian-10-r0`     |
+| `sentinel.image.tag`                          | Redis&trade; Sentinel image tag (immutable tags are recommended)                                                                            | `6.2.7-debian-10-r23`    |
 | `sentinel.image.pullPolicy`                   | Redis&trade; Sentinel image pull policy                                                                                                     | `IfNotPresent`           |
 | `sentinel.image.pullSecrets`                  | Redis&trade; Sentinel image pull secrets                                                                                                    | `[]`                     |
 | `sentinel.image.debug`                        | Enable image debug mode                                                                                                                     | `false`                  |
@@ -372,6 +376,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `sentinel.persistence.annotations`            | Additional custom annotations for the PVC                                                                                                   | `{}`                     |
 | `sentinel.persistence.selector`               | Additional labels to match for the PVC                                                                                                      | `{}`                     |
 | `sentinel.persistence.dataSource`             | Custom PVC data source                                                                                                                      | `{}`                     |
+| `sentinel.persistence.medium`                 | Provide a medium for `emptyDir` volumes.                                                                                                    | `""`                     |
 | `sentinel.resources.limits`                   | The resources limits for the Redis&trade; Sentinel containers                                                                               | `{}`                     |
 | `sentinel.resources.requests`                 | The requested resources for the Redis&trade; Sentinel containers                                                                            | `{}`                     |
 | `sentinel.containerSecurityContext.enabled`   | Enabled Redis&trade; Sentinel containers' Security Context                                                                                  | `true`                   |
@@ -390,6 +395,8 @@ The command removes all the Kubernetes components associated with the chart and 
 | `sentinel.service.loadBalancerIP`             | Redis&trade; Sentinel service Load Balancer IP                                                                                              | `""`                     |
 | `sentinel.service.loadBalancerSourceRanges`   | Redis&trade; Sentinel service Load Balancer sources                                                                                         | `[]`                     |
 | `sentinel.service.annotations`                | Additional custom annotations for Redis&trade; Sentinel service                                                                             | `{}`                     |
+| `sentinel.service.sessionAffinity`            | Session Affinity for Kubernetes service, can be "None" or "ClientIP"                                                                        | `None`                   |
+| `sentinel.service.sessionAffinityConfig`      | Additional settings for the sessionAffinity                                                                                                 | `{}`                     |
 | `sentinel.terminationGracePeriodSeconds`      | Integer setting the termination grace period for the redis-node pods                                                                        | `30`                     |
 
 
@@ -432,7 +439,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.enabled`                            | Start a sidecar prometheus exporter to expose Redis&trade; metrics                               | `false`                  |
 | `metrics.image.registry`                     | Redis&trade; Exporter image registry                                                             | `docker.io`              |
 | `metrics.image.repository`                   | Redis&trade; Exporter image repository                                                           | `bitnami/redis-exporter` |
-| `metrics.image.tag`                          | Redis&trade; Redis&trade; Exporter image tag (immutable tags are recommended)                    | `1.37.0-debian-10-r39`   |
+| `metrics.image.tag`                          | Redis&trade; Redis&trade; Exporter image tag (immutable tags are recommended)                    | `1.37.0-debian-10-r63`   |
 | `metrics.image.pullPolicy`                   | Redis&trade; Exporter image pull policy                                                          | `IfNotPresent`           |
 | `metrics.image.pullSecrets`                  | Redis&trade; Exporter image pull secrets                                                         | `[]`                     |
 | `metrics.command`                            | Override default metrics container init command (useful when using custom images)                | `[]`                     |
@@ -475,7 +482,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.enabled`                            | Enable init container that changes the owner/group of the PV mount point to `runAsUser:fsGroup` | `false`                 |
 | `volumePermissions.image.registry`                     | Bitnami Shell image registry                                                                    | `docker.io`             |
 | `volumePermissions.image.repository`                   | Bitnami Shell image repository                                                                  | `bitnami/bitnami-shell` |
-| `volumePermissions.image.tag`                          | Bitnami Shell image tag (immutable tags are recommended)                                        | `10-debian-10-r408`     |
+| `volumePermissions.image.tag`                          | Bitnami Shell image tag (immutable tags are recommended)                                        | `10-debian-10-r432`     |
 | `volumePermissions.image.pullPolicy`                   | Bitnami Shell image pull policy                                                                 | `IfNotPresent`          |
 | `volumePermissions.image.pullSecrets`                  | Bitnami Shell image pull secrets                                                                | `[]`                    |
 | `volumePermissions.resources.limits`                   | The resources limits for the init container                                                     | `{}`                    |
@@ -484,7 +491,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `sysctl.enabled`                                       | Enable init container to modify Kernel settings                                                 | `false`                 |
 | `sysctl.image.registry`                                | Bitnami Shell image registry                                                                    | `docker.io`             |
 | `sysctl.image.repository`                              | Bitnami Shell image repository                                                                  | `bitnami/bitnami-shell` |
-| `sysctl.image.tag`                                     | Bitnami Shell image tag (immutable tags are recommended)                                        | `10-debian-10-r408`     |
+| `sysctl.image.tag`                                     | Bitnami Shell image tag (immutable tags are recommended)                                        | `10-debian-10-r432`     |
 | `sysctl.image.pullPolicy`                              | Bitnami Shell image pull policy                                                                 | `IfNotPresent`          |
 | `sysctl.image.pullSecrets`                             | Bitnami Shell image pull secrets                                                                | `[]`                    |
 | `sysctl.command`                                       | Override default init-sysctl container command (useful when using custom images)                | `[]`                    |
