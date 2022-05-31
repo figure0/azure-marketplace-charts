@@ -198,6 +198,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `ingress.extraTls`                 | TLS configuration for additional hostname(s) to be covered with this ingress record                                              | `[]`                     |
 | `ingress.secrets`                  | Custom TLS certificates as secrets                                                                                               | `[]`                     |
 | `ingress.ingressClassName`         | IngressClass that will be be used to implement the Ingress (Kubernetes 1.18+)                                                    | `""`                     |
+| `ingress.extraRules`               | Additional rules to be covered with this ingress record                                                                          | `[]`                     |
 
 
 ### Persistence Parameters
@@ -326,7 +327,7 @@ Upgrading from version `7.x.x` should be possible following the workaround below
 - Remove Jenkins deployment:
 
 ```console
-$ export JENKINS_PASSWORD=$(kubectl get secret --namespace default jenkins -o jsonpath="{.data.jenkins-password}" | base64 --decode)
+$ export JENKINS_PASSWORD=$(kubectl get secret --namespace default jenkins -o jsonpath="{.data.jenkins-password}" | base64 -d)
 $ kubectl delete deployments.apps jenkins
 ```
 
@@ -346,7 +347,7 @@ Consequences:
 - Backwards compatibility is not guaranteed. However, you can easily workaround this issue by removing Jenkins deployment before upgrading (the following example assumes that the release name is `jenkins`):
 
 ```console
-$ export JENKINS_PASSWORD=$(kubectl get secret --namespace default jenkins -o jsonpath="{.data.jenkins-password}" | base64 --decode)
+$ export JENKINS_PASSWORD=$(kubectl get secret --namespace default jenkins -o jsonpath="{.data.jenkins-password}" | base64 -d)
 $ kubectl delete deployments.apps jenkins
 $ helm upgrade jenkins bitnami-azure/jenkins --set jenkinsPassword=$JENKINS_PASSWORD
 ```
