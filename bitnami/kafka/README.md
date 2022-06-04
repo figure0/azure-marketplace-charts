@@ -7,7 +7,7 @@ Apache Kafka is a distributed streaming platform designed to build real-time pip
 [Overview of Apache Kafka](http://kafka.apache.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -252,6 +252,8 @@ The command removes all the Kubernetes components associated with the chart and 
 | `service.loadBalancerSourceRanges`                | Kafka service Load Balancer sources                                                               | `[]`                  |
 | `service.externalTrafficPolicy`                   | Kafka service external traffic policy                                                             | `Cluster`             |
 | `service.annotations`                             | Additional custom annotations for Kafka service                                                   | `{}`                  |
+| `service.headless.annotations`                    | Annotations for the headless service.                                                             | `{}`                  |
+| `service.headless.labels`                         | Labels for the headless service.                                                                  | `{}`                  |
 | `service.extraPorts`                              | Extra ports to expose in the Kafka service (normally used with the `sidecar` value)               | `[]`                  |
 | `externalAccess.enabled`                          | Enable Kubernetes external cluster access to Kafka brokers                                        | `false`               |
 | `externalAccess.autoDiscovery.enabled`            | Enable using an init container to auto-detect external IPs/ports by querying the K8s API          | `false`               |
@@ -517,7 +519,7 @@ This chart allows you to automatically configure Kafka with 3 listeners:
 
 - One for inter-broker communications.
 - A second one for communications with clients within the K8s cluster.
-- (optional) a third listener for communications with clients outside the K8s cluster. Check [this section](#accessing-kafka-brokers-from-outside-the-clusters) for more information.
+- (optional) a third listener for communications with clients outside the K8s cluster. Check [this section](#accessing-kafka-brokers-from-outside-the-cluster) for more information.
 
 For more complex configurations, set the `listeners`, `advertisedListeners` and `listenerSecurityProtocolMap` parameters as needed.
 
