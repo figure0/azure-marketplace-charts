@@ -7,7 +7,7 @@ Wavefront Adapter for Istio is an adapter for Istio to expose Istio metrics to W
 [Overview of Wavefront Adapter for Istio](https://github.com/vmware/wavefront-adapter-for-istio)
 
 
-
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
