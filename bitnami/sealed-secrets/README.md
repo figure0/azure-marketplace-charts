@@ -7,7 +7,7 @@ Sealed Secrets are "one-way" encrypted K8s Secrets that can be created by anyone
 [Overview of Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)
 
 
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -28,7 +28,7 @@ Bitnami charts for Helm are carefully engineered, actively maintained and are th
 
 This chart bootstraps a [Sealed Secret controller](https://github.com/bitnami-labs/sealed-secrets) Deployment in [Kubernetes](http://kubernetes.io) using the [Helm](https://helm.sh) package manager.
 
-Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment and management of Helm Charts in clusters. This Helm chart has been tested on top of [Bitnami Kubernetes Production Runtime](https://kubeprod.io/) (BKPR). Deploy BKPR to get automated TLS certificates, logging and monitoring for your applications.
+Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
 ## Prerequisites
 
