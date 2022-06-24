@@ -7,7 +7,7 @@ Keycloak is a high performance Java-based identity and access management solutio
 [Overview of Keycloak](https://www.keycloak.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -91,11 +91,10 @@ The command removes all the Kubernetes components associated with the chart and 
 | -------------------------------- | --------------------------------------------------------------------------------------------- | --------------------- |
 | `image.registry`                 | Keycloak image registry                                                                       | `docker.io`           |
 | `image.repository`               | Keycloak image repository                                                                     | `bitnami/keycloak`    |
-| `image.tag`                      | Keycloak image tag (immutable tags are recommended)                                           | `18.0.0-debian-11-r0` |
+| `image.tag`                      | Keycloak image tag (immutable tags are recommended)                                           | `18.0.1-debian-11-r0` |
 | `image.pullPolicy`               | Keycloak image pull policy                                                                    | `IfNotPresent`        |
 | `image.pullSecrets`              | Specify docker-registry secret names as an array                                              | `[]`                  |
 | `image.debug`                    | Specify if debug logs should be enabled                                                       | `false`               |
-| `auth.createAdminUser`           | Create administrator user on boot                                                             | `true`                |
 | `auth.adminUser`                 | Keycloak administrator user                                                                   | `user`                |
 | `auth.adminPassword`             | Keycloak administrator password for the new user                                              | `""`                  |
 | `auth.managementUser`            | Wildfly management user                                                                       | `manager`             |
@@ -275,7 +274,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `keycloakConfigCli.enabled`                               | Whether to enable keycloak-config-cli job                                                       | `false`                       |
 | `keycloakConfigCli.image.registry`                        | keycloak-config-cli container image registry                                                    | `docker.io`                   |
 | `keycloakConfigCli.image.repository`                      | keycloak-config-cli container image repository                                                  | `bitnami/keycloak-config-cli` |
-| `keycloakConfigCli.image.tag`                             | keycloak-config-cli container image tag                                                         | `5.2.0-debian-11-r0`          |
+| `keycloakConfigCli.image.tag`                             | keycloak-config-cli container image tag                                                         | `5.2.0-debian-11-r5`          |
 | `keycloakConfigCli.image.pullPolicy`                      | keycloak-config-cli container image pull policy                                                 | `IfNotPresent`                |
 | `keycloakConfigCli.image.pullSecrets`                     | keycloak-config-cli container image pull secrets                                                | `[]`                          |
 | `keycloakConfigCli.annotations`                           | Annotations for keycloak-config-cli job                                                         | `{}`                          |
@@ -325,6 +324,13 @@ The command removes all the Kubernetes components associated with the chart and 
 | Name            | Description                                                               | Value   |
 | --------------- | ------------------------------------------------------------------------- | ------- |
 | `cache.enabled` | Switch to enable or disable the keycloak distributed cache for kubernetes | `false` |
+
+
+### Keycloak Logging parameters
+
+| Name             | Description                                                     | Value     |
+| ---------------- | --------------------------------------------------------------- | --------- |
+| `logging.output` | Alternates between the default log output format or json format | `default` |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
