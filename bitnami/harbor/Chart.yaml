@@ -6,7 +6,7 @@ dependencies:
   - condition: redis.enabled
     name: redis
     repository: https://marketplace.azurecr.io/helm/v1/repo
-    version: 16.x.x
+    version: 17.x.x
   - condition: postgresql.enabled
     name: postgresql
     repository: https://marketplace.azurecr.io/helm/v1/repo
@@ -34,4 +34,4 @@ sources:
   - https://github.com/bitnami/bitnami-docker-harbor-registry
   - https://github.com/bitnami/bitnami-docker-harbor-registryctl
   - https://goharbor.io/
-version: 14.0.5
+version: 15.0.0

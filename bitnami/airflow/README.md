@@ -7,7 +7,7 @@ Apache Airflow is a tool to express and execute workflows as directed acyclic gr
 [Overview of Apache Airflow](https://airflow.apache.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -693,7 +693,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 
 ## Upgrading
 
-Refer to the [chart documentation for more information about how to upgrade from previous releases](https://docs.bitnami.com/kubernetes/infrastructure/airflow/administration/upgrade/).
+Refer to the [chart documentation for more information about how to upgrade from previous releases](https://docs.bitnami.com/kubernetes/infrastructure/apache-airflow/administration/upgrade/).
 
 ## License
 
