@@ -7,7 +7,7 @@ Kubernetes Event Exporter makes it easy to export Kubernetes events to other too
 [Overview of Kubernetes Event Exporter](https://github.com/opsgenie/kubernetes-event-exporter)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -42,7 +42,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install my-release bitnami-azure/kubernetes-event-exporter
 ```
 
-These commands deploy Kubernetes Event Exporter on the Kubernetes cluster in the default configuration. The [Parameters](##parameters) section lists the parameters that can be configured during installation.
+These commands deploy Kubernetes Event Exporter on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list` or `helm ls --all-namespaces`
 

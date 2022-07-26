@@ -7,7 +7,7 @@ Kibana is an open source, browser based analytics and search dashboard for Elast
 [Overview of Kibana](https://www.elastic.co/products/kibana)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -24,7 +24,7 @@ $ helm install my-release bitnami-azure/kibana --set elasticsearch.hosts[0]=<Hos
 
 ## Introduction
 
-This chart bootstraps a [Kibana](https://github.com/bitnami/bitnami-docker-kibana) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a [Kibana](https://github.com/bitnami/containers/tree/main/bitnami/kibana) deployment on a [Kubernetes](https://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -374,7 +374,7 @@ As an alternative, you can use one of the preset configurations for pod affinity
 
 ## Persistence
 
-The [Bitnami Kibana](https://github.com/bitnami/bitnami-docker-kibana) image can persist data. If enabled, the persisted path is `/bitnami/kibana` by default.
+The [Bitnami Kibana](https://github.com/bitnami/containers/tree/main/bitnami/kibana) image can persist data. If enabled, the persisted path is `/bitnami/kibana` by default.
 
 The chart mounts a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
 

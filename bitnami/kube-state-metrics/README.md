@@ -7,7 +7,7 @@ kube-state-metrics is a simple service that listens to the Kubernetes API server
 [Overview of Kube State Metrics](https://github.com/kubernetes/kube-state-metrics)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -24,7 +24,7 @@ $ helm install my-release bitnami-azure/kube-state-metrics
 
 ## Introduction
 
-This chart bootstraps [kube-state-metrics](https://github.com/bitnami/bitnami-docker-kube-state-metrics) on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
+This chart bootstraps [kube-state-metrics](https://github.com/bitnami/containers/tree/main/bitnami/kube-state-metrics) on [Kubernetes](https://kubernetes.io) using the [Helm](https://helm.sh) package manager.
 
 Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
 
@@ -47,7 +47,7 @@ To install the chart with the release name `my-release`:
 $ helm install my-release bitnami-azure/kube-state-metrics
 ```
 
-The command deploys kube-state-metrics on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+The command deploys kube-state-metrics on the Kubernetes cluster in the default configuration. The [configuration](#configuration-and-installation-details) section lists the parameters that can be configured during installation.
 
 ## Uninstalling the Chart
 

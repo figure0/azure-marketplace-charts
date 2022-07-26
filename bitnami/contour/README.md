@@ -7,7 +7,7 @@ Contour is an open source Kubernetes ingress controller that works by deploying 
 [Overview of Contour](https://github.com/projectcontour/contour)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -45,7 +45,7 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 $ helm install my-release bitnami-azure/contour
 ```
 
-These commands deploy contour on the Kubernetes cluster in the default configuration. The [Parameters](##parameters) section lists the parameters that can be configured during installation.
+These commands deploy contour on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list` or `helm ls --all-namespaces`
 
@@ -99,7 +99,7 @@ $ helm uninstall my-release
 | `contour.enabled`                                             | Contour Deployment creation.                                                                                                       | `true`                |
 | `contour.image.registry`                                      | Contour image registry                                                                                                             | `docker.io`           |
 | `contour.image.repository`                                    | Contour image name                                                                                                                 | `bitnami/contour`     |
-| `contour.image.tag`                                           | Contour image tag                                                                                                                  | `1.21.1-debian-11-r0` |
+| `contour.image.tag`                                           | Contour image tag                                                                                                                  | `1.21.1-debian-11-r5` |
 | `contour.image.pullPolicy`                                    | Contour Image pull policy                                                                                                          | `IfNotPresent`        |
 | `contour.image.pullSecrets`                                   | Contour Image pull secrets                                                                                                         | `[]`                  |
 | `contour.image.debug`                                         | Enable image debug mode                                                                                                            | `false`               |
@@ -199,7 +199,7 @@ $ helm uninstall my-release
 | `envoy.enabled`                                     | Envoy Proxy creation                                                                                                  | `true`                |
 | `envoy.image.registry`                              | Envoy Proxy image registry                                                                                            | `docker.io`           |
 | `envoy.image.repository`                            | Envoy Proxy image repository                                                                                          | `bitnami/envoy`       |
-| `envoy.image.tag`                                   | Envoy Proxy image tag (immutable tags are recommended)                                                                | `1.22.2-debian-11-r1` |
+| `envoy.image.tag`                                   | Envoy Proxy image tag (immutable tags are recommended)                                                                | `1.22.2-debian-11-r6` |
 | `envoy.image.pullPolicy`                            | Envoy image pull policy                                                                                               | `IfNotPresent`        |
 | `envoy.image.pullSecrets`                           | Envoy image pull secrets                                                                                              | `[]`                  |
 | `envoy.priorityClassName`                           | Priority class assigned to the pods                                                                                   | `""`                  |
@@ -312,7 +312,7 @@ $ helm uninstall my-release
 | `defaultBackend.enabled`                               | Enable a default backend based on NGINX                                                              | `false`                  |
 | `defaultBackend.image.registry`                        | Default backend image registry                                                                       | `docker.io`              |
 | `defaultBackend.image.repository`                      | Default backend image name                                                                           | `bitnami/nginx`          |
-| `defaultBackend.image.tag`                             | Default backend image tag                                                                            | `1.21.6-debian-11-r5`    |
+| `defaultBackend.image.tag`                             | Default backend image tag                                                                            | `1.21.6-debian-11-r10`   |
 | `defaultBackend.image.pullPolicy`                      | Image pull policy                                                                                    | `IfNotPresent`           |
 | `defaultBackend.image.pullSecrets`                     | Specify docker-registry secret names as an array                                                     | `[]`                     |
 | `defaultBackend.extraArgs`                             | Additional command line arguments to pass to NGINX container                                         | `{}`                     |
