@@ -7,7 +7,7 @@ Apache MXNet (Incubating) is a flexible and efficient library for deep learning 
 [Overview of Apache MXNet (Incubating)](https://mxnet.incubator.apache.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
