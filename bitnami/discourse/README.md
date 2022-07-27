@@ -7,7 +7,7 @@ Discourse is an open source discussion platform with built-in moderation and gov
 [Overview of Discourse&reg;](http://www.discourse.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -92,7 +92,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- |
 | `image.registry`                | Discourse image registry                                                                                                 | `docker.io`          |
 | `image.repository`              | Discourse image repository                                                                                               | `bitnami/discourse`  |
-| `image.tag`                     | Discourse image tag                                                                                                      | `2.8.6-debian-11-r0` |
+| `image.tag`                     | Discourse image tag                                                                                                      | `2.8.6-debian-11-r5` |
 | `image.pullPolicy`              | Discourse image pull policy                                                                                              | `IfNotPresent`       |
 | `image.pullSecrets`             | Discourse image pull secrets                                                                                             | `[]`                 |
 | `image.debug`                   | Enable image debug mode                                                                                                  | `false`              |
