@@ -7,7 +7,7 @@ PrestaShop is a powerful open source eCommerce platform used by over 250,000 onl
 [Overview of PrestaShop](http://www.prestashop.com)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -89,7 +89,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | --------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------- |
 | `image.registry`                        | PrestaShop image registry                                                                 | `docker.io`            |
 | `image.repository`                      | PrestaShop image repository                                                               | `bitnami/prestashop`   |
-| `image.tag`                             | PrestaShop image tag (immutable tags are recommended)                                     | `1.7.8-7-debian-11-r0` |
+| `image.tag`                             | PrestaShop image tag (immutable tags are recommended)                                     | `1.7.8-7-debian-11-r2` |
 | `image.pullPolicy`                      | PrestaShop image pull policy                                                              | `IfNotPresent`         |
 | `image.pullSecrets`                     | Specify docker-registry secret names as an array                                          | `[]`                   |
 | `image.debug`                           | Specify if debug logs should be enabled                                                   | `false`                |
@@ -242,7 +242,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.enabled`            | Enable init container that changes volume permissions in the data directory (for cases where the default k8s `runAsUser` and `fsUser` values do not work) | `false`                 |
 | `volumePermissions.image.registry`     | Init container volume-permissions image registry                                                                                                          | `docker.io`             |
 | `volumePermissions.image.repository`   | Init container volume-permissions image repository                                                                                                        | `bitnami/bitnami-shell` |
-| `volumePermissions.image.tag`          | Init container volume-permissions image tag (immutable tags are recommended)                                                                              | `11-debian-11-r18`      |
+| `volumePermissions.image.tag`          | Init container volume-permissions image tag (immutable tags are recommended)                                                                              | `11-debian-11-r20`      |
 | `volumePermissions.image.pullPolicy`   | Init container volume-permissions image pull policy                                                                                                       | `IfNotPresent`          |
 | `volumePermissions.image.pullSecrets`  | Specify docker-registry secret names as an array                                                                                                          | `[]`                    |
 | `volumePermissions.resources.limits`   | The resources limits for the container                                                                                                                    | `{}`                    |
@@ -256,7 +256,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `metrics.enabled`           | Start a side-car prometheus exporter                       | `false`                   |
 | `metrics.image.registry`    | Apache exporter image registry                             | `docker.io`               |
 | `metrics.image.repository`  | Apache exporter image repository                           | `bitnami/apache-exporter` |
-| `metrics.image.tag`         | Apache exporter image tag (immutable tags are recommended) | `0.11.0-debian-11-r22`    |
+| `metrics.image.tag`         | Apache exporter image tag (immutable tags are recommended) | `0.11.0-debian-11-r24`    |
 | `metrics.image.pullPolicy`  | Image pull policy                                          | `IfNotPresent`            |
 | `metrics.image.pullSecrets` | Specify docker-registry secret names as an array           | `[]`                      |
 | `metrics.resources`         | Metrics exporter resource requests and limits              | `{}`                      |
@@ -281,7 +281,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `certificates.extraEnvVarsSecret`                    | Secret with extra environment variables                              | `""`                                     |
 | `certificates.image.registry`                        | Container sidecar registry                                           | `docker.io`                              |
 | `certificates.image.repository`                      | Container sidecar image repository                                   | `bitnami/bitnami-shell`                  |
-| `certificates.image.tag`                             | Container sidecar image tag (immutable tags are recommended)         | `11-debian-11-r18`                       |
+| `certificates.image.tag`                             | Container sidecar image tag (immutable tags are recommended)         | `11-debian-11-r20`                       |
 | `certificates.image.pullPolicy`                      | Container sidecar image pull policy                                  | `IfNotPresent`                           |
 | `certificates.image.pullSecrets`                     | Container sidecar image pull secrets                                 | `[]`                                     |
 
