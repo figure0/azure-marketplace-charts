@@ -7,7 +7,7 @@ The Contour Operator extends the Kubernetes API to create, configure and manage 
 [Overview of Contour Operator](https://github.com/projectcontour/contour-operator)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -167,11 +167,11 @@ This solution allows to easily deploy multiple Contour instances compared to the
 | `image.pullSecrets`                               | Contour Operator image pull secrets                                                                                      | `[]`                       |
 | `contourImage.registry`                           | Contour Image registry                                                                                                   | `docker.io`                |
 | `contourImage.repository`                         | Contour Image repository                                                                                                 | `bitnami/contour`          |
-| `contourImage.tag`                                | Contour Image tag (immutable tags are recommended)                                                                       | `1.20.1-debian-10-r53`     |
+| `contourImage.tag`                                | Contour Image tag (immutable tags are recommended)                                                                       | `1.22.0-debian-11-r0`      |
 | `contourImage.pullSecrets`                        | Contour Image pull secrets                                                                                               | `[]`                       |
 | `envoyImage.registry`                             | Envoy Image registry                                                                                                     | `docker.io`                |
 | `envoyImage.repository`                           | Envoy Image repository                                                                                                   | `bitnami/envoy`            |
-| `envoyImage.tag`                                  | Envoy Image tag (immutable tags are recommended)                                                                         | `1.21.1-debian-10-r55`     |
+| `envoyImage.tag`                                  | Envoy Image tag (immutable tags are recommended)                                                                         | `1.23.0-debian-11-r5`      |
 | `envoyImage.pullSecrets`                          | Envoy Image pull secrets                                                                                                 | `[]`                       |
 | `replicaCount`                                    | Number of Contour Operator replicas to deploy                                                                            | `1`                        |
 | `livenessProbe.enabled`                           | Enable livenessProbe on Contour Operator nodes                                                                           | `true`                     |
@@ -219,6 +219,7 @@ This solution allows to easily deploy multiple Contour instances compared to the
 | `tolerations`                                     | Tolerations for Contour Operator pods assignment                                                                         | `[]`                       |
 | `updateStrategy.type`                             | Contour Operator deployment strategy type                                                                                | `RollingUpdate`            |
 | `priorityClassName`                               | Contour Operator pods' priorityClassName                                                                                 | `""`                       |
+| `runtimeClassName`                                | Name of the runtime class to be used by pod(s)                                                                           | `""`                       |
 | `lifecycleHooks`                                  | for the Contour Operator container(s) to automate configuration before or after startup                                  | `{}`                       |
 | `terminationGracePeriodSeconds`                   | Termination grace period in seconds                                                                                      | `""`                       |
 | `topologySpreadConstraints`                       | Topology Spread Constraints for pod assignment spread across your cluster among failure-domains. Evaluated as a template | `[]`                       |
