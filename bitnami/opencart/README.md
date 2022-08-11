@@ -89,7 +89,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | --------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------- |
 | `image.registry`                        | OpenCart image registry                                                                   | `docker.io`             |
 | `image.repository`                      | OpenCart image repository                                                                 | `bitnami/opencart`      |
-| `image.tag`                             | OpenCart image tag (immutable tags are recommended)                                       | `3.0.3-8-debian-11-r23` |
+| `image.tag`                             | OpenCart image tag (immutable tags are recommended)                                       | `3.0.3-8-debian-11-r24` |
 | `image.pullPolicy`                      | OpenCart image pull policy                                                                | `IfNotPresent`          |
 | `image.pullSecrets`                     | Specify docker-registry secret names as an array                                          | `[]`                    |
 | `image.debug`                           | Specify if debug logs should be enabled                                                   | `false`                 |
@@ -236,7 +236,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `volumePermissions.enabled`            | Enable init container that changes volume permissions in the data directory (for cases where the default k8s `runAsUser` and `fsUser` values do not work) | `false`                 |
 | `volumePermissions.image.registry`     | Init container volume-permissions image registry                                                                                                          | `docker.io`             |
 | `volumePermissions.image.repository`   | Init container volume-permissions image repository                                                                                                        | `bitnami/bitnami-shell` |
-| `volumePermissions.image.tag`          | Init container volume-permissions image tag (immutable tags are recommended)                                                                              | `11-debian-11-r23`      |
+| `volumePermissions.image.tag`          | Init container volume-permissions image tag (immutable tags are recommended)                                                                              | `11-debian-11-r24`      |
 | `volumePermissions.image.pullPolicy`   | Init container volume-permissions image pull policy                                                                                                       | `IfNotPresent`          |
 | `volumePermissions.image.pullSecrets`  | Specify docker-registry secret names as an array                                                                                                          | `[]`                    |
 | `volumePermissions.resources.limits`   | The resources limits for the container                                                                                                                    | `{}`                    |
@@ -275,7 +275,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | `certificates.extraEnvVarsSecret`                    | Secret with extra environment variables                              | `""`                                     |
 | `certificates.image.registry`                        | Container sidecar registry                                           | `docker.io`                              |
 | `certificates.image.repository`                      | Container sidecar image repository                                   | `bitnami/bitnami-shell`                  |
-| `certificates.image.tag`                             | Container sidecar image tag (immutable tags are recommended)         | `11-debian-11-r23`                       |
+| `certificates.image.tag`                             | Container sidecar image tag (immutable tags are recommended)         | `11-debian-11-r24`                       |
 | `certificates.image.pullPolicy`                      | Container sidecar image pull policy                                  | `IfNotPresent`                           |
 | `certificates.image.pullSecrets`                     | Container sidecar image pull secrets                                 | `[]`                                     |
 
