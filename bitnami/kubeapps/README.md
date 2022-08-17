@@ -7,7 +7,7 @@ Kubeapps is a web-based UI for launching and managing applications on Kubernetes
 [Overview of Kubeapps](https://github.com/vmware-tanzu/kubeapps)
 
 
-
+                           
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
