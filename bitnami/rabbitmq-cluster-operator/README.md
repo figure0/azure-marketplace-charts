@@ -7,7 +7,7 @@ The RabbitMQ Cluster Kubernetes Operator automates provisioning, management, and
 [Overview of RabbitMQ Cluster Operator](https://github.com/rabbitmq/cluster-operator)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -146,7 +146,6 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | `global.imagePullSecrets` | Global Docker registry secret names as an array | `[]`  |
 | `global.storageClass`     | Global StorageClass for Persistent Volume(s)    | `""`  |
 
-
 ### Common parameters
 
 | Name                     | Description                                          | Value           |
@@ -159,7 +158,6 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | `clusterDomain`          | Kubernetes cluster domain name                       | `cluster.local` |
 | `extraDeploy`            | Array of extra objects to deploy with the release    | `[]`            |
 | `diagnosticMode.enabled` | Enable diagnostic mode (all probes will be disabled) | `false`         |
-
 
 ### RabbitMQ Cluster Operator Parameters
 
@@ -244,7 +242,6 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | `clusterOperator.serviceAccount.annotations`                      | Add annotations                                                                                                                          | `{}`                                     |
 | `clusterOperator.serviceAccount.automountServiceAccountToken`     | Automount API credentials for a service account.                                                                                         | `true`                                   |
 
-
 ### RabbitMQ Cluster Operator Metrics parameters
 
 | Name                                                       | Description                                                                 | Value                    |
@@ -271,7 +268,6 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | `clusterOperator.metrics.serviceMonitor.metricRelabelings` | Specify additional relabeling of metrics                                    | `[]`                     |
 | `clusterOperator.metrics.serviceMonitor.relabelings`       | Specify general relabeling                                                  | `[]`                     |
 | `clusterOperator.metrics.serviceMonitor.labels`            | Extra labels for the ServiceMonitor                                         | `{}`                     |
-
 
 ### RabbitMQ Messaging Topology Operator Parameters
 
@@ -360,7 +356,6 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | `msgTopologyOperator.serviceAccount.annotations`                      | Add annotations                                                                                                                      | `{}`                                      |
 | `msgTopologyOperator.serviceAccount.automountServiceAccountToken`     | Automount API credentials for a service account.                                                                                     | `true`                                    |
 
-
 ### RabbitMQ Messaging Topology Operator parameters
 
 | Name                                                           | Description                                                                 | Value                    |
@@ -388,13 +383,11 @@ This solution allows to easily deploy multiple RabbitMQ instances compared to th
 | `msgTopologyOperator.metrics.serviceMonitor.relabelings`       | Specify general relabeling                                                  | `[]`                     |
 | `msgTopologyOperator.metrics.serviceMonitor.labels`            | Extra labels for the ServiceMonitor                                         | `{}`                     |
 
-
 ### cert-manager parameters
 
 | Name             | Description                                                       | Value   |
 | ---------------- | ----------------------------------------------------------------- | ------- |
 | `useCertManager` | Deploy cert-manager objects (Issuer and Certificate) for webhooks | `false` |
-
 
 See [readme-generator-for-helm](https://github.com/bitnami-labs/readme-generator-for-helm) to create the table.
 
@@ -472,6 +465,22 @@ extraDeploy:
 Find more information about how to deal with common errors related to Bitnami's Helm charts in [this troubleshooting guide](https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues).
 
 ## Upgrading
+
+### Upgrading CRDs
+
+By design, the `helm upgrade` command will not upgrade the `CustomResourceDefinition` objects, as stated in their [official documentation](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#some-caveats-and-explanations). This is done to avoid the potential risks of upgrading CRD objects, such as data loss.
+
+In order to upgrade the CRD objects, perform the following steps:
+
+- Perform a backup of your running RabbitMQ instances following the [official documentation](https://www.rabbitmq.com/backup.html).
+
+- Execute the following commands (replace the VERSION placeholder):
+
+```console
+helm fetch bitnami-azure/rabbitmq-cluster-operator --version VERSION
+tar xf rabbitmq-cluster-operator-VERSION.tar.gz
+kubectl apply -f rabbitmq-cluster-operator/crds
+```
 
 ### To 2.0.0
 
