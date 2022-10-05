@@ -7,7 +7,7 @@ NGINX Open Source is a web server that can be also used as a reverse proxy, load
 [Overview of NGINX Open Source](http://nginx.org)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/nginx
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/nginx
 ```
 
 ## Introduction
@@ -40,8 +40,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/nginx
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/nginx
 ```
 
 These commands deploy NGINX Open Source on the Kubernetes cluster in the default configuration.
@@ -291,7 +291,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install my-release \
   --set imagePullPolicy=Always \
-    bitnami-azure/nginx
+    my-repo/nginx
 ```
 
 The above command sets the `imagePullPolicy` to `Always`.
@@ -299,7 +299,7 @@ The above command sets the `imagePullPolicy` to `Always`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install my-release -f values.yaml bitnami-azure/nginx
+$ helm install my-release -f values.yaml my-repo/nginx
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -456,7 +456,7 @@ Use the workaround below to upgrade from versions previous to 5.0.0. The followi
 
 ```console
 $ kubectl delete deployment nginx --cascade=false
-$ helm upgrade nginx bitnami-azure/nginx
+$ helm upgrade nginx my-repo/nginx
 ```
 
 ### To 1.0.0

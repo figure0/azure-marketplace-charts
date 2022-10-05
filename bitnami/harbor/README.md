@@ -7,7 +7,7 @@ Harbor is an open source trusted cloud-native registry to store, sign, and scan 
 [Overview of Harbor](https://goharbor.io/)
 
 
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```bash
-helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-helm install my-release bitnami-azure/harbor
+helm repo add my-repo https://charts.bitnami.com/bitnami
+helm install my-release my-repo/harbor
 ```
 
 ## Introduction
@@ -52,8 +52,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 Install the Harbor helm chart with a release name `my-release`:
 
 ```bash
-helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-helm install my-release bitnami-azure/harbor
+helm repo add my-repo https://charts.bitnami.com/bitnami
+helm install my-release my-repo/harbor
 ```
 
 ## Uninstalling the Chart
@@ -1187,7 +1187,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 $ helm install my-release \
   --set adminPassword=password \
-    bitnami-azure/harbor
+    my-repo/harbor
 ```
 
 The above command sets the Harbor administrator account password to `password`.
@@ -1197,7 +1197,7 @@ The above command sets the Harbor administrator account password to `password`.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install my-release -f values.yaml bitnami-azure/harbor
+$ helm install my-release -f values.yaml my-repo/harbor
 ```
 
 ## Configuration and installation details

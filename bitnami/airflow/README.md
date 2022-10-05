@@ -7,7 +7,7 @@ Apache Airflow is a tool to express and execute workflows as directed acyclic gr
 [Overview of Apache Airflow](https://airflow.apache.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,7 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-$ helm install my-release bitnami-azure/airflow
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/airflow
 ```
 
 ## Introduction
@@ -37,8 +38,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/airflow
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/airflow
 ```
 
 These commands deploy Airflow on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -509,7 +510,7 @@ $ helm install my-release \
                --set auth.password=my-passsword \
                --set auth.fernetKey=my-fernet-key \
                --set auth.secretKey=my-secret-key \
-               bitnami-azure/airflow
+               my-repo/airflow
 ```
 
 The above command sets the credentials to access the Airflow web UI.
@@ -519,7 +520,7 @@ The above command sets the credentials to access the Airflow web UI.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install my-release -f values.yaml bitnami-azure/airflow
+$ helm install my-release -f values.yaml my-repo/airflow
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

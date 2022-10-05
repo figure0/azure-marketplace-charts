@@ -7,7 +7,7 @@ Cert Manager is a Kubernetes add-on to automate the management and issuance of T
 [Overview of Cert Manager](https://github.com/jetstack/cert-manager)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/cert-manager
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/cert-manager
 ```
 
 ## Introduction
@@ -41,8 +41,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/cert-manager
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/cert-manager
 ```
 
 > **Tip**: List all releases using `helm list`
@@ -304,14 +304,14 @@ The command removes all the Kubernetes components associated with the chart and 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install my-release bitnami-azure/cert-manager \
+$ helm install my-release my-repo/cert-manager \
   --set installCRDs=true
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install my-release -f values.yaml bitnami-azure/cert-manager
+$ helm install my-release -f values.yaml my-repo/cert-manager
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

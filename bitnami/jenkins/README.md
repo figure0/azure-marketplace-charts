@@ -7,7 +7,7 @@ Jenkins is an open source Continuous Integration and Continuous Delivery (CI/CD)
 [Overview of Jenkins](http://jenkins-ci.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-helm install my-release bitnami-azure/jenkins
+helm repo add my-repo https://charts.bitnami.com/bitnami
+helm install my-release my-repo/jenkins
 ```
 
 ## Introduction
@@ -40,8 +40,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-helm install my-release bitnami-azure/jenkins
+helm repo add my-repo https://charts.bitnami.com/bitnami
+helm install my-release my-repo/jenkins
 ```
 
 These commands deploy Jenkins on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -236,7 +236,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 $ helm install my-release \
   --set jenkinsUser=admin \
   --set jenkinsPassword=password \
-  bitnami-azure/jenkins
+  my-repo/jenkins
 ```
 
 The above command sets the Jenkins administrator account username and password to `admin` and `password` respectively.
@@ -246,7 +246,7 @@ The above command sets the Jenkins administrator account username and password t
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-azure/jenkins
+helm install my-release -f values.yaml my-repo/jenkins
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -343,7 +343,7 @@ $ kubectl delete deployments.apps jenkins
 - Upgrade your release and delete data that should not be persisted anymore:
 
 ```console
-$ helm upgrade jenkins bitnami-azure/jenkins --set jenkinsPassword=$JENKINS_PASSWORD --set jenkinsHome=/bitnami-azure/jenkins/jenkins_home
+$ helm upgrade jenkins my-repo/jenkins --set jenkinsPassword=$JENKINS_PASSWORD --set jenkinsHome=/bitnami/jenkins/jenkins_home
 $ kubectl exec -it $(kubectl get pod -l app.kubernetes.io/instance=jenkins,app.kubernetes.io/name=jenkins -o jsonpath="{.items[0].metadata.name}") -- find /bitnami/jenkins -mindepth 1 -maxdepth 1 -not -name jenkins_home -exec rm -rf {} \;
 ```
 
@@ -358,7 +358,7 @@ Consequences:
 ```console
 $ export JENKINS_PASSWORD=$(kubectl get secret --namespace default jenkins -o jsonpath="{.data.jenkins-password}" | base64 -d)
 $ kubectl delete deployments.apps jenkins
-$ helm upgrade jenkins bitnami-azure/jenkins --set jenkinsPassword=$JENKINS_PASSWORD
+$ helm upgrade jenkins my-repo/jenkins --set jenkinsPassword=$JENKINS_PASSWORD
 ```
 
 ### To 6.1.0

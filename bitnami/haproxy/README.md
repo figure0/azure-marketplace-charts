@@ -7,7 +7,7 @@ HAProxy is a TCP proxy and a HTTP reverse proxy. It supports SSL termination and
 [Overview of HAProxy](http://www.haproxy.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/haproxy
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/haproxy
 ```
 
 ## Introduction
@@ -42,7 +42,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-azure/haproxy
+helm install my-release my-repo/haproxy
 ```
 
 The command deploys haproxy on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -198,7 +198,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set service.type=LoadBalancer \
-    bitnami-azure/haproxy
+    my-repo/haproxy
 ```
 
 The above command sets the HAProxy service type as LoadBalancer.
@@ -208,7 +208,7 @@ The above command sets the HAProxy service type as LoadBalancer.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-azure/haproxy
+helm install my-release -f values.yaml my-repo/haproxy
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

@@ -7,7 +7,7 @@ MariaDB Galera is a multi-primary database cluster solution for synchronous repl
 [Overview of MariaDB Galera](https://mariadb.com/kb/en/library/galera-cluster/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/mariadb-galera
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/mariadb-galera
 ```
 
 ## Introduction
@@ -39,13 +39,13 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 Add the `bitnami` charts repo to Helm:
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
 ```
 
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install my-release bitnami-azure/mariadb-galera
+$ helm install my-release my-repo/mariadb-galera
 ```
 
 The command deploys MariaDB Galera on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -278,7 +278,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 $ helm install my-release \
   --set rootUser.password=secretpassword,
   --set db.user=app_database \
-    bitnami-azure/mariadb-galera
+    my-repo/mariadb-galera
 ```
 
 The above command sets the MariaDB `root` account password to `secretpassword`. Additionally it creates a database named `my_database`.
@@ -288,7 +288,7 @@ The above command sets the MariaDB `root` account password to `secretpassword`. 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install my-release -f values.yaml bitnami-azure/mariadb-galera
+$ helm install my-release -f values.yaml my-repo/mariadb-galera
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -302,7 +302,7 @@ For example, if you want to enable the PAM cleartext plugin, specify the command
 ```bash
 $ helm install my-release \
   --set extraFlags="--pam-use-cleartext-plugin=ON" \
-  bitnami-azure/mariadb-galera
+  my-repo/mariadb-galera
 ```
 
 ## Configuration and installation details
@@ -524,7 +524,7 @@ There are two possible scenarios:
 In this case you will need the node number `N` and run:
 
 ```bash
-helm install my-release bitnami-azure/mariadb-galera \
+helm install my-release my-repo/mariadb-galera \
 --set rootUser.password=XXXX \
 --set galera.mariabackup.password=YYYY \
 --set galera.bootstrap.forceBootstrap=true \
@@ -537,7 +537,7 @@ helm install my-release bitnami-azure/mariadb-galera \
 In this case the cluster was not stopped cleanly and you need to pick one to force the bootstrap from. The one to be chosen in the one with the highest `seqno` in `/bitnami/mariadb/data/grastate.dat`. The following example shows how to force bootstrap from node 3.
 
 ```bash
-helm install my-release bitnami-azure/mariadb-galera \
+helm install my-release my-repo/mariadb-galera \
 --set rootUser.password=XXXX \
 --set galera.mariabackup.password=YYYY \
 --set galera.bootstrap.forceBootstrap=true \
@@ -551,7 +551,7 @@ helm install my-release bitnami-azure/mariadb-galera \
 After you have started the cluster by forcing the bootstraping on one of the nodes, you will need to remove the forcing so the node can restart with normality.
 
 ```
-helm upgrade my-release bitnami-azure/mariadb-galera \
+helm upgrade my-release my-repo/mariadb-galera \
 --set rootUser.password=XXXX \
 --set galera.mariabackup.password=YYYY \
 --set podManagementPolicy=Parallel
@@ -578,7 +578,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 It's necessary to specify the existing passwords while performing a upgrade to ensure the secrets are not updated with invalid randomly generated passwords. Remember to specify the existing values of the `rootUser.password`, `db.password` and `galera.mariabackup.password` parameters when upgrading the chart:
 
 ```bash
-$ helm upgrade my-release bitnami-azure/mariadb-galera \
+$ helm upgrade my-release my-repo/mariadb-galera \
     --set rootUser.password=[ROOT_PASSWORD] \
     --set db.password=[MARIADB_PASSWORD] \
     --set galera.mariabackup.password=[GALERA_MARIABACKUP_PASSWORD]

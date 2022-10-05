@@ -7,7 +7,7 @@ InfluxDB(TM) is an open source time-series database. It is a core component of t
 [Overview of InfluxDB&trade;](https://www.influxdata.com/products/influxdb-overview)
 
 InfluxDB(TM) is a trademark owned by InfluxData, which is not affiliated with, and does not endorse, this site.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/influxdb
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/influxdb
 ```
 
 ## Introduction
@@ -40,8 +40,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/influxdb
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/influxdb
 ```
 
 These commands deploy influxdb on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -340,7 +340,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 $ helm install my-release \
-  --set auth.admin.username=admin-user bitnami-azure/influxdb
+  --set auth.admin.username=admin-user my-repo/influxdb
 ```
 
 The above command sets the InfluxDB&trade; admin user to `admin-user`.
@@ -350,7 +350,7 @@ The above command sets the InfluxDB&trade; admin user to `admin-user`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install my-release -f values.yaml bitnami-azure/influxdb
+$ helm install my-release -f values.yaml my-repo/influxdb
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -454,7 +454,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 It's necessary to specify the existing passwords while performing an upgrade to ensure the secrets are not updated with invalid randomly generated passwords. Remember to specify the existing values of the `auth.admin.password`, `user.pwd`, ` auth.readUser.password` and `auth.writeUser.password` parameters when upgrading the chart:
 
 ```bash
-$ helm upgrade my-release bitnami-azure/influxdb \
+$ helm upgrade my-release my-repo/influxdb \
     --set auth.admin.password=[ADMIN_USER_PASSWORD] \
     --set auth.user.password=[USER_PASSWORD] \
     --set auth.readUser.password=[READ_USER_PASSWORD] \
@@ -473,7 +473,7 @@ To update from the previous major, please follow this steps:
 
 ```
 $ kubectl delete deployments.apps influxdb
-$ helm upgrade influxdb bitnami-azure/influxdb
+$ helm upgrade influxdb my-repo/influxdb
 ```
 
 ### To 4.0.0
@@ -504,7 +504,7 @@ However, you can use images for versions ~1.x.x taking into account the chart ma
 #### Installing InfluxDB&trade; v1 in chart v2.
 
 ```
-$ helm install bitnami-azure/influxdb --set image.tag=1.8.3-debian-10-r88
+$ helm install my-repo/influxdb --set image.tag=1.8.3-debian-10-r88
 ```
 
 As a consecuece some breaking changes have been included in this version.
@@ -530,7 +530,7 @@ We actually recommend to backup all the data form a previous helm release, insta
 Having an already existing chart release called `influxdb` and deployed like
 
 ```console
-$ helm install influxdb bitnami-azure/influxdb
+$ helm install influxdb my-repo/influxdb
 ```
 
 ##### Export secrets and required values to update
@@ -544,7 +544,7 @@ $ export INFLUXDB_ADMIN_PASSWORD=$(kubectl get secret --namespace default influx
 > NOTE: Please remember to migrate all the values to its new path following the above notes, e.g: `adminUser.pwd` -> `auth.admin.password`.
 
 ```console
-$ helm upgrade influxdb bitnami-azure/influxdb --set image.tag=1.8.3-debian-10-r99 \
+$ helm upgrade influxdb my-repo/influxdb --set image.tag=1.8.3-debian-10-r99 \
   --set auth.admin.password=${INFLUXDB_ADMIN_PASSWORD}
 ```
 

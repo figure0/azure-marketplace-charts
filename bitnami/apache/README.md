@@ -7,7 +7,7 @@ Apache HTTP Server is an open-source HTTP server. The goal of this project is to
 [Overview of Apache](https://httpd.apache.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/apache
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/apache
 ```
 
 ## Introduction
@@ -42,8 +42,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/apache
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/apache
 ```
 
 These commands deploy Apache on the Kubernetes cluster in the default configuration.
@@ -259,7 +259,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install my-release \
   --set imagePullPolicy=Always \
-    bitnami-azure/apache
+    my-repo/apache
 ```
 
 The above command sets the `imagePullPolicy` to `Always`.
@@ -267,7 +267,7 @@ The above command sets the `imagePullPolicy` to `Always`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install my-release -f values.yaml bitnami-azure/apache
+$ helm install my-release -f values.yaml my-repo/apache
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

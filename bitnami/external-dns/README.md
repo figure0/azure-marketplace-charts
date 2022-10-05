@@ -7,7 +7,7 @@ ExternalDNS is a Kubernetes addon that configures public DNS servers with inform
 [Overview of ExternalDNS](https://github.com/kubernetes-incubator/external-dns)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/external-dns
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/external-dns
 ```
 
 ## Introduction
@@ -38,7 +38,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install my-release bitnami-azure/external-dns
+$ helm install my-release my-repo/external-dns
 ```
 
 The command deploys ExternalDNS on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -346,13 +346,13 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 $ helm install my-release \
-  --set provider=aws bitnami-azure/external-dns
+  --set provider=aws my-repo/external-dns
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install my-release -f values.yaml bitnami-azure/external-dns
+$ helm install my-release -f values.yaml my-repo/external-dns
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -396,7 +396,7 @@ $ helm install my-release \
   --set aws.zoneType=public \
   --set txtOwnerId=HOSTED_ZONE_IDENTIFIER \
   --set domainFilters[0]=HOSTED_ZONE_NAME \
-  bitnami-azure/external-dns
+  my-repo/external-dns
 ```
 
 ## Troubleshooting
@@ -462,7 +462,7 @@ Use the workaround below to upgrade from versions previous to 1.0.0. The followi
 
 ```console
 $ kubectl delete deployment my-release-external-dns
-$ helm upgrade my-release bitnami-azure/external-dns
+$ helm upgrade my-release my-repo/external-dns
 ```
 
 Other mayor changes included in this major version are:

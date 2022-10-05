@@ -7,7 +7,7 @@ Prometheus exporter for hardware and OS metrics exposed by UNIX kernels, with pl
 [Overview of Node Exporter](https://prometheus.io/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/node-exporter
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/node-exporter
 ```
 
 ## Introduction
@@ -38,13 +38,13 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 Add the `bitnami` charts repo to Helm:
 
 ```bash
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
 ```
 
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install my-release bitnami-azure/node-exporter
+$ helm install my-release my-repo/node-exporter
 ```
 
 The command deploys Node Exporter on the Kubernetes cluster in the default configuration. The [configuration](#configuration-and-installation-details) section lists the parameters that can be configured during installation.
@@ -188,13 +188,13 @@ The command removes all the Kubernetes components associated with the chart and 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example the following command sets the `minReadySeconds` of the Node Exporter Pods to `120` seconds.
 
 ```bash
-$ helm install my-release --set minReadySeconds=120 bitnami-azure/node-exporter
+$ helm install my-release --set minReadySeconds=120 my-repo/node-exporter
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install my-release -f values.yaml bitnami-azure/node-exporter
+$ helm install my-release -f values.yaml my-repo/node-exporter
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -220,7 +220,7 @@ Find more information about how to deal with common errors related to Bitnami's 
 ## Upgrading
 
 ```bash
-$ helm upgrade my-release bitnami-azure/node-exporter
+$ helm upgrade my-release my-repo/node-exporter
 ```
 
 ### To 3.0.0

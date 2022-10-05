@@ -7,7 +7,7 @@ The RabbitMQ Cluster Kubernetes Operator automates provisioning, management, and
 [Overview of RabbitMQ Cluster Operator](https://github.com/rabbitmq/cluster-operator)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/rabbitmq-cluster-operator
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/rabbitmq-cluster-operator
 ```
 
 ## Introduction
@@ -41,7 +41,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-azure/rabbitmq-cluster-operators
+helm install my-release my-repo/rabbitmq-cluster-operators
 ```
 
 The command deploy the RabbitMQ Cluster Kubernetes Operator on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -398,7 +398,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set livenessProbe.enabled=false \
-    bitnami-azure/rabbitmq-cluster-operator
+    my-repo/rabbitmq-cluster-operator
 ```
 
 The above command disables the Operator liveness probes.
@@ -406,7 +406,7 @@ The above command disables the Operator liveness probes.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-azure/rabbitmq-cluster-operator
+helm install my-release -f values.yaml my-repo/rabbitmq-cluster-operator
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -502,7 +502,7 @@ You need to manually delete the old CRD before upgrading the release.
 
 ```console
 kubectl delete crd rabbitmqclusters.rabbitmq.com
-helm upgrade my-release bitnami-azure/rabbitmq-cluster-operator
+helm upgrade my-release my-repo/rabbitmq-cluster-operator
 ```
 
 ## License

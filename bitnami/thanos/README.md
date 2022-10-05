@@ -7,7 +7,7 @@ Thanos is a highly available metrics system that can be added on top of existing
 [Overview of Thanos](https://thanos.io/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```bash
-helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-helm install my-release bitnami-azure/thanos
+helm repo add my-repo https://charts.bitnami.com/bitnami
+helm install my-release my-repo/thanos
 ```
 
 ## Introduction
@@ -39,8 +39,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```bash
-helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-helm install my-release bitnami-azure/thanos
+helm repo add my-repo https://charts.bitnami.com/bitnami
+helm install my-release my-repo/thanos
 ```
 
 These commands deploy Thanos on the Kubernetes cluster with the default configuration. The [configuration](#configuration-and-installation-details) section lists the parameters that can be configured during installation.
@@ -1134,7 +1134,7 @@ Check the section [Integrate Thanos with Prometheus and Alertmanager](#integrate
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```bash
-helm install my-release --set query.replicaCount=2 bitnami-azure/thanos
+helm install my-release --set query.replicaCount=2 my-repo/thanos
 ```
 
 The above command install Thanos chart with 2 Thanos Query replicas.
@@ -1142,7 +1142,7 @@ The above command install Thanos chart with 2 Thanos Query replicas.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-helm install my-release -f values.yaml bitnami-azure/thanos
+helm install my-release -f values.yaml my-repo/thanos
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -1315,7 +1315,7 @@ helm install kube-prometheus \
 helm install thanos \
     --values values.yaml \
     --namespace monitoring \
-    bitnami-azure/thanos
+    my-repo/thanos
 ```
 
 That's all! Now you have Thanos fully integrated with Prometheus and Alertmanager.

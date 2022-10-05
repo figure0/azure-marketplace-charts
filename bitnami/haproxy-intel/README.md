@@ -7,7 +7,7 @@ HAProxy is a high-performance, open-source load balancer and reverse proxy for T
 [Overview of HAProxy for Intel](http://www.haproxy.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/haproxy-intel --render-subchart-notes
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/haproxy-intel --render-subchart-notes
 ```
 
 ## Introduction
@@ -42,7 +42,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release bitnami-azure/haproxy-intel
+helm install my-release my-repo/haproxy-intel
 ```
 
 The command deploys haproxy on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -89,7 +89,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install my-release \
   --set haproxy.service.type=LoadBalancer \
-    bitnami-azure/haproxy-intel --render-subchart-notes
+    my-repo/haproxy-intel --render-subchart-notes
 ```
 
 The above command sets the HAProxy service type as LoadBalancer.
@@ -101,7 +101,7 @@ You can use the `configuration` or `existingConfigmap` parameters to set your ow
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-helm install my-release -f values.yaml bitnami-azure/haproxy-intel --render-subchart-notes
+helm install my-release -f values.yaml my-repo/haproxy-intel --render-subchart-notes
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

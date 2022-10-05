@@ -7,7 +7,7 @@ Apache Tomcat is an open-source web server designed to host and run Java-based w
 [Overview of Apache Tomcat](http://tomcat.apache.org/)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/tomcat
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/tomcat
 ```
 
 ## Introduction
@@ -42,8 +42,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/tomcat
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/tomcat
 ```
 
 These commands deploy Tomcat on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -263,7 +263,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```console
 $ helm install my-release \
-  --set tomcatUsername=manager,tomcatPassword=password bitnami-azure/tomcat
+  --set tomcatUsername=manager,tomcatPassword=password my-repo/tomcat
 ```
 
 The above command sets the Tomcat management username and password to `manager` and `password` respectively.
@@ -273,7 +273,7 @@ The above command sets the Tomcat management username and password to `manager` 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install my-release -f values.yaml bitnami-azure/tomcat
+$ helm install my-release -f values.yaml my-repo/tomcat
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -359,7 +359,7 @@ Consequences:
 ```console
 $ export TOMCAT_PASSWORD=$(kubectl get secret --namespace default tomcat -o jsonpath="{.data.tomcat-password}" | base64 -d)
 $ kubectl delete deployments.apps tomcat
-$ helm upgrade tomcat bitnami-azure/tomcat --set tomcatPassword=$TOMCAT_PASSWORD
+$ helm upgrade tomcat my-repo/tomcat --set tomcatPassword=$TOMCAT_PASSWORD
 ```
 
 ### To 7.0.0
@@ -377,13 +377,13 @@ This release updates the Bitnami Tomcat container to `9.0.26-debian-9-r0`, which
 Tomcat container was moved to a non-root approach. There shouldn't be any issue when upgrading since the corresponding `securityContext` is enabled by default. Both the container image and the chart can be upgraded by running the command below:
 
 ```
-$ helm upgrade my-release bitnami-azure/tomcat
+$ helm upgrade my-release my-repo/tomcat
 ```
 
 If you use a previous container image (previous to **8.5.35-r26**) disable the `securityContext` by running the command below:
 
 ```
-$ helm upgrade my-release bitnami-azure/tomcat --set securityContext.enabled=false,image.tag=XXX
+$ helm upgrade my-release my-repo/tomcat --set securityContext.enabled=false,image.tag=XXX
 ```
 
 ### To 1.0.0

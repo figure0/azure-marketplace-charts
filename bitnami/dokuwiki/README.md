@@ -7,7 +7,7 @@ DokuWiki is a standards-compliant wiki optimized for creating documentation. Des
 [Overview of DokuWiki](https://www.splitbrain.org/projects/dokuwiki)
 
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
-                           
+
 ## Azure-ready Charts with Containers from marketplace.azurecr.io
 
 This Helm Chart has been configured to pull the Container Images from the Azure Marketplace Public Repository.
@@ -18,8 +18,8 @@ $ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
 ## TL;DR
 
 ```console
-$ helm repo add bitnami-azure https://marketplace.azurecr.io/helm/v1/repo
-$ helm install my-release bitnami-azure/dokuwiki
+$ helm repo add my-repo https://charts.bitnami.com/bitnami
+$ helm install my-release my-repo/dokuwiki
 ```
 
 ## Introduction
@@ -40,7 +40,7 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.dev/) for deployment
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm install my-release bitnami-azure/dokuwiki
+$ helm install my-release my-repo/dokuwiki
 ```
 
 The command deploys DokuWiki on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -256,7 +256,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 $ helm install my-release \
   --set dokuwikiUsername=admin,dokuwikiPassword=password \
-    bitnami-azure/dokuwiki
+    my-repo/dokuwiki
 ```
 
 The above command sets the DokuWiki administrator account username and password to `admin` and `password` respectively.
@@ -266,7 +266,7 @@ The above command sets the DokuWiki administrator account username and password 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install my-release -f values.yaml bitnami-azure/dokuwiki
+$ helm install my-release -f values.yaml my-repo/dokuwiki
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
