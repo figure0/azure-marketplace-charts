@@ -6,7 +6,7 @@ dependencies:
   - condition: zookeeper.enabled
     name: zookeeper
     repository: https://marketplace.azurecr.io/helm/v1/repo
-    version: 10.x.x
+    version: 11.x.x
   - name: common
     repository: https://marketplace.azurecr.io/helm/v1/repo
     tags:
@@ -27,4 +27,4 @@ name: solr
 sources:
   - https://github.com/bitnami/containers/tree/main/bitnami/solr
   - https://lucene.apache.org/solr/
-version: 6.3.2
+version: 7.0.0
