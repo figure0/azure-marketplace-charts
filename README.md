@@ -82,9 +82,9 @@ Bitnami provides technical support at the [Bitnami Charts issues](https://github
 
 If you want to contribute with Bitnami charts through a Pull Request or creating an Issue, please do it in the above repository.
 
-# License
+## License
 
-Copyright (c) 2021 Bitnami
+Copyright &copy; 2023 Bitnami
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
